@@ -29,7 +29,7 @@ public class Me extends Character {
 		this.clear_education_require = false;
 	}
 	
-	public void Attack(Skill a[],Monster monsters[]) {
+	public void Attack(Skill a[],Monster monsters[], Me me) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choose the skill!!");
 		
