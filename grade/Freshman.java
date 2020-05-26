@@ -8,7 +8,7 @@ import character.Me;
 public class Freshman {
 	
 	public Skill[] skill = new Skill[5];{
-	skill[0] = new Skill("Searching",5,1,3,true);//이름/데미지/타격대상의 수/마나사용량/잠금해제여부
+	skill[0] = new Skill("Searching",5,1,3,true);//Skill name, Damage, Target, ManaSpent, Open
 	skill[1] = new Skill("Praying",5,4,10,true);
 	skill[2] = new Skill("Ask",10,1,10,true);
 	skill[3] = new Skill(false);
@@ -26,7 +26,7 @@ public class Freshman {
 	public void GoToDungeon(Me me){
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("´øÀü¼±ÅÃ\n\n1."+Major_require.getName());
+		System.out.println("´ø??ü¼±ÅÃ\n\n1."+Major_require.getName());
 		System.out.println("2."+Education_require.getName());
 
 		int select = sc.nextInt();
