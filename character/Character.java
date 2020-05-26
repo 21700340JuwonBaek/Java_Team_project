@@ -16,7 +16,7 @@ public class Character implements Serializable {
 		this.name = name;
 	}
 	
-	public String getNmae() {
+	public String getName() {
 		return this.name;
 	}
 	
@@ -32,7 +32,7 @@ public class Character implements Serializable {
 		this.mana = mana;
 	}
 	
-	public int getHp() {
+	public int getMp() {
 		return this.mana;
 	}
 	
