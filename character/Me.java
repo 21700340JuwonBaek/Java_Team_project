@@ -45,11 +45,11 @@ public class Me extends Character {
 				int damage = super.getAtk()+a[select_skill].getDamage() - monsters[i].getDef();
 				int gold = 0;
 				if(monsters[i].getHp()>0) {
-					gold = monsters[i].getGodl();
+					gold = monsters[i].getGold();
 				}
 				if(super.getAtk() -  monsters[i].getDef()<0) damage = 0;
 				 monsters[i].setHp( monsters[i].getHp()-damage);
-				if(monsters[i].getHp()<0) me.setGold(me.getGodl()+gold);
+				if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
 			}
 			me.setMp(me.getMp()-mp);
 		}
@@ -61,11 +61,11 @@ public class Me extends Character {
 		int damage = super.getAtk()+a[select_skill].getDamage() - monsters[select_monster].getDef();
 		int mp = a[select_skill].getMana();
 		int gold = 0;
-		gold = monsters[i].getGodl();
+		gold = monsters[i].getGold();
 		if(super.getAtk() -  monsters[select_monster].getDef()<0) damage = 0;
 		 monsters[select_monster].setHp( monsters[select_monster].getHp()-damage);
 		 me.setMp(me.getMp()-mp);
-		 if(monsters[i].getHp()<0) me.setGold(me.getGodl()+gold);
+		 if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
 		}
 		}
 	}

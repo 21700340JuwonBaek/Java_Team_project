@@ -60,7 +60,7 @@ public class Character implements Serializable {
 		this.gold = gold;
 	}
 	
-	public int getGodl() {
+	public int getGold() {
 		return this.gold;
 	}
 
