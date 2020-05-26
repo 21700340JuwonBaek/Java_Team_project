@@ -1,5 +1,5 @@
 /*
- * ÀÌ°Ô ±¸Á¶ÀûÀ¸·Î ÁÁÀºÁö »ı°¢ÇØº¸±â
+ * å ì‹±ê³¤ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ìŒ”ë¸ì˜™å ì™ì˜™
  */
 
 package gui;
@@ -48,7 +48,7 @@ public class RpgGui extends JFrame {
 		meInfoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// ***** ÇÒ ÀÏ *****
+				// ***** å ì™ì˜™ å ì™ì˜™ *****
 			}
 		});
 		
@@ -60,10 +60,10 @@ public class RpgGui extends JFrame {
 	public void makeMeInfoP() {
 		meInfoP = new JPanel();
 		JLabel l = new JLabel("User information:");
-		JLabel lName = new JLabel("Name: " + Main.userMe.getNmae());
+		JLabel lName = new JLabel("Name: " + Main.userMe.getName());
 		JLabel lAttack = new JLabel("Atk: " + Integer.toString(Main.userMe.getAtk()));
 		JLabel lDef = new JLabel("Def: " + Integer.toString(Main.userMe.getDef()));
-		JLabel lGold = new JLabel("Gold: " + Integer.toString(Main.userMe.getGodl()));
+		JLabel lGold = new JLabel("Gold: " + Integer.toString(Main.userMe.getGold()));
 		JLabel lCri = new JLabel("Cri: " + Integer.toString(Main.userMe.getCri()));
 		JLabel lHp = new JLabel("Hp: " + Integer.toString(Main.userMe.getHp()));
 		JButton mainButton = new JButton("Main menu");
@@ -88,6 +88,6 @@ public class RpgGui extends JFrame {
 	}
 	
 	public void makeDungeonP() {
-		// ***** ÇÒ ÀÏ *****
+		// ***** å ì™ì˜™ å ì™ì˜™ *****
 	}
 }
