@@ -26,7 +26,7 @@ public class Freshman {
 	public void GoToDungeon(Me me){
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("´ø??ü¼±ÅÃ\n\n1."+Major_require.getName());
+		System.out.println("Please Select the Dungeon\n\n1."+Major_require.getName());
 		System.out.println("2."+Education_require.getName());
 
 		int select = sc.nextInt();
