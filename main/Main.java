@@ -11,7 +11,8 @@ public class Main {
 		if(me.getGrade() == 1) {
 		Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
 		while(true) {
-			
+			RpgGui gui = new RpgGui();
+			gui.showMainWindow();
 		System.out.println(me.getHp()+me.getGold());
 		System.out.println(me.get_clear_major_require());
 		System.out.println(me.getName());
