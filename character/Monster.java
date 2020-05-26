@@ -11,11 +11,13 @@ public class Monster extends Character {
 	}
 	
 	public void Attack(Me me) {
-		int damage = super.getAtk() - me.getDef();
-		
-		if(super.getAtk() - me.getDef()<0) damage = 0;
-		
-		me.setHp(me.getHp()-damage);
+		if(monsters.getHp()>0) {
+			int damage = super.getAtk() - me.getDef();
+
+			if(super.getAtk() - me.getDef()<0) damage = 0;
+
+			me.setHp(me.getHp()-damage);
+		}
 	}
 	
 }
