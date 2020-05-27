@@ -10,7 +10,7 @@ public class Education_require extends Dungeon {
 		super(name);
 	}
 
-	public void fight(Me me, Skill mySkill[]) {
+	public static void fight(Me me, Skill mySkill[]) {
 
 		System.out.println("Enter the dungeon : Handong Insung GyeoYook");
 
