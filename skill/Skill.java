@@ -14,7 +14,7 @@ public class Skill {
 		this.mana = 0;
 	}
 	
-	public Skill(String name, int damage, int range, int mana, boolean open) {
+	public  Skill(String name, int damage, int range, int mana, boolean open) {
 		this.name = name;
 		this.damage = damage;
 		this.range = range;
@@ -22,7 +22,7 @@ public class Skill {
 		this.open = open;
 	}
 	
-	public void setSkill(String name, int damage, int range, int mana, boolean open) {
+	public  void setSkill(String name, int damage, int range, int mana, boolean open) {
 		this.name = name;
 		this.damage = damage;
 		this.range = range;

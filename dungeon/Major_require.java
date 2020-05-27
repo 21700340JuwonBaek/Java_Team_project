@@ -16,13 +16,13 @@ public class Major_require extends Dungeon {
 		System.out.println("Enter the dungeon. : Introductory Engineering");
 
 		Monster[] monsters = new Monster[3];
-		monsters[0] = new Monster("º¸°í¼­", 10, 1, 5, 1, 30);
+		monsters[0] = new Monster("ë³´ê³ ì„œ", 10, 1, 5, 1, 30);
 		monsters[1] = new Monster("Line tracer", 10, 1, 5, 1, 30);
 		monsters[2] = new Monster("Wrestling robot", 10, 1, 5, 1, 30);
 		
-		System.out.println("¾ß»ıÀÇ"+ monsters[0].getName() +" ¸ó½ºÅÍ°¡ ³ªÅ¸³µ´Ù!");
-		System.out.println("¾ß»ıÀÇ"+ monsters[1].getName() +" ¸ó½ºÅÍ°¡ ³ªÅ¸³µ´Ù!");
-		System.out.println("¾ß»ıÀÇ"+ monsters[2].getName() +" ¸ó½ºÅÍ°¡ ³ªÅ¸³µ´Ù!");
+		System.out.println("ì•¼ìƒì˜"+ monsters[0].getName() +" ëª¬ìŠ¤í„°ê°€ ë‚˜íƒ€ë‚¬ë‹¤!");
+		System.out.println("ì•¼ìƒì˜"+ monsters[1].getName() +" ëª¬ìŠ¤í„°ê°€ ë‚˜íƒ€ë‚¬ë‹¤!");
+		System.out.println("ì•¼ìƒì˜"+ monsters[2].getName() +" ëª¬ìŠ¤í„°ê°€ ë‚˜íƒ€ë‚¬ë‹¤!");
 		
 		// Battle
 		while ((monsters[0].getHp() > 0 || monsters[1].getHp() > 0 || monsters[2].getHp() > 0) && me.getHp() > 0) {
@@ -58,7 +58,7 @@ public class Major_require extends Dungeon {
 			// Be attacked by monsters
 			for (int j = 0; j < 3; j++) {
 				if (monsters[j].getHp() > 0) {
-					System.out.println(monsters[j].getName() + j + " ¿¡°Ô °ø°İ¹Ş¾Ò´Ù!." + (me.getDef() - monsters[j].getAtk()));
+					System.out.println(monsters[j].getName() + j + " ì—ê²Œ ê³µê²©ë°›ì•˜ë‹¤!." + (me.getDef() - monsters[j].getAtk()));
 					monsters[j].Attack(me, monsters[j]);
 				}
 			}
