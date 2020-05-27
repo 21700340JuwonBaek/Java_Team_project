@@ -53,4 +53,8 @@ public class Skill {
 	public boolean getOpen() {
 		return this.open;
 	}
+	
+	public void setOpen(boolean open) {
+		this.open = open;
+	}
 }
