@@ -45,6 +45,7 @@ public class Main {
       //이름/공격력/방어력/소지골드/크리티컬/체력/마나 입니다
       if(me.getGrade() == 1) {
       Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+
       while(true) {
        //  RpgGui gui = new RpgGui();
          //gui.showMainWindow();
@@ -57,7 +58,18 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		int select = sc.nextInt();
-		if(select == 1) Freshman.GoToDungeon(me);
+		if(select == 1) {
+			Freshman.GoToDungeon(me);
+			me.setHp(100);
+		    new Sophomore("Data Structure","Java","ERC","Statistic");
+			Sophomore.GoToDungeon(me);
+			me.setHp(100);
+		    new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
+			Junior.GoToDungeon(me);
+		    new Senior("Graduation","Graduation","Graduation","Graduation");
+			me.setHp(100);
+			Senior.GoToDungeon(me);
+		}
 		
 		else if (select == 2) {
 			Main.Save(me);
