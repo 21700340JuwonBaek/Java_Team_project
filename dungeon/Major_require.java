@@ -11,7 +11,7 @@ public class Major_require extends Dungeon {
 	
 	private int grade = 1;
 
-	public void fight(Me me, Skill mySkill[]) {
+	public static void fight(Me me, Skill mySkill[]) {
 		
 		System.out.println("Enter the dungeon. : Introductory Engineering");
 
