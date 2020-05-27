@@ -1,18 +1,20 @@
 package main;
 import grade.*;
+import gui.RpgGui;
 import character.*;
 import java.io.*;
 import java.util.Scanner;
 public class Main {
-	
-	public static void main (String[] args) {
-		
-		Me me = new Me("이름",10,1,500,1,100,100);
-		if(me.getGrade() == 1) {
-		Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
-		while(true) {
-			RpgGui gui = new RpgGui();
-			gui.showMainWindow();
+   public static Me userMe;
+   
+   public static void main (String[] args) {
+      
+      Me me = new Me("이름",10,1,500,1,100,100);
+      if(me.getGrade() == 1) {
+      Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+      while(true) {
+         RpgGui gui = new RpgGui();
+         gui.showMainWindow();
 		System.out.println(me.getHp()+me.getGold());
 		System.out.println(me.get_clear_major_require());
 		System.out.println(me.getName());
