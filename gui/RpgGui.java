@@ -48,7 +48,7 @@ public class RpgGui extends JFrame {
 		meInfoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// ***** 占쏙옙 占쏙옙 *****
+				// ***** 할 일 *****
 			}
 		});
 		
