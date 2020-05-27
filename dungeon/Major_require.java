@@ -11,15 +11,9 @@ public class Major_require extends Dungeon {
 	
 	private int grade = 1;
 
-	public static void fight(Me me, Skill mySkill[]) {
+	public static void fight(Me me, Skill mySkill[], Monster[] monsters) {
 		
 		System.out.println("Enter the dungeon. : Introductory Engineering");
-
-		Monster[] monsters = new Monster[3];
-		monsters[0] = new Monster("보고서", 10, 1, 5, 1, 30);
-		monsters[1] = new Monster("Line tracer", 10, 1, 5, 1, 30);
-		monsters[2] = new Monster("Wrestling robot", 10, 1, 5, 1, 30);
-		
 		System.out.println("야생의"+ monsters[0].getName() +" 몬스터가 나타났다!");
 		System.out.println("야생의"+ monsters[1].getName() +" 몬스터가 나타났다!");
 		System.out.println("야생의"+ monsters[2].getName() +" 몬스터가 나타났다!");
