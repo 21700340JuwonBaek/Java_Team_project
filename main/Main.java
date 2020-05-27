@@ -1,21 +1,24 @@
 package main;
 import grade.*;
+import gui.RpgGui;
 import character.*;
 import java.io.*;
 import java.util.Scanner;
 public class Main {
-	
-	public static void main (String[] args) {
-		
-		Me me = new Me("ÀÌ¸§",10,1,500,1,100,100);
-		if(me.getGrade() == 1) {
-		Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
-		while(true) {
-			
-		System.out.println(me.getHp()+me.getGodl());
+   public static Me userMe;
+   
+   public static void main (String[] args) {
+      
+      Me me = new Me("ì´ë¦„",10,1,500,1,100,100);
+      if(me.getGrade() == 1) {
+      Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+      while(true) {
+         RpgGui gui = new RpgGui();
+         gui.showMainWindow();
+		System.out.println(me.getHp()+me.getGold());
 		System.out.println(me.get_clear_major_require());
-		System.out.println(me.getNmae());
-		System.out.println("¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä!\n1.´øÀüÀ¸·Î °¡±â.\n2.ÀúÀåÇÏ±â\n3.ºÒ·¯¿À±â\n");
+		System.out.println(me.getName());
+		System.out.println("ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”!\\n1.ë˜ì „ìœ¼ë¡œ ê°€ê¸°.\\n2.ì €ì¥í•˜ê¸°\\n3.ë¶ˆëŸ¬ì˜¤ê¸°");
 		Scanner sc = new Scanner(System.in);
 		
 		int select = sc.nextInt();

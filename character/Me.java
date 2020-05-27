@@ -10,6 +10,9 @@ public class Me extends Character {
 	private int score;
 	private int grade = 1;
 	private boolean clear_major_require;
+	private boolean clear_major_select;
+	private boolean clear_education_select;
+	private boolean clear_education_require;
 	
 	public Me(String name, int attack, int defense, int gold, int critical, int hp, int mp) {
 		super.setName(name);
@@ -18,35 +21,51 @@ public class Me extends Character {
 		super.setGold(gold);
 		super.setCri(critical);
 		super.setHp(hp);
+		super.setMp(mp); 
 		this.Mp = mp;
 		this.clear_major_require = false;
+		this.clear_major_select = false;
+		this.clear_education_select = false;
+		this.clear_education_require = false;
 	}
 	
-	public void Attack(Skill a[],Monster monsters[]) {
+	public void Attack(Skill a[],Monster monsters[], Me me) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choose the skill!!");
 		
 		for(int i = 0; i < a.length; i++) {
 			if(a[i].getOpen()==false)continue;
-			System.out.println(i+". "+a[i].getName() + "(¹üÀ§ : "+a[i].getRange() + " °ø°Ý·Â : ±âº» µ¥¹ÌÁö("+super.getAtk()+")"+"+" + a[i].getDamage() + ")");
+			System.out.println(i+". "+a[i].getName() + "(ë²”ìœ„ : "+a[i].getRange() + " ê³µê²©ë ¥ : ê¸°ë³¸ ë°ë¯¸ì§€("+super.getAtk()+")"+"+" + a[i].getDamage() + " í•„ìš” ì§€ì‹ëŸ‰: " + a[i].getMana() + ")");
 		}
 		int select_skill = sc.nextInt();
 		
 		if(a[select_skill].getRange()>monsters.length) {
+			int mp = a[select_skill].getMana();
 			for(int i = 0; i < monsters.length;i++) {
 				int damage = super.getAtk()+a[select_skill].getDamage() - monsters[i].getDef();
+				int gold = 0;
+				if(monsters[i].getHp()>0) {
+					gold = monsters[i].getGold();
+				}
 				if(super.getAtk() -  monsters[i].getDef()<0) damage = 0;
 				 monsters[i].setHp( monsters[i].getHp()-damage);
+				if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
 			}
+			me.setMp(me.getMp()-mp);
 		}
 		
 		else {
 		for(int i = 0; i < a[select_skill].getRange();i++) {
-			System.out.println("ÀâÀ» ¸ó½ºÅÍ¸¦ ¼±ÅÃÇÏ¼¼¿ä!!");
+			System.out.println("ìž¡ì„ ëª¬ìŠ¤í„°ë¥¼ ì„ íƒí•˜ì„¸ìš”!!");
 		int select_monster = sc.nextInt();
 		int damage = super.getAtk()+a[select_skill].getDamage() - monsters[select_monster].getDef();
+		int mp = a[select_skill].getMana();
+		int gold = 0;
+		gold = monsters[i].getGold();
 		if(super.getAtk() -  monsters[select_monster].getDef()<0) damage = 0;
 		 monsters[select_monster].setHp( monsters[select_monster].getHp()-damage);
+		 me.setMp(me.getMp()-mp);
+		 if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
 		}
 		}
 	}
@@ -64,6 +83,26 @@ public class Me extends Character {
 	}
 	public boolean get_clear_major_require() {
 		return this.clear_major_require;
+	}
+	public void set_clear_major_select(boolean t_f) {
+		this.clear_major_select = t_f;
+	}
+	public boolean get_clear_major_select() {
+		return this.clear_major_select;
+	}
+	
+	public void set_clear_education_select(boolean t_f) {
+		this.clear_education_select = t_f;
+	}
+	public boolean get_clear_education_select() {
+		return this.clear_education_select;
+	}
+	
+	public void set_clear_education_require(boolean t_f) {
+		this.clear_education_require = t_f;
+	}
+	public boolean get_clear_education_require() {
+		return this.clear_education_require;
 	}
 
 }

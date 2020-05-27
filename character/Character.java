@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Character implements Serializable {
 	private String name;
 	private int hp;
+	private int mana;
 	private int def;
 	private int atk;
 	private int cri;
@@ -15,7 +16,7 @@ public class Character implements Serializable {
 		this.name = name;
 	}
 	
-	public String getNmae() {
+	public String getName() {
 		return this.name;
 	}
 	
@@ -25,6 +26,14 @@ public class Character implements Serializable {
 	
 	public int getHp() {
 		return this.hp;
+	}
+	
+	public void setMp(int mana) {
+		this.mana = mana;
+	}
+	
+	public int getMp() {
+		return this.mana;
 	}
 	
 	public void setDef(int def) {
@@ -51,7 +60,7 @@ public class Character implements Serializable {
 		this.gold = gold;
 	}
 	
-	public int getGodl() {
+	public int getGold() {
 		return this.gold;
 	}
 
