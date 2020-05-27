@@ -23,13 +23,14 @@ public class Main {
 		}
    }
    
-   public static Me Load(Me me)// Load Method
+   public static Me Load()// Load Method
    {
 		ObjectInputStream inputStream = null;
+		Me me = null;
 		try {inputStream = new ObjectInputStream(new FileInputStream("My.records"));}
 		catch(IOException e) {System.out.println("No File!!");}
 		
-		try {me = (Me)inputStream.readObject();
+		try { me = (Me)inputStream.readObject();
 			inputStream.close();
 		}
 		
@@ -63,7 +64,7 @@ public class Main {
 		}
 		
 		else if (select == 3) {
-			me = Main.Load(me);
+			me = Main.Load();
 		}
 		
 		
