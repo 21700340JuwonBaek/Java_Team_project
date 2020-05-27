@@ -10,6 +10,7 @@ public class Main {
    public static void main (String[] args) {
       
       Me me = new Me("이름",10,1,500,1,100,100);
+      //이름/공격력/방어력/소지골드/크리티컬/체력/마나
       if(me.getGrade() == 1) {
       Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
       while(true) {
