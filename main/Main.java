@@ -14,9 +14,11 @@ public class Main {
       if(me.getGrade() == 1) {
       Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
       while(true) {
-         RpgGui gui = new RpgGui();
-         gui.showMainWindow();
-		System.out.println(me.getHp()+me.getGold());
+       //  RpgGui gui = new RpgGui();
+         //gui.showMainWindow();
+		System.out.println(me.getHp());
+		System.out.println(me.getGold());
+		System.out.println(me.getMp());
 		System.out.println(me.get_clear_major_require());
 		System.out.println(me.getName());
 		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기");
