@@ -1,5 +1,5 @@
 /*
- * 占싱곤옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쌔븝옙占쏙옙
+ * 이게 구조적으로 좋은지 생각해보기
  */
 
 package gui;
@@ -88,6 +88,6 @@ public class RpgGui extends JFrame {
 	}
 	
 	public void makeDungeonP() {
-		// ***** 占쏙옙 占쏙옙 *****
+		// ***** 할 일 *****
 	}
 }
