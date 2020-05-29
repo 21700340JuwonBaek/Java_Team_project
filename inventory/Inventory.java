@@ -25,7 +25,18 @@ public class Inventory {
 		me.setAtk(me.getAtk()-weapon.getAtk());
 	}
 	
-
+	public static void useHpPotion(Me me, Potion potion) {
+		if(potion.getNumber()==0) return;
+		me.setHp(me.getHp()+potion.getRecovory());
+		potion.setNumber(potion.getNumber()-1);
+	}
+	
+	public static void useMpPotion(Me me, Potion potion) {
+		if(potion.getNumber()==0) return;
+		me.setHp(me.getMp()+potion.getRecovory());
+		potion.setNumber(potion.getNumber()-1);
+	}
+	
 	
 
 }
