@@ -4,10 +4,11 @@ import gui.RpgGui;
 import character.*;
 import java.io.*;
 import java.util.Scanner;
+import inventory.Inventory;
 public class Main {
    public static Me userMe;
    
-   public static void Save(Me me) //Save Method.
+   public static void Save(Me me, Inventory inventory) //Save Method.
    {
 	   ObjectOutputStream outputStream = null;
 		String fileName = "My.records";
@@ -21,9 +22,22 @@ public class Main {
 		catch(IOException e) {
 			System.out.println("Error1");
 		}
+		
+		   ObjectOutputStream outputStream1 = null;
+			String fileName1 = "Inventory";
+			try {outputStream1 = new ObjectOutputStream(new FileOutputStream(fileName1));}
+			catch(IOException e) {System.out.println("Error0"); System.exit(0);}
+
+			try {
+				outputStream.writeObject(inventory);
+				outputStream.close();
+			}
+			catch(IOException e) {
+				System.out.println("Error1");
+			}
    }
    
-   public static Me Load()// Load Method
+   public static Me LoadMe()// Load Method
    {
 		ObjectInputStream inputStream = null;
 		Me me = null;
@@ -37,6 +51,21 @@ public class Main {
 		catch(Exception e) {System.out.println("Error3"); System.exit(0);}
 		
 		return me;
+   }
+   
+   public static Inventory LoadInventory() {
+		ObjectInputStream inputStream = null;
+		Inventory inventory = null;
+		try {inputStream = new ObjectInputStream(new FileInputStream("Inventory"));}
+		catch(IOException e) {System.out.println("No File!!");}
+		
+		try { inventory = (Inventory)inputStream.readObject();
+			inputStream.close();
+		}
+		
+		catch(Exception e) {System.out.println("Error3"); System.exit(0);}
+		
+		return inventory;
    }
    
    public static void main (String[] args) {
@@ -76,7 +105,7 @@ public class Main {
 		}
 		
 		else if (select == 3) {
-			me = Main.Load();
+			me = Main.LoadMe();
 		}
 		
 		
