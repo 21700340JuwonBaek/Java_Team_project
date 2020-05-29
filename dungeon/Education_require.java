@@ -10,29 +10,25 @@ public class Education_require extends Dungeon {
 		super(name);
 	}
 
-	public static void fight(Me me, Skill mySkill[]) {
+	public static void fight(Me me, Skill mySkill[], Monster monsters[]) {
 
 		System.out.println("Enter the dungeon : Handong Insung GyeoYook");
-
-		Monster[] monsters = new Monster[5];
-		monsters[0] = new Monster("한인교 소감문", 3, 1, 5, 1, 10);
-		monsters[1] = new Monster("한인교 소감문", 3, 1, 5, 1, 10);
-		monsters[2] = new Monster("한인교 소감문", 3, 1, 5, 1, 10);
-		monsters[3] = new Monster("한인교 소감문", 3, 1, 5, 1, 10);
-		monsters[4] = new Monster("한인교 소감문", 3, 1, 5, 1, 10);
 
 		for (int i = 0; i < monsters.length; i++) {
 			System.out.println("야생의 " + i + " " + monsters[0].getName() + " 몬스터가 나타났다!");
 		}
-
+		
+		// Battle
 		while (me.getHp() > 0) {
-
+			
+			// My status
 			System.out.println();
 			System.out.println("[My status]");
 			System.out.println("HP :" + me.getHp());
 			System.out.println("MP :" + me.getMp());
 			System.out.println();
-
+			
+			// Monsters status
 			System.out.println("[Monsters status]");
 			for (int i = 0; i < monsters.length; i++) {
 				if (monsters[i].getHp() < 0) {
@@ -55,7 +51,8 @@ public class Education_require extends Dungeon {
 				System.out.println();
 				return;
 			}
-
+			
+			// Be attacked by monsters
 			System.out.println();
 			for (int j = 0; j < monsters.length; j++) {
 				if (monsters[j].getHp() > 0) {
