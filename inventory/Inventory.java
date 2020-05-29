@@ -25,20 +25,7 @@ public class Inventory {
 		me.setAtk(me.getAtk()-weapon.getAtk());
 	}
 	
-	public static void sellWeapon(Me me, Weapon weapon) {
-		me.setGold(me.getGold()+weapon.getSellGold());
-		weapon.setIs_bought(false);
-	}
-	
-	public static void sellArmor(Me me, Armor armor) {
-		me.setGold(me.getGold()+armor.getSellGold());
-		armor.setIs_bought(false);
-	}
-	
-	public static void sellPotion(Me me, Potion potion) {
-		me.setGold(me.getGold()+potion.getSellGold());
-		potion.setNumber(potion.getNumber()-1);
-	}
+
 	
 
 }
