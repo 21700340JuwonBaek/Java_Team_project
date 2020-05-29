@@ -2,7 +2,7 @@ package item;
 
 public class Potion extends Item{
 	private int recovory;
-	private int number;
+	private int number;//포션의 개수.
 	public Potion(String name, int buy_gold, int sell_gold, int grade, int recovory) {
 		super(name, buy_gold, sell_gold, grade);
 		this.recovory = recovory;

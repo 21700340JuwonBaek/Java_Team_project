@@ -3,7 +3,7 @@ package item;
 public class Weapon extends Item {
 	private int atk;
 	private int cri;
-	private boolean is_bought;
+	private boolean is_bought;//이 무기를 가지고 있는지 아닌지를 판별.
 
 	
 	public Weapon(String name, int buy_gold, int sell_gold, int grade, int atk, int cri) {
