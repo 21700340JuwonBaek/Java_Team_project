@@ -34,7 +34,7 @@ public class Character implements Serializable {
 	}
 	
 	public int getMaxHp() {
-		return this.hp;
+		return this.maxhp;
 	}
 	
 	public void setMp(int mana) {
