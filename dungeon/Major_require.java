@@ -16,20 +16,22 @@ public class Major_require extends Dungeon {
 			System.out.println("야생의" + monsters[i].getName() + " 몬스터가 나타났다!");
 
 		// Battle
-		while ((monsters[0].getHp() > 0 || monsters[1].getHp() > 0 || monsters[2].getHp() > 0) && me.getHp() > 0) {
-
+		while (me.getHp() > 0) {
+				
+			// Print my status
 			System.out.println();
 			System.out.println("[My status]");
 			System.out.println("HP :" + me.getHp());
 			System.out.println("MP :" + me.getMp());
 			System.out.println();
 
-			// Monster status
+			// Print monsters status
 			System.out.println("[Monsters status]");
 			for (int i = 0; i < monsters.length; i++) {
 				System.out.println(i + " " + monsters[i].getName() + " Hp : " + monsters[i].getHp());
 			}
-
+			
+			// Print skill window
 			System.out.println();
 			me.Attack(mySkill, monsters, me);
 			System.out.println();
@@ -53,9 +55,9 @@ public class Major_require extends Dungeon {
 					monsters[j].Attack(me, monsters[j]);
 				}
 			}
-			if (me.getHp() > 0) {
-				me.set_clear_major_require(true);
-			}
+		}
+		if (me.getHp() > 0) {
+			me.set_clear_major_require(true);
 		}
 	}
 }

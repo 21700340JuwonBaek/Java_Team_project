@@ -60,9 +60,9 @@ public class Education_require extends Dungeon {
 					monsters[j].Attack(me, monsters[j]);
 				}
 			}
-			if (me.getHp() > 0) {
-				me.set_clear_education_require(true);
-			}
+		}
+		if (me.getHp() > 0) {
+			me.set_clear_education_require(true);
 		}
 	}
 }
