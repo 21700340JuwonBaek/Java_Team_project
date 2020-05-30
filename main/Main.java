@@ -114,11 +114,10 @@ public class Main {
 		}
 		
 	      	else if (select == 4) {
-			store.buy(me);
-		
+	      		shop.buy(me);
 		}//while
 		
-		
+      }
 		}//if
 	
 	
