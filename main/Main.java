@@ -88,7 +88,7 @@ public class Main {
 		System.out.println(me.getMp());
 		System.out.println(me.get_clear_major_require());
 		System.out.println(me.getName());
-		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기");
+		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4. 상점");
 		Scanner sc = new Scanner(System.in);
 		
 		int select = sc.nextInt();
@@ -113,6 +113,8 @@ public class Main {
 			me = Main.LoadMe();
 		}
 		
+	      	else if (select == 4) {
+			store.buy(me);
 		
 		}//while
 		
