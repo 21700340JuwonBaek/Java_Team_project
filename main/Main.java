@@ -5,6 +5,7 @@ import character.*;
 import java.io.*;
 import java.util.Scanner;
 import inventory.Inventory;
+import shop.shop;
 public class Main {
    public static Me userMe;
    
@@ -73,6 +74,9 @@ public class Main {
       
       Me me = new Me("이름",10,1,500,1,100,100);
       //이름/공격력/방어력/소지골드/크리티컬/체력/마나 입니다
+	   
+	me.enterName(me); //플레이어의 이름을 받습니다.
+	   
       if(me.getGrade() == 1) {
       Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
 
@@ -84,7 +88,7 @@ public class Main {
 		System.out.println(me.getMp());
 		System.out.println(me.get_clear_major_require());
 		System.out.println(me.getName());
-		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기");
+		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4. 상점");
 		Scanner sc = new Scanner(System.in);
 		
 		int select = sc.nextInt();
@@ -109,6 +113,8 @@ public class Main {
 			me = Main.LoadMe();
 		}
 		
+	      	else if (select == 4) {
+			store.buy(me);
 		
 		}//while
 		

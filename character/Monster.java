@@ -10,11 +10,11 @@ public class Monster extends Character {
 		super.setHp(hp);
 	}
 	
-	public void Attack(Me me, Monster monsters) {
+	public static void Attack(Me me, Monster monsters) {
 		if(monsters.getHp()>0) {
-			int damage = super.getAtk() - me.getDef();
+			int damage = monsters.getAtk() - me.getDef();
 
-			if(super.getAtk() - me.getDef()<0) damage = 0;
+			if(monsters.getAtk() - me.getDef()<0) damage = 0;
 
 			me.setHp(me.getHp()-damage);
 		}
