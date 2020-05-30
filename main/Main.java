@@ -5,6 +5,7 @@ import character.*;
 import java.io.*;
 import java.util.Scanner;
 import inventory.Inventory;
+import shop.shop;
 public class Main {
    public static Me userMe;
    
@@ -73,6 +74,9 @@ public class Main {
       
       Me me = new Me("이름",10,1,500,1,100,100);
       //이름/공격력/방어력/소지골드/크리티컬/체력/마나 입니다
+	   
+	me.enterName(me); //플레이어의 이름을 받습니다.
+	   
       if(me.getGrade() == 1) {
       Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
 
