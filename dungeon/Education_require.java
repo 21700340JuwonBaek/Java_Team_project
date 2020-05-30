@@ -12,23 +12,22 @@ public class Education_require extends Dungeon {
 
 	public static void fight(Me me, Skill mySkill[], Monster monsters[]) {
 
-		System.out.println("Enter the dungeon : Handong Insung GyeoYook");
-
-		for (int i = 0; i < monsters.length; i++) {
-			System.out.println("야생의 " + i + " " + monsters[0].getName() + " 몬스터가 나타났다!");
-		}
+		// Print Dungeon name and Monsters
+		System.out.println("Enter the dungeon : (Dungeon name)");
+		for (int i = 0; i < monsters.length; i++)
+			System.out.println("야생의 " + i + " " + monsters[i].getName() + " 몬스터가 나타났다!");
 		
 		// Battle
 		while (me.getHp() > 0) {
 			
-			// My status
+			// Print my status
 			System.out.println();
 			System.out.println("[My status]");
 			System.out.println("HP :" + me.getHp());
 			System.out.println("MP :" + me.getMp());
 			System.out.println();
 			
-			// Monsters status
+			// Print monsters status
 			System.out.println("[Monsters status]");
 			for (int i = 0; i < monsters.length; i++) {
 				if (monsters[i].getHp() < 0) {
