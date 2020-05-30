@@ -3,7 +3,7 @@ package item;
 public class Armor extends Item{
 private int def;
 private int hp;
-private boolean is_bought;
+private boolean is_bought;//이 방어구를 가지고 있는지 아닌지를 판별해주는 변
 	public Armor(String name, int buy_gold, int sell_gold, int grade, int def, int hp) {
 		super(name, buy_gold, sell_gold, grade);
 		this.def = def;

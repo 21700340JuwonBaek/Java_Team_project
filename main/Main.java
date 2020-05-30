@@ -69,6 +69,7 @@ public class Main {
    }
    
    public static void main (String[] args) {
+	   //Inventory inventory = new Inventory
       
       Me me = new Me("이름",10,1,500,1,100,100);
       //이름/공격력/방어력/소지골드/크리티컬/체력/마나 입니다
@@ -89,19 +90,19 @@ public class Main {
 		int select = sc.nextInt();
 		if(select == 1) {
 			Freshman.GoToDungeon(me);
-			me.setHp(100);
+			//me.setHp(100);
 		    new Sophomore("Data Structure","Java","ERC","Statistic");
 			Sophomore.GoToDungeon(me);
-			me.setHp(100);
+		//	me.setHp(100);
 		    new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
 			Junior.GoToDungeon(me);
 		    new Senior("Graduation","Graduation","Graduation","Graduation");
-			me.setHp(100);
+		//	me.setHp(100);
 			Senior.GoToDungeon(me);
 		}
 		
 		else if (select == 2) {
-			Main.Save(me);
+			//Main.Save(me, null);
 		}
 		
 		else if (select == 3) {
