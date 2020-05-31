@@ -8,35 +8,34 @@ public class Major_require extends Dungeon {
 	public Major_require(String name) {
 		super(name);
 	}
-	
-	private int grade = 1;
 
 	public static void fight(Me me, Skill mySkill[], Monster[] monsters) {
-		
-		System.out.println("Enter the dungeon. : Introductory Engineering");
-		System.out.println("야생의"+ monsters[0].getName() +" 몬스터가 나타났다!");
-		System.out.println("야생의"+ monsters[1].getName() +" 몬스터가 나타났다!");
-		System.out.println("야생의"+ monsters[2].getName() +" 몬스터가 나타났다!");
-		
-		// Battle
-		while ((monsters[0].getHp() > 0 || monsters[1].getHp() > 0 || monsters[2].getHp() > 0) && me.getHp() > 0) {
 
+		System.out.println("Enter the dungeon : (Dungeon name)");
+		for (int i = 0; i < monsters.length; i++)
+			System.out.println("야생의" + monsters[i].getName() + " 몬스터가 나타났다!");
+
+		// Battle
+		while (me.getHp() > 0) {
+				
+			// Print my status
 			System.out.println();
 			System.out.println("[My status]");
 			System.out.println("HP :" + me.getHp());
 			System.out.println("MP :" + me.getMp());
 			System.out.println();
-			
-			// Monster status
+
+			// Print monsters status
 			System.out.println("[Monsters status]");
 			for (int i = 0; i < monsters.length; i++) {
 				System.out.println(i + " " + monsters[i].getName() + " Hp : " + monsters[i].getHp());
 			}
 			
+			// Print skill window
 			System.out.println();
-			me.Attack(mySkill, monsters, me);
+			Me.Attack(mySkill, monsters, me);
 			System.out.println();
-			
+
 			// Clear condition
 			int i;
 			for (i = 0; i < monsters.length; i++) {
@@ -48,17 +47,17 @@ public class Major_require extends Dungeon {
 				System.out.println();
 				return;
 			}
-			
+
 			// Be attacked by monsters
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < monsters.length; j++) {
 				if (monsters[j].getHp() > 0) {
 					System.out.println(monsters[j].getName() + j + " 에게 공격받았다!." + (me.getDef() - monsters[j].getAtk()));
-					monsters[j].Attack(me, monsters[j]);
+					Monster.Attack(me, monsters[j]);
 				}
 			}
-			if (me.getHp() > 0) {
-				me.set_clear_major_require(true);
-			}
+		}
+		if (me.getHp() > 0) {
+			me.set_clear_major_require(true);
 		}
 	}
 }

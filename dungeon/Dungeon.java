@@ -1,8 +1,8 @@
 package dungeon;
 
 public class Dungeon {
-	private String name;
-	private int grade = 1;
+	protected String name;
+	protected int grade = 1;
 	
 	public Dungeon(String name) {
 		this.name = name;

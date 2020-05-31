@@ -12,23 +12,22 @@ public class Education_require extends Dungeon {
 
 	public static void fight(Me me, Skill mySkill[], Monster monsters[]) {
 
-		System.out.println("Enter the dungeon : Handong Insung GyeoYook");
-
-		for (int i = 0; i < monsters.length; i++) {
-			System.out.println("야생의 " + i + " " + monsters[0].getName() + " 몬스터가 나타났다!");
-		}
+		// Print Dungeon name and Monsters
+		System.out.println("Enter the dungeon : (Dungeon name)");
+		for (int i = 0; i < monsters.length; i++)
+			System.out.println("야생의 " + i + " " + monsters[i].getName() + " 몬스터가 나타났다!");
 		
 		// Battle
 		while (me.getHp() > 0) {
 			
-			// My status
+			// Print my status
 			System.out.println();
 			System.out.println("[My status]");
 			System.out.println("HP :" + me.getHp());
 			System.out.println("MP :" + me.getMp());
 			System.out.println();
 			
-			// Monsters status
+			// Print monsters status
 			System.out.println("[Monsters status]");
 			for (int i = 0; i < monsters.length; i++) {
 				if (monsters[i].getHp() < 0) {
@@ -38,7 +37,7 @@ public class Education_require extends Dungeon {
 				System.out.println(i + " " + monsters[i].getName() + " : " + monsters[i].getHp());
 			}
 			System.out.println();
-			me.Attack(mySkill, monsters, me);
+			Me.Attack(mySkill, monsters, me);
 
 			// Clear condition
 			int i;
@@ -58,12 +57,12 @@ public class Education_require extends Dungeon {
 				if (monsters[j].getHp() > 0) {
 					System.out.println(monsters[j].getName() + j + " 에게 공격받았다!.");
 					System.out.println(me.getDef() - monsters[j].getAtk());
-					monsters[j].Attack(me, monsters[j]);
+					Monster.Attack(me, monsters[j]);
 				}
 			}
-			if (me.getHp() > 0) {
-				me.set_clear_education_require(true);
-			}
+		}
+		if (me.getHp() > 0) {
+			me.set_clear_education_require(true);
 		}
 	}
 }
