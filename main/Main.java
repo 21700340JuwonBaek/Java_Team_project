@@ -106,7 +106,7 @@ public class Main {
 		}
 		
 		else if (select == 2) {
-			//Main.Save(me, null);
+			Main.Save(me, null);
 		}
 		
 		else if (select == 3) {
