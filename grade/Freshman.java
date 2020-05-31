@@ -4,6 +4,7 @@ import dungeon.*;
 
 import java.util.Scanner;
 import character.Me;
+import character.Monster;
 
 public class Freshman {
 	
@@ -24,7 +25,13 @@ public class Freshman {
 		this.Major_require = new Major_require(major1);
 	}
 	public static void GoToDungeon(Me me){
+		Monster[] monster = new Monster[3];
+		
+		monster[0] = new Monster("몬스터",10,1,5,1,60 );
+		monster[1] = new Monster("몬스터",10,1,5,1,60 );
+		monster[2] = new Monster("몬스터",10,1,5,1,60 );
 
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please Select the Dungeon\n\n1."+Major_require.getName());
 		System.out.println("2."+Education_require.getName());
@@ -33,11 +40,11 @@ public class Freshman {
 		
 		if(select == 1) {
 			System.out.println(me.get_clear_major_require());
-			Major_require.fight(me, skill);
+			Major_require.fight(me, skill, monster);
 			System.out.println(me.get_clear_major_require());
 		}
 		if(select == 2) {
-			Education_require.fight(me, skill);
+			Education_require.fight(me, skill, monster);
 		}
 		
 	}

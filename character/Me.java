@@ -29,26 +29,45 @@ public class Me extends Character {
 		this.clear_education_require = false;
 	}
 	
-	public void Attack(Skill a[],Monster monsters[], Me me) {
+	public static String enterName(Me me) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("당신의 이름을 적어주세요. ");
+		String name = sc.nextLine();
+		
+		return name;
+	}
+	
+	public static boolean Critical() { //1부터 100 사이에서 랜덤값이 1~10일 경우 데미지 2배
+		int random = (int)(Math.random()*100) + 1;
+		
+		if(random>0 && random <=10) return true;
+		else return false;
+	}
+	
+	public static void Attack(Skill a[],Monster monsters[], Me me) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choose the skill!!");
 		
 		for(int i = 0; i < a.length; i++) {
 			if(a[i].getOpen()==false)continue;
-			System.out.println(i+". "+a[i].getName() + "(범위 : "+a[i].getRange() + " 공격력 : 기본 데미지("+super.getAtk()+")"+"+" + a[i].getDamage() + " 필요 지식량: " + a[i].getMana() + ")");
+			System.out.println(i+". "+a[i].getName() + "(범위 : "+a[i].getRange() + " 공격력 : 기본 데미지("+me.getAtk()+")"+"+" + a[i].getDamage() + " 필요 지식량: " + a[i].getMana() + ")");
 		}
 		int select_skill = sc.nextInt();
 		
 		if(a[select_skill].getRange()>monsters.length) {
 			int mp = a[select_skill].getMana();
 			for(int i = 0; i < monsters.length;i++) {
-				int damage = super.getAtk()+a[select_skill].getDamage() - monsters[i].getDef();
+				int damage = me.getAtk()+a[select_skill].getDamage() - monsters[i].getDef();
 				int gold = 0;
 				if(monsters[i].getHp()>0) {
 					gold = monsters[i].getGold();
 				}
-				if(super.getAtk() -  monsters[i].getDef()<0) damage = 0;
-				 monsters[i].setHp( monsters[i].getHp()-damage);
+				if(me.getAtk() -  monsters[i].getDef()<0) damage = 0;
+				if(Critical()==true) {
+					System.out.println("Critical!!");
+					monsters[i].setHp( monsters[i].getHp()-(damage*2));
+				}else monsters[i].setHp( monsters[i].getHp()-damage);
 				if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
 			}
 			me.setMp(me.getMp()-mp);
@@ -58,12 +77,15 @@ public class Me extends Character {
 		for(int i = 0; i < a[select_skill].getRange();i++) {
 			System.out.println("잡을 몬스터를 선택하세요!!");
 		int select_monster = sc.nextInt();
-		int damage = super.getAtk()+a[select_skill].getDamage() - monsters[select_monster].getDef();
+		int damage = me.getAtk()+a[select_skill].getDamage() - monsters[select_monster].getDef();
 		int mp = a[select_skill].getMana();
 		int gold = 0;
 		gold = monsters[i].getGold();
-		if(super.getAtk() -  monsters[select_monster].getDef()<0) damage = 0;
-		 monsters[select_monster].setHp( monsters[select_monster].getHp()-damage);
+		if(me.getAtk() -  monsters[select_monster].getDef()<0) damage = 0;
+		if(Critical()==true) {
+			System.out.println("Critical!!");
+			monsters[i].setHp( monsters[i].getHp()-(damage*2));
+		}else monsters[i].setHp( monsters[i].getHp()-damage);
 		 me.setMp(me.getMp()-mp);
 		 if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
 		}
