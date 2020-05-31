@@ -13,7 +13,7 @@ public class Education_require extends Dungeon {
 	public static void fight(Me me, Skill mySkill[], Monster monsters[]) {
 
 		// Print Dungeon name and Monsters
-		System.out.println("Enter the dungeon : (Dungeon name)");
+		System.out.println("Enter the dungeon : (Dungeon)");
 		for (int i = 0; i < monsters.length; i++)
 			System.out.println("야생의 " + i + " " + monsters[i].getName() + " 몬스터가 나타났다!");
 		
