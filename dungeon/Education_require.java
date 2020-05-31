@@ -37,7 +37,7 @@ public class Education_require extends Dungeon {
 				System.out.println(i + " " + monsters[i].getName() + " : " + monsters[i].getHp());
 			}
 			System.out.println();
-			me.Attack(mySkill, monsters, me);
+			Me.Attack(mySkill, monsters, me);
 
 			// Clear condition
 			int i;
@@ -57,7 +57,7 @@ public class Education_require extends Dungeon {
 				if (monsters[j].getHp() > 0) {
 					System.out.println(monsters[j].getName() + j + " 에게 공격받았다!.");
 					System.out.println(me.getDef() - monsters[j].getAtk());
-					monsters[j].Attack(me, monsters[j]);
+					Monster.Attack(me, monsters[j]);
 				}
 			}
 		}

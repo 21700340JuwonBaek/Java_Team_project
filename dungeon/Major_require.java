@@ -33,7 +33,7 @@ public class Major_require extends Dungeon {
 			
 			// Print skill window
 			System.out.println();
-			me.Attack(mySkill, monsters, me);
+			Me.Attack(mySkill, monsters, me);
 			System.out.println();
 
 			// Clear condition
@@ -52,7 +52,7 @@ public class Major_require extends Dungeon {
 			for (int j = 0; j < monsters.length; j++) {
 				if (monsters[j].getHp() > 0) {
 					System.out.println(monsters[j].getName() + j + " 에게 공격받았다!." + (me.getDef() - monsters[j].getAtk()));
-					monsters[j].Attack(me, monsters[j]);
+					Monster.Attack(me, monsters[j]);
 				}
 			}
 		}
