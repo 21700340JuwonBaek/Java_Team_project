@@ -17,6 +17,20 @@ public class Freshman {
 
 	}
 	
+	public final static Monster[] ER = new Monster[3]; {
+	
+	ER[0] = new Monster("서평",1,1,5,1,60 );
+	ER[1] = new Monster("중간고사",1,1,5,1,60 );
+	ER[2] = new Monster("기말고사",1,1,5,1,60 );
+	}
+	
+	
+	public static Monster[]MR = new Monster[3];{
+	MR[0] = new Monster("코딩과제",1,1,5,1,60 );
+	MR[1] = new Monster("중간고사",1,1,5,1,60 );
+	MR[2] = new Monster("기말고사",1,1,5,1,60 );
+	}
+	
 	private static Education_require  Education_require;
 	private static Major_require Major_require;
 	//만약 학년별로 각 던전을 상속받는 클래스가 나온다면, 생성자에 int형 변수 파라미터를 추가해서.... if문으로 해야할 것 같다. 
@@ -25,12 +39,8 @@ public class Freshman {
 		this.Major_require = new Major_require(major1);
 	}
 	public static void GoToDungeon(Me me){
-		Monster[] monster = new Monster[3];
-		
-		monster[0] = new Monster("몬스터",10,1,5,1,60 );
-		monster[1] = new Monster("몬스터",10,1,5,1,60 );
-		monster[2] = new Monster("몬스터",10,1,5,1,60 );
 
+		
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please Select the Dungeon\n\n1."+Major_require.getName());
@@ -40,11 +50,11 @@ public class Freshman {
 		
 		if(select == 1) {
 			System.out.println(me.get_clear_major_require());
-			Major_require.fight(me, skill, monster);
+			Major_require.fight(me, skill, MR);
 			System.out.println(me.get_clear_major_require());
 		}
 		if(select == 2) {
-			Education_require.fight(me, skill, monster);
+			Education_require.fight(me, skill, ER);
 		}
 		
 	}
