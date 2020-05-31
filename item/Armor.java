@@ -1,6 +1,8 @@
 package item;
+import java.io.Serializable;
 
-public class Armor extends Item{
+
+public class Armor extends Item implements Serializable{
 private int def;
 private int hp;
 private boolean is_bought;//이 방어구를 가지고 있는지 아닌지를 판별해주는 변
