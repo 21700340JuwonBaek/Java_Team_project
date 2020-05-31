@@ -1,6 +1,8 @@
 package item;
+import java.io.Serializable;
 
-public class Item {
+
+public class Item implements Serializable{
 	private String name;
 	private int buy_gold;
 	private int sell_gold;
