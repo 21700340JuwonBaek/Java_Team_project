@@ -4,9 +4,9 @@ import character.Me;
 import character.Monster;
 import skill.Skill;
 
-public class Major_require extends Dungeon {
+public class Major_select extends Dungeon {
 
-	public Major_require(String name) {
+	public Major_select(String name) {
 		super(name);
 	}
 
@@ -47,7 +47,7 @@ public class Major_require extends Dungeon {
 			if (i == monsters.length) {
 				System.out.println("Dungeon Clear!");
 				System.out.println();
-				me.set_clear_major_require(true);
+				me.set_clear_major_select(true);
 				return;
 			}
 
