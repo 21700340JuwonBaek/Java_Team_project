@@ -13,7 +13,7 @@ public class Education_require extends Dungeon {
 	public static void fight(Me me, Skill mySkill[], Monster monsters[]) {
 
 		// Print Dungeon name and Monsters
-		System.out.println("Enter the dungeon : (Dungeon name)");
+		System.out.println("Enter the dungeon");
 		for (int i = 0; i < monsters.length; i++)
 			System.out.println("야생의 " + i + " " + monsters[i].getName() + " 몬스터가 나타났다!");
 		
@@ -48,6 +48,7 @@ public class Education_require extends Dungeon {
 			if (i == monsters.length) {
 				System.out.println("Dungeon Clear!");
 				System.out.println();
+				me.set_clear_education_require(true);
 				return;
 			}
 			
@@ -60,9 +61,6 @@ public class Education_require extends Dungeon {
 					Monster.Attack(me, monsters[j]);
 				}
 			}
-		}
-		if (me.getHp() > 0) {
-			me.set_clear_education_require(true);
 		}
 	}
 }
