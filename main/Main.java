@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.Scanner;
 import inventory.Inventory;
 import shop.shop;
+import item.*;
 public class Main {
    public static Me userMe;
    
@@ -30,13 +31,14 @@ public class Main {
 			catch(IOException e) {System.out.println("Error0"); System.exit(0);}
 
 			try {
-				outputStream.writeObject(inventory);
-				outputStream.close();
+				outputStream1.writeObject(inventory);
+				outputStream1.close();
 			}
 			catch(IOException e) {
-				System.out.println("Error1");
+				System.out.println("Error2");
 			}
    }
+
    
    public static Me LoadMe()// Load Method
    {
@@ -65,6 +67,7 @@ public class Main {
 		}
 		
 		catch(Exception e) {System.out.println("Error3"); System.exit(0);}
+	
 		
 		return inventory;
    }
@@ -74,9 +77,19 @@ public class Main {
       
       Me me = new Me("이름",10,1,500,1,100,100);
       //이름/공격력/방어력/소지골드/크리티컬/체력/마나 입니다
+	   Potion hp = new Potion("HP Potion",10,10,0,100);
+	   Potion mp = new Potion("Mp Potion",10,10,0,100);
+	   Weapon Ipad = new Weapon("Ipad", 100,100,1,10,10);
+	   Weapon Macbook = new Weapon("Macbook", 100,100,1,10,10);
+	   Weapon Note = new Weapon("Note", 100,100,1,10,10);
+	   Weapon TA = new Weapon("TA", 100,100,1,10,10);
+	   Armor Hood = new Armor("Hood", 100,100,1,1,10);
 	   
+	  Inventory invent = new Inventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
+
 	me.enterName(me); //플레이어의 이름을 받습니다.
 	   
+	invent.applyWeapon(me, Ipad);
       if(me.getGrade() == 1) {
       Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
 
@@ -106,11 +119,12 @@ public class Main {
 		}
 		
 		else if (select == 2) {
-			//Main.Save(me, null);
+			Main.Save(me, invent);
 		}
 		
 		else if (select == 3) {
 			me = Main.LoadMe();
+			invent = Main.LoadInventory();
 		}
 		
 	      	else if (select == 4) {

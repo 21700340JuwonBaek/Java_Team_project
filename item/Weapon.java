@@ -1,6 +1,8 @@
 package item;
+import java.io.Serializable;
 
-public class Weapon extends Item {
+
+public class Weapon extends Item implements Serializable {
 	private int atk;
 	private int cri;
 	private boolean is_bought;//이 무기를 가지고 있는지 아닌지를 판별.
