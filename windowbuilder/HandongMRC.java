@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import character.Me;
 import character.Monster;
+import dungeon.Dungeon;
 import dungeon.Major_require;
 import fgame.GetCharacter;
 import grade.Freshman;
@@ -14,21 +15,29 @@ import inventory.Inventory;
 import skill.Skill;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 public class HandongMRC implements ActionListener {
-
-	private JFrame frame;
+	// GUI components
+	public JFrame frame;
 	public static JPanel msgP = new JPanel();
 	public static JPanel choiceP = new JPanel();
 	public static JPanel monster1P = new JPanel();
@@ -57,10 +66,13 @@ public class HandongMRC implements ActionListener {
 	public static JButton choice3Btn = new JButton("3");
 	public static JButton choice4Btn = new JButton("4");
 	public static JButton choice5Btn = new JButton("5");
+	public static JButton choicePotionBtn = new JButton("<html>포션<br/>사용</html>");
 	public static JTextArea instructionTArea = new JTextArea();
 	private static int choice;
 	private static Inventory inv;
 	
+	// BGM
+	private static Clip clip;
 
 	/**
 	 * Launch the application.
@@ -93,9 +105,14 @@ public class HandongMRC implements ActionListener {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                stopBGM();
+            }
+        });
 		frame.setVisible(true);
 		frame.setBounds(100, 100, 600, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		msgP.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		msgP.setBackground(Color.WHITE);
@@ -120,7 +137,7 @@ public class HandongMRC implements ActionListener {
 		msgPLbl.setBounds(12, 10, 386, 80);
 		msgP.add(msgPLbl);
 		
-		choiceP.setBounds(384, 226, 200, 235);
+		choiceP.setBounds(307, 226, 277, 235);
 		frame.getContentPane().add(choiceP);
 		choiceP.setLayout(null);
 		choice1Btn.addMouseListener(new MouseAdapter() {
@@ -133,7 +150,7 @@ public class HandongMRC implements ActionListener {
 		});
 		
 		choice1Btn.addActionListener(this);
-		choice1Btn.setBounds(12, 10, 176, 35);
+		choice1Btn.setBounds(89, 10, 176, 35);
 		choiceP.add(choice1Btn);
 		choice2Btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -146,7 +163,7 @@ public class HandongMRC implements ActionListener {
 		
 		choice2Btn.addActionListener(this);
 		choice2Btn.setFont(new Font("굴림", Font.PLAIN, 11));
-		choice2Btn.setBounds(12, 55, 176, 35);
+		choice2Btn.setBounds(89, 55, 176, 35);
 		choiceP.add(choice2Btn);
 		choice3Btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -158,7 +175,7 @@ public class HandongMRC implements ActionListener {
 		});
 		
 		choice3Btn.addActionListener(this);
-		choice3Btn.setBounds(12, 100, 176, 35);
+		choice3Btn.setBounds(89, 100, 176, 35);
 		choiceP.add(choice3Btn);
 		choice4Btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -170,7 +187,7 @@ public class HandongMRC implements ActionListener {
 		});
 		
 		choice4Btn.addActionListener(this);
-		choice4Btn.setBounds(12, 145, 176, 35);
+		choice4Btn.setBounds(89, 145, 176, 35);
 		
 		choiceP.add(choice4Btn);
 		choice5Btn.addMouseListener(new MouseAdapter() {
@@ -183,9 +200,21 @@ public class HandongMRC implements ActionListener {
 		});
 		
 		choice5Btn.addActionListener(this);
-		choice5Btn.setBounds(12, 190, 176, 35);
-		
+		choice5Btn.setBounds(89, 190, 176, 35);
 		choiceP.add(choice5Btn);
+		
+		choicePotionBtn.addActionListener(this);
+		choicePotionBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				synchronized (msgPBtn) {
+			    	msgPBtn.notify();
+				}
+			}
+		});
+		choicePotionBtn.setBounds(11, 9, 66, 49);
+		
+		choiceP.add(choicePotionBtn);
 		
 		monster1P.setBounds(71, 53, 87, 117);
 		frame.getContentPane().add(monster1P);
@@ -223,7 +252,7 @@ public class HandongMRC implements ActionListener {
 		monster4NameL.setBounds(368, 180, 87, 15);
 		frame.getContentPane().add(monster4NameL);
 		
-		playerP.setBounds(208, 249, 125, 159);
+		playerP.setBounds(158, 246, 125, 159);
 		frame.getContentPane().add(playerP);
 		
 		playerHpL.setFont(new Font("굴림", Font.PLAIN, 18));
@@ -247,7 +276,7 @@ public class HandongMRC implements ActionListener {
 		instructionTArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
 		instructionTArea.setText("안내");
 		instructionTArea.setLineWrap(true);
-		instructionTArea.setBounds(12, 365, 184, 67);
+		instructionTArea.setBounds(12, 365, 134, 67);
 		frame.getContentPane().add(instructionTArea);
 		
 		bgL.setBounds(0, 0, 584, 461);
@@ -368,9 +397,7 @@ public class HandongMRC implements ActionListener {
 		playerHpL.setText(hpToString(m));
 		playerMpL.setText(mpToString(m));
 	}
-	
-	
-	
+		
 	private static String hpToString(character.Character c) {
 		String returnStr;
 		int hp = c.getHp();
@@ -435,6 +462,31 @@ public class HandongMRC implements ActionListener {
 		instructionTArea.setVisible(false);
 		return choice;
 	}
+	
+	public static int choosePotion(Inventory inv) {
+		int hpNum = inv.HpPotion.getNumber();
+		int mpNum = inv.MpPotion.getNumber();
+		
+		choiceP.setVisible(true);
+		instructionTArea.setVisible(true);
+		showChoiceButtons(new Object[] {inv.HpPotion, inv.MpPotion});
+		instructionTArea.setText("사용할 포션을 선택해주세요! 한 개씩 사용합니다.");
+		choice1Btn.setText("HP포션: " + hpNum + " 개 소지");
+		choice2Btn.setText("MP포션: " + mpNum + " 개 소지");
+		
+		synchronized(msgPBtn) {
+			try {
+				msgPBtn.wait();
+			} 
+			catch (Exception e) {
+				System.out.println("interrupt");
+			}
+		}
+		choiceP.setVisible(false);
+		instructionTArea.setVisible(false);
+		return choice + 1;
+		
+	}
 		
 	public static void showChoiceButtons(Object[] list) {
 		choice1Btn.setVisible(false);
@@ -442,7 +494,11 @@ public class HandongMRC implements ActionListener {
 		choice3Btn.setVisible(false);
 		choice4Btn.setVisible(false);
 		choice5Btn.setVisible(false);
+		choicePotionBtn.setVisible(false);
 		
+		if (list instanceof Skill[]) {
+			choicePotionBtn.setVisible(true);
+		}
 		for (int i = 0; i < list.length; i++) {
 			if (i == 0) {
 				choice1Btn.setVisible(true);
@@ -468,7 +524,7 @@ public class HandongMRC implements ActionListener {
 					choice4Btn.setVisible(false);
 				}
 			}
-			else {
+			else if (i == 4){
 				choice5Btn.setVisible(true);
 				if (list instanceof Skill[] && !((Skill)list[i]).getOpen()) {
 					choice5Btn.setVisible(false);
@@ -479,7 +535,10 @@ public class HandongMRC implements ActionListener {
 	
 	// 선택 액션
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(choice1Btn)) {
+		if (e.getSource().equals(choicePotionBtn)){
+			choice = 5;
+		}
+		else if (e.getSource().equals(choice1Btn)) {
 			choice = 0;
 		}
 		else if (e.getSource().equals(choice2Btn)) {
@@ -491,10 +550,23 @@ public class HandongMRC implements ActionListener {
 		else if (e.getSource().equals(choice4Btn)) {
 			choice = 3;
 		}
-		else {
+		else if (e.getSource().equals(choice5Btn)){
 			choice = 4;
 		}
 	}
 
-
+	public void playBGM() {
+	    try {
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/res/aud/dungeon_bgm.wav"));
+	        clip = AudioSystem.getClip();
+	        clip.open(audioInputStream);
+	        clip.start();
+	    } catch(Exception e) {
+	    	JOptionPane.showMessageDialog(null, "BGM 읽기 오류", "오류", JOptionPane.ERROR_MESSAGE);
+	    }
+	}
+	
+	public static void stopBGM() {
+		clip.stop();
+	}
 }
