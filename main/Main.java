@@ -90,31 +90,117 @@ public class Main {
 	me.enterName(me); //플레이어의 이름을 받습니다.
 	   
 	invent.applyWeapon(me, Ipad);
-      if(me.getGrade() == 1) {
-      Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+	me.setGrade(4);
+		
 
-      while(true) {
+      while(me.getGrade()<5) {
        //  RpgGui gui = new RpgGui();
          //gui.showMainWindow();
-		System.out.println(me.getHp());
-		System.out.println(me.getGold());
-		System.out.println(me.getMp());
-		System.out.println(me.get_clear_major_require());
-		System.out.println(me.getName());
-		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
+    	  if(me.getGrade() ==1) { Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");}
+    	  else if(me.getGrade()==2) {Sophomore second = new Sophomore("Data Structure","Java","ERC","Statistic");}
+    	  else if(me.getGrade()==3) {Junior third =new Junior("OS","Gong Pu Gi","EAP","linear Algebra");}
+    	  else if(me.getGrade()==4) {Senior fourth =new Senior("Graduation(MAJOR)","Graduation","Graduation(EDUCATION)","Graduation");}
+
+    	  
 		Scanner sc = new Scanner(System.in);
 
-		int select = sc.nextInt();
+		while(me.getGrade()==1) {
+			System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
+			int select = sc.nextInt();
 		if(select == 1) {
 			Freshman.GoToDungeon(me, invent);
-			//me.setHp(100);
-		    new Sophomore("Data Structure","Java","ERC","Statistic");
+		}
+		
+		else if (select == 2) {
+			invent.setInventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
+			Main.Save(me, invent);
+		}
+		
+		else if (select == 3) {
+			me = Main.LoadMe();
+			invent = Main.LoadInventory();
+		}
+		
+	      	else if (select == 4) {
+	      		shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+		}//if
+		
+		if(me.get_clear_education_require() == true && me.get_clear_education_select() 
+				== true && me.get_clear_major_require()== true && me.get_clear_major_select()==true) {me.setGrade(me.getGrade()+1);
+				me.setMaxHp(150); me.setMaxMp(120); me.setAtk(15); me.setDef(2); me.setCri(5); me.setHp(150); me.setMp(120);
+				me.set_clear_education_require(false);me.set_clear_education_select(false);me.set_clear_major_require(false);me.set_clear_major_select(false);}
+		
+      }//while first grade
+		
+		
+		while(me.getGrade()==2) {
+			System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
+			int select = sc.nextInt();
+		if(select == 1) {
 			Sophomore.GoToDungeon(me, invent);
-		//	me.setHp(100);
-		    new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
+		}
+		
+		else if (select == 2) {
+			invent.setInventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
+			Main.Save(me, invent);
+		}
+		
+		else if (select == 3) {
+			me = Main.LoadMe();
+			invent = Main.LoadInventory();
+		}
+		
+	      	else if (select == 4) {
+	      		shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+		}//if
+		
+		if(me.get_clear_education_require() == true && me.get_clear_education_select() 
+				== true && me.get_clear_major_require()== true && me.get_clear_major_select()==true) {me.setGrade(me.getGrade()+1);
+				me.setMaxHp(200); me.setMaxMp(150); me.setAtk(20); me.setDef(3); me.setCri(8); me.setHp(200); me.setMp(150);
+				me.set_clear_education_require(false);me.set_clear_education_select(false);me.set_clear_major_require(false);me.set_clear_major_select(false);}
+		
+      }//while Second grade
+	    
+
+
+		
+		while(me.getGrade()==3) {
+			System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
+			int select = sc.nextInt();
+		if(select == 1) {
 			Junior.GoToDungeon(me, invent);
-		    new Senior("Graduation","Graduation","Graduation","Graduation");
+		  //  new Senior("Graduation","Graduation","Graduation","Graduation");
 		//	me.setHp(100);
+			//Senior.GoToDungeon(me, invent);
+		}
+		
+		else if (select == 2) {
+			invent.setInventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
+			Main.Save(me, invent);
+		}
+		
+		else if (select == 3) {
+			me = Main.LoadMe();
+			invent = Main.LoadInventory();
+		}
+		
+	      	else if (select == 4) {
+	      		shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+		}//if
+		
+		if(me.get_clear_education_require() == true && me.get_clear_education_select() 
+				== true && me.get_clear_major_require()== true && me.get_clear_major_select()==true) {me.setGrade(me.getGrade()+1);
+				me.setMaxHp(250); me.setMaxMp(180); me.setAtk(25); me.setDef(4); me.setCri(12); me.setHp(250); me.setMp(180);
+				me.set_clear_education_require(false);me.set_clear_education_select(false);me.set_clear_major_require(false);me.set_clear_major_select(false);}
+		
+      }//while thrid grade
+		
+		while(me.getGrade()==4) {
+			System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
+			if(me.get_clear_education_require() == true/*&& me.get_clear_education_select() 
+					== true && me.get_clear_major_require()== true && me.get_clear_major_select()==true*/) {me.setGrade(me.getGrade()+1);continue;}
+			int select = sc.nextInt();
+		if(select == 1) {
 			Senior.GoToDungeon(me, invent);
 		}
 		
@@ -130,10 +216,17 @@ public class Main {
 		
 	      	else if (select == 4) {
 	      		shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
-		}//while
-		
-      }
 		}//if
+		
+		if(me.get_clear_education_require() == true/*&& me.get_clear_education_select() 
+				== true && me.get_clear_major_require()== true && me.get_clear_major_select()==true*/) {me.setGrade(me.getGrade()+1);}
+		
+      }//while fourth grade
+		
+      }//while game
+      
+		////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //엔딩크레딧
 	
 	
 	
