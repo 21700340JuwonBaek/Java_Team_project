@@ -40,9 +40,6 @@ public class Education_require extends Dungeon {
 			
 			
 			System.out.println();
-			System.out.println("공격할 몬스터를 선택해주세요!");
-			
-			int select = sc.nextInt();
 			for(int i = 0 ; i < mySkill.length; i++) {
 				if(mySkill[i].getOpen()==false) continue;
 				
@@ -50,7 +47,18 @@ public class Education_require extends Dungeon {
 			}
 			System.out.println("스킬을 선택해주세요!");
 			int select_skill = sc.nextInt();
+			if(mySkill[select_skill].getRange()>monsters.length) {
+				for(int i = 0; i < monsters.length;i++)
+				Me.Attack(mySkill[select_skill], monsters[i], me);
+			}
+			
+			else {
+			for(int i = 0; i < mySkill[select_skill].getRange();i++) {
+				System.out.println("공격할 몬스터를 선택해주세요!");
+				int select = sc.nextInt();
 			Me.Attack(mySkill[select_skill], monsters[select], me);
+			}
+			}
 
 			// Clear condition
 			int i;

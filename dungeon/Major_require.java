@@ -36,18 +36,26 @@ public class Major_require extends Dungeon {
 			
 			// Print skill window
 			System.out.println();
-			System.out.println("공격할 몬스터를 선택해주세요!");
-			
-			int select = sc.nextInt();
+
 			for(int i = 0 ; i < mySkill.length; i++) {
 				if(mySkill[i].getOpen()==false) continue;
 				
-				System.out.println(i+". "+mySkill[i].getName() + " 공격력 : 기본 데미지("+me.getAtk()+")"+"+" + mySkill[i].getDamage()+ " 필요 지식량: " + mySkill[i].getMana() + ")");
+				System.out.println(i+". "+mySkill[i].getName()+" 범위 :" + mySkill[i].getRange() + " 공격력 : 기본 데미지("+me.getAtk()+")"+"+" + mySkill[i].getDamage()+ " 필요 지식량: " + mySkill[i].getMana() + ")");
 			}
 			System.out.println("스킬을 선택해주세요!");
 			int select_skill = sc.nextInt();
+			if(mySkill[select_skill].getRange()>monsters.length) {
+				for(int i = 0; i < monsters.length;i++)
+				Me.Attack(mySkill[select_skill], monsters[i], me);
+			}
+			
+			else {
+			for(int i = 0; i < mySkill[select_skill].getRange();i++) {
+				System.out.println("공격할 몬스터를 선택해주세요!");
+				int select = sc.nextInt();
 			Me.Attack(mySkill[select_skill], monsters[select], me);
-
+			}
+			}
 			System.out.println();
 
 			// Clear condition
