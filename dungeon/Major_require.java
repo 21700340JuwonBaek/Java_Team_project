@@ -73,18 +73,24 @@ public class Major_require extends Dungeon {
 				if(Select_potion ==2) { Inventory.useMpPotion(me, invent.MpPotion); continue;}
 
 			}
+			int remember_mana = mySkill[select_skill].getMana();
 			if(mySkill[select_skill].getRange()>monsters.length) {
-				for( i = 0; i < monsters.length;i++)
+				for( i = 0; i < monsters.length;i++) {
 				Me.Attack(mySkill[select_skill], monsters[i], me);
-			}
+				mySkill[select_skill].setMana(0);}
 			
+			mySkill[select_skill].setMana(remember_mana);
+			}
 			else {
 			for( i = 0; i < mySkill[select_skill].getRange();i++) {
 				System.out.println("공격할 몬스터를 선택해주세요!");
 				//int select = sc.nextInt();
 				int select = HandongMRC.chooseMonster(monsters);
 			Me.Attack(mySkill[select_skill], monsters[select], me);
+			mySkill[select_skill].setMana(0);
 			}
+			mySkill[select_skill].setMana(remember_mana);
+
 			}
 			System.out.println();
 
