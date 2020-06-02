@@ -6,7 +6,7 @@ import java.util.Scanner;
 import character.*;
 import skill.Skill;
 import inventory.Inventory;
-import windowbuilder.HandongMRC;
+import windowbuilder.HandongDungeons;
 //import windowbuilder.HandongMRC;
 
 public class Major_require extends Dungeon {
@@ -16,7 +16,8 @@ public class Major_require extends Dungeon {
 	}
 
 	public static void fight(Me me, Skill mySkill[], Monster monsters[], Inventory invent) {
-		new HandongMRC(invent);
+		HandongDungeons dungeon = new HandongDungeons(invent);
+		dungeon.playBGM();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the dungeon");
 		String monsterMsg = "<html>";
@@ -26,10 +27,10 @@ public class Major_require extends Dungeon {
 			monsterMsg += msg + "<br/>";
 		}
 		monsterMsg += "</html>";
-		HandongMRC.showMonsters(monsters);
-		HandongMRC.updateMonsters(monsters);
-		HandongMRC.updateMe(me);
-		HandongMRC.showMessage(monsterMsg);
+		HandongDungeons.showMonsters(monsters);
+		HandongDungeons.updateMonsters(monsters);
+		HandongDungeons.updateMe(me);
+		HandongDungeons.showMessage(monsterMsg);
 
 		// Battle
 		while (me.getHp() > 0) {
@@ -40,7 +41,7 @@ public class Major_require extends Dungeon {
 			System.out.println("HP :" + me.getHp());
 			System.out.println("MP :" + me.getMp());
 			System.out.println();
-			HandongMRC.updateMe(me);
+			HandongDungeons.updateMe(me);
 
 			// Print monsters status
 			System.out.println("[Monsters status]");
@@ -51,7 +52,7 @@ public class Major_require extends Dungeon {
 				}
 				System.out.println(i + " " + monsters[i].getName() + " : " + monsters[i].getHp());
 			}
-			HandongMRC.updateMonsters(monsters);
+			HandongDungeons.updateMonsters(monsters);
 			
 			// Print skill window
 			System.out.println();
@@ -64,11 +65,12 @@ public class Major_require extends Dungeon {
 			System.out.println(i+". 포션사용하기");
 			System.out.println("스킬을 선택해주세요!");
 			//int select_skill = sc.nextInt();
-			int select_skill = HandongMRC.chooseSkill(mySkill);
-			if(select_skill == i) {
+			int select_skill = HandongDungeons.chooseSkill(mySkill);
+			if(select_skill == mySkill.length) {
 				System.out.println("1. HP 포션 (소지한 포션 :" + invent.HpPotion.getNumber() +")");
 				System.out.println("2. MP 포션 (소지한 포션 :" + invent.MpPotion.getNumber() +")");
-				int Select_potion = sc.nextInt();
+				//int Select_potion = sc.nextInt();
+				int Select_potion = HandongDungeons.choosePotion(invent);
 				if(Select_potion ==1) { Inventory.useHpPotion(me, invent.HpPotion); continue;}
 				if(Select_potion ==2) { Inventory.useMpPotion(me, invent.MpPotion); continue;}
 
@@ -85,7 +87,7 @@ public class Major_require extends Dungeon {
 			for( i = 0; i < mySkill[select_skill].getRange();i++) {
 				System.out.println("공격할 몬스터를 선택해주세요!");
 				//int select = sc.nextInt();
-				int select = HandongMRC.chooseMonster(monsters);
+				int select = HandongDungeons.chooseMonster(monsters);
 			Me.Attack(mySkill[select_skill], monsters[select], me);
 			mySkill[select_skill].setMana(0);
 			}
@@ -103,7 +105,9 @@ public class Major_require extends Dungeon {
 				System.out.println("Dungeon Clear!");
 				System.out.println();
 				String clearMsg = "과목을 클리어 했습니다!";
-				HandongMRC.showMessage(clearMsg);
+				HandongDungeons.showMessage(clearMsg);
+				dungeon.stopBGM();
+				dungeon.frame.setVisible(false);
 				me.set_clear_major_require(true);
 				return;
 			}
@@ -118,7 +122,7 @@ public class Major_require extends Dungeon {
 				}
 			}
 			monsterAtkMsg += "</html>";
-			HandongMRC.showMessage(monsterAtkMsg);
+			HandongDungeons.showMessage(monsterAtkMsg);
 		}
 	}
 }
