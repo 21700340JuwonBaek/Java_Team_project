@@ -16,7 +16,7 @@ public class Major_require extends Dungeon {
 	}
 
 	public static void fight(Me me, Skill mySkill[], Monster monsters[], Inventory invent) {
-		new HandongMRC();
+		new HandongMRC(invent);
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the dungeon");
 		String monsterMsg = "<html>";

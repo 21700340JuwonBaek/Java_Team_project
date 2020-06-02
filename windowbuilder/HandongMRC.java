@@ -10,6 +10,7 @@ import character.Monster;
 import dungeon.Major_require;
 import fgame.GetCharacter;
 import grade.Freshman;
+import inventory.Inventory;
 import skill.Skill;
 
 import javax.swing.JLabel;
@@ -58,6 +59,7 @@ public class HandongMRC implements ActionListener {
 	public static JButton choice5Btn = new JButton("5");
 	public static JTextArea instructionTArea = new JTextArea();
 	private static int choice;
+	private static Inventory inv;
 	
 
 	/**
@@ -67,22 +69,23 @@ public class HandongMRC implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HandongMRC window = new HandongMRC();
+					HandongMRC window = new HandongMRC(inv);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		Major_require.fight(GetCharacter.me, Freshman.skill, Freshman.MR);
+		Major_require.fight(GetCharacter.me, Freshman.skill, Freshman.MR, inv);
 	}
 
 	/**
 	 * Create the application.
 	 */
-	public HandongMRC() {
+	public HandongMRC(Inventory inInv) {
 		initialize();
 		choiceP.setVisible(false);
+		inv = inInv;
 	}
 
 	/**
@@ -474,6 +477,7 @@ public class HandongMRC implements ActionListener {
 		}
 	}
 	
+	// 선택 액션
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(choice1Btn)) {
 			choice = 0;
