@@ -57,7 +57,7 @@ public class Select implements ActionListener{
 		}
 		else if(e.getActionCommand() == "Major Require") {
 			// new HandongMRClass();
-			new HandongMRC();
+			new HandongMRC(null);
 			f4.setVisible(false);
 			Handong1.f2.setVisible(false);
 		}
