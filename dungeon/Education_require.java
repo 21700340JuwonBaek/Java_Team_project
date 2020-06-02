@@ -16,6 +16,8 @@ public class Education_require extends Dungeon {
 
 	public static void fight(Me me, Skill mySkill[], Monster monsters[], Inventory invent) {
 		HandongDungeons dungeon = new HandongDungeons(invent);
+		dungeon.showPlayer(me);
+		dungeon.showBG(3);
 		dungeon.playBGM();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the dungeon");
@@ -27,6 +29,7 @@ public class Education_require extends Dungeon {
 		}
 		monsterMsg += "</html>";
 		HandongDungeons.showMonsters(monsters);
+		dungeon.showMonsterImage(monsters, me.getGrade());
 		HandongDungeons.updateMonsters(monsters);
 		HandongDungeons.updateMe(me);
 		HandongDungeons.showMessage(monsterMsg);
