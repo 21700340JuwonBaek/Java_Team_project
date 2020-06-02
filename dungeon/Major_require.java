@@ -57,7 +57,7 @@ public class Major_require extends Dungeon {
 			System.out.println();
 			int i;
 			for( i = 0 ; i < mySkill.length; i++) {
-				if(mySkill[i].getOpen()==false) break;
+				if(mySkill[i].getOpen()==false) continue;
 				
 				System.out.println(i+". "+mySkill[i].getName() + " 공격력 : 기본 데미지("+me.getAtk()+")"+"+" + mySkill[i].getDamage()+ " 필요 지식량: " + mySkill[i].getMana() + ")");
 			}
