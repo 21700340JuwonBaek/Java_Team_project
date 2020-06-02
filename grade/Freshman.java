@@ -20,9 +20,9 @@ public class Freshman {
 	
 	public final static Monster[] ER = new Monster[3]; {
 	
-	ER[0] = new Monster("1학년교필 서평",1,1,5,1,60 );
-	ER[1] = new Monster("1학년교필중간고사",1,1,5,1,60 );
-	ER[2] = new Monster("1학년교필기말고사",1,1,5,1,60 );
+	ER[0] = new Monster("1학년교필 서평",10,1,5,1,60 );
+	ER[1] = new Monster("1학년교필중간고사",10,1,5,1,60 );
+	ER[2] = new Monster("1학년교필기말고사",10,1,5,1,60 );
 	}
 	
 	
