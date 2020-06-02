@@ -129,14 +129,30 @@ public class Inventory implements Serializable {
 	
 	public static void useHpPotion(Me me, Potion potion) {
 		if(potion.getNumber()==0) return;
+		if(me.getHp()+potion.getRecovory()>me.getMaxHp()) {
+			me.setHp(me.getMaxHp());
+			potion.setNumber(potion.getNumber()-1);
+			return;
+		}
+		else {
 		me.setHp(me.getHp()+potion.getRecovory());
 		potion.setNumber(potion.getNumber()-1);
+		return;
+		}
 	}
 	
 	public static void useMpPotion(Me me, Potion potion) {
 		if(potion.getNumber()==0) return;
-		me.setMp(me.getMp()+potion.getRecovory());
+		if(me.getMp()+potion.getRecovory()>me.getMaxMp()) {
+			me.setMp(me.getMaxMp());
+			potion.setNumber(potion.getNumber()-1);
+			return;
+		}
+		else {
+		me.setHp(me.getHp()+potion.getRecovory());
 		potion.setNumber(potion.getNumber()-1);
+		return;
+		}
 	}
 	
 	
