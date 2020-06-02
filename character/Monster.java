@@ -10,13 +10,25 @@ public class Monster extends Character {
 		super.setHp(hp);
 	}
 	
+	public static boolean Critical() {
+		int random = (int)(Math.random()*100) + 1;
+		
+		if(random>0 && random <=10) return true;
+		else return false;
+	}
+	
 	public static void Attack(Me me, Monster monsters) {
 		if(monsters.getHp()>0) {
 			int damage = monsters.getAtk() - me.getDef();
-
+			
 			if(monsters.getAtk() - me.getDef()<0) damage = 0;
-
-			me.setHp(me.getHp()-damage);
+			
+			if(Critical()==true) {
+				System.out.println("Critical!!");
+				me.setHp(me.getHp()-(damage*2));
+			}else {
+				me.setHp(me.getHp()-damage);
+			}
 		}
 	}
 	
