@@ -45,52 +45,24 @@ public class Me extends Character {
 		else return false;
 	}
 	
-	public static void Attack(Skill a[],Monster monsters[], Me me) {
+	public static void Attack(Skill a,Monster monsters, Me me) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Choose the skill!!");
 		
-		for(int i = 0; i < a.length; i++) {
-			if(a[i].getOpen()==false)continue;
-			System.out.println(i+". "+a[i].getName() + "(범위 : "+a[i].getRange() + " 공격력 : 기본 데미지("+me.getAtk()+")"+"+" + a[i].getDamage() + " 필요 지식량: " + a[i].getMana() + ")");
-		}
-		int select_skill = sc.nextInt();
-		
-		if(a[select_skill].getRange()>monsters.length) {
-			int mp = a[select_skill].getMana();
-			for(int i = 0; i < monsters.length;i++) {
-				int damage = me.getAtk()+a[select_skill].getDamage() - monsters[i].getDef();
-				int gold = 0;
-				if(monsters[i].getHp()>0) {
-					gold = monsters[i].getGold();
-				}
-				if(me.getAtk() -  monsters[i].getDef()<0) damage = 0;
-				if(Critical()==true) {
-					System.out.println("Critical!!");
-					monsters[i].setHp( monsters[i].getHp()-(damage*2));
-				}else monsters[i].setHp( monsters[i].getHp()-damage);
-				if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
-			}
-			me.setMp(me.getMp()-mp);
-		}
-		
-		else {
-		for(int i = 0; i < a[select_skill].getRange();i++) {
-			System.out.println("잡을 몬스터를 선택하세요!!");
-		int select_monster = sc.nextInt();
-		int damage = me.getAtk()+a[select_skill].getDamage() - monsters[select_monster].getDef();
-		int mp = a[select_skill].getMana();
+		if(a.getMana()>me.getMp())return;
+		int damage = me.getAtk()+a.getDamage() - monsters.getDef();
+		int mp = a.getMana();
 		int gold = 0;
-		gold = monsters[i].getGold();
-		if(me.getAtk() -  monsters[select_monster].getDef()<0) damage = 0;
+		gold = monsters.getGold();
+		if(me.getAtk() -  monsters.getDef()<0) damage = 0;
 		if(Critical()==true) {
 			System.out.println("Critical!!");
-			monsters[i].setHp( monsters[i].getHp()-(damage*2));
-		}else monsters[i].setHp( monsters[i].getHp()-damage);
+			monsters.setHp( monsters.getHp()-(damage*2));
+		}else monsters.setHp( monsters.getHp()-damage);
 		 me.setMp(me.getMp()-mp);
-		 if(monsters[i].getHp()<0) me.setGold(me.getGold()+gold);
+		 if(monsters.getHp()<0) me.setGold(me.getGold()+gold);
 		}
-		}
-	}
+		
+	
 	
 	public void setGrade(int grade) {
 		this.grade = grade;
