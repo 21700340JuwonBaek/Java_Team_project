@@ -1,6 +1,7 @@
 package grade;
 import skill.Skill;
 import dungeon.*;
+import inventory.Inventory;
 
 import java.util.Scanner;
 import character.Me;
@@ -57,7 +58,7 @@ public class Freshman {
 		this.Major_select = new Major_select(major2);
 		
 	}
-	public static void GoToDungeon(Me me){
+	public static void GoToDungeon(Me me,Inventory invent){
 
 		
 		
@@ -71,16 +72,16 @@ public class Freshman {
 		int select = sc.nextInt();
 		
 		if(select == 1) {
-			Major_require.fight(me, skill, MR);
+			Major_require.fight(me, skill, MR, invent);
 		}
 		if(select == 2) {
-			Education_require.fight(me, skill, ER);
+			Education_require.fight(me, skill, ER, invent);
 		}
 		if(select == 3) {
-			Major_select.fight(me, skill, MS);
+			Major_select.fight(me, skill, MS, invent);
 		}
 		if(select == 4) {
-			Education_select.fight(me, skill, ES);
+			Education_select.fight(me, skill, ES, invent);
 		}
 		
 	}

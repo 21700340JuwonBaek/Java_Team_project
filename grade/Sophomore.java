@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import character.Me;
 import character.Monster;
+import inventory.Inventory;
 
 public class Sophomore extends Freshman {
 	public final static Monster[] ER2 = new Monster[3];
@@ -37,7 +38,7 @@ public class Sophomore extends Freshman {
 		skill[3].setOpen(true);
 	}
 	
-public static void GoToDungeon(Me me){
+public static void GoToDungeon(Me me, Inventory invent){
 
 		
 		
@@ -51,18 +52,19 @@ public static void GoToDungeon(Me me){
 		int select = sc.nextInt();
 		
 		if(select == 1) {
-			Major_require.fight(me, skill, MR2);
+			Major_require.fight(me, skill, MR2, invent);
 		}
 		if(select == 2) {
-			Education_require.fight(me, skill, ER2);
+			Education_require.fight(me, skill, ER2, invent);
 		}
 		if(select == 3) {
-			Major_select.fight(me, skill, MS2);
+			Major_select.fight(me, skill, MS2, invent);
 		}
 		if(select == 4) {
-			Education_select.fight(me, skill, ES2);
+			Education_select.fight(me, skill, ES2, invent);
 		}
 		
 	}
-
+	
+	
 }
