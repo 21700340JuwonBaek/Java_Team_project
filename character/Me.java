@@ -1,7 +1,5 @@
 package character;
 import skill.Skill;
-import windowbuilder.HandongMRC;
-
 import java.util.Scanner;
 import java.io.Serializable;
 
@@ -15,22 +13,6 @@ public class Me extends Character {
 	private boolean clear_major_select;
 	private boolean clear_education_select;
 	private boolean clear_education_require;
-	
-	public Me(String name) {
-		super.setName(name);
-		super.setAtk(10);
-		super.setDef(1);
-		super.setGold(500);
-		super.setCri(1);
-		super.setHp(100);
-		super.setMp(100); 
-		this.clear_major_require = false;
-		this.clear_major_select = false;
-		this.clear_education_select = false;
-		this.clear_education_require = false;
-	
-	}
-	
 	
 	public Me(String name, int attack, int defense, int gold, int critical, int hp, int mp) {
 		super.setName(name);
@@ -78,7 +60,9 @@ public class Me extends Character {
 		}else monsters.setHp( monsters.getHp()-damage);
 		 me.setMp(me.getMp()-mp);
 		 if(monsters.getHp()<0) me.setGold(me.getGold()+gold);
-	}
+		}
+		
+	
 	
 	public void setGrade(int grade) {
 		this.grade = grade;
