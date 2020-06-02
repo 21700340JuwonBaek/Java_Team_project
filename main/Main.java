@@ -77,8 +77,8 @@ public class Main {
       
       Me me = new Me("이름",10,1,500,1,100,100);
       //이름/공격력/방어력/소지골드/크리티컬/체력/마나 입니다
-	   Potion hp = new Potion("HP Potion",10,10,0,100);
-	   Potion mp = new Potion("Mp Potion",10,10,0,100);
+	   Potion hp = new Potion("HP Potion",10,10,0,100,1);
+	   Potion mp = new Potion("Mp Potion",10,10,0,100,1);
 	   Weapon Ipad = new Weapon("Ipad", 100,100,1,10,10);
 	   Weapon Macbook = new Weapon("Macbook", 100,100,1,10,10);
 	   Weapon Note = new Weapon("Note", 100,100,1,10,10);
@@ -106,19 +106,20 @@ public class Main {
 		
 		int select = sc.nextInt();
 		if(select == 1) {
-			Freshman.GoToDungeon(me);
+			Freshman.GoToDungeon(me, invent);
 			//me.setHp(100);
 		    new Sophomore("Data Structure","Java","ERC","Statistic");
-			Sophomore.GoToDungeon(me);
+			Sophomore.GoToDungeon(me, invent);
 		//	me.setHp(100);
 		    new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
-			Junior.GoToDungeon(me);
+			Junior.GoToDungeon(me, invent);
 		    new Senior("Graduation","Graduation","Graduation","Graduation");
 		//	me.setHp(100);
-			Senior.GoToDungeon(me);
+			Senior.GoToDungeon(me, invent);
 		}
 		
 		else if (select == 2) {
+			invent.setInventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
 			Main.Save(me, invent);
 		}
 		
