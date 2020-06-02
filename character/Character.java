@@ -11,6 +11,7 @@ public class Character implements Serializable {
 	private int cri;
 	private int gold;
 	private int maxhp;
+	private int maxmp;
 	boolean isDedad;
 	
 	public void setName(String name) {
@@ -30,13 +31,20 @@ public class Character implements Serializable {
 	}
 	
 	public void setMaxHp(int hp) {
-		this.hp = hp;
+		this.maxhp = hp;
 	}
 	
 	public int getMaxHp() {
 		return this.maxhp;
 	}
 	
+	public void setMaxMp(int mp) {
+		this.maxmp = mp;
+	}
+	
+	public int getMaxMp() {
+		return this.maxmp;
+	}
 	public void setMp(int mana) {
 		this.mana = mana;
 	}

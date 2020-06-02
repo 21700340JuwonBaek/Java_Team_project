@@ -75,8 +75,8 @@ public class Main {
    public static void main (String[] args) {
 	   //Inventory inventory = new Inventory
       
-      Me me = new Me("이름",10,1,500,1,100,100);
-      //이름/공격력/방어력/소지골드/크리티컬/체력/마나 입니다
+     Me me = new Me("이름",10,1,500,1,100,100,100,100);
+      //이름/공격력/방어력/소지골드/크리티컬/체력/마나/최대체력/최대마나 입니다
 	   Potion hp = new Potion("HP Potion",10,10,0,100,1);
 	   Potion mp = new Potion("Mp Potion",10,10,0,100,1);
 	   Weapon Ipad = new Weapon("Ipad", 100,100,1,10,10);
@@ -86,7 +86,6 @@ public class Main {
 	   Armor Hood = new Armor("Hood", 100,100,1,1,10);
 	   
 	  Inventory invent = new Inventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
-
 	me.enterName(me); //플레이어의 이름을 받습니다.
 	   
 	invent.applyWeapon(me, Ipad);

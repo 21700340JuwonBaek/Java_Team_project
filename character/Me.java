@@ -23,6 +23,8 @@ public class Me extends Character {
 		super.setGold(500);
 		super.setCri(1);
 		super.setHp(100);
+		super.setMaxHp(100);
+		super.setMaxMp(100);
 		super.setMp(100); 
 		this.clear_major_require = false;
 		this.clear_major_select = false;
@@ -32,14 +34,16 @@ public class Me extends Character {
 	}
 	
 	
-	public Me(String name, int attack, int defense, int gold, int critical, int hp, int mp) {
+	public Me(String name, int attack, int defense, int gold, int critical, int hp, int mp,int maxhp,int maxmp) {
 		super.setName(name);
 		super.setAtk(attack);
 		super.setDef(defense);
 		super.setGold(gold);
 		super.setCri(critical);
 		super.setHp(hp);
-		super.setMp(mp); 
+		super.setMp(mp);
+		super.setMaxHp(maxhp);
+		super.setMaxMp(maxmp);
 		this.Mp = mp;
 		this.clear_major_require = false;
 		this.clear_major_select = false;
