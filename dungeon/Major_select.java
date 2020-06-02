@@ -3,7 +3,7 @@ package dungeon;
 import character.Me;
 import character.Monster;
 import skill.Skill;
-
+import java.util.Scanner;
 public class Major_select extends Dungeon {
 
 	public Major_select(String name) {
@@ -11,7 +11,7 @@ public class Major_select extends Dungeon {
 	}
 
 	public static void fight(Me me, Skill mySkill[], Monster[] monsters) {
-
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the dungeon");
 		for (int i = 0; i < monsters.length; i++)
 			System.out.println("야생의" + monsters[i].getName() + " 몬스터가 나타났다!");
@@ -35,7 +35,17 @@ public class Major_select extends Dungeon {
 			
 			// Print skill window
 			System.out.println();
-			Me.Attack(mySkill, monsters, me);
+			System.out.println("공격할 몬스터를 선택해주세요!");
+			
+			int select = sc.nextInt();
+			for(int i = 0 ; i < mySkill.length; i++) {
+				if(mySkill[i].getOpen()==false) continue;
+				
+				System.out.println(i+". "+mySkill[i].getName() + " 공격력 : 기본 데미지("+me.getAtk()+")"+"+" + mySkill[i].getDamage()+ " 필요 지식량: " + mySkill[i].getMana() + ")");
+			}
+			System.out.println("스킬을 선택해주세요!");
+			int select_skill = sc.nextInt();
+			Me.Attack(mySkill[select_skill], monsters[select], me);
 			System.out.println();
 
 			// Clear condition

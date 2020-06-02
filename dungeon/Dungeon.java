@@ -1,4 +1,5 @@
 package dungeon;
+import java.util.Scanner;
 
 public class Dungeon {
 	protected String name;
