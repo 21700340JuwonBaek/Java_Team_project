@@ -35,7 +35,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-public class HandongMRC implements ActionListener {
+public class HandongDungeons implements ActionListener {
 	// GUI components
 	public JFrame frame;
 	public static JPanel msgP = new JPanel();
@@ -81,7 +81,7 @@ public class HandongMRC implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HandongMRC window = new HandongMRC(inv);
+					HandongDungeons window = new HandongDungeons(inv);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -94,7 +94,7 @@ public class HandongMRC implements ActionListener {
 	/**
 	 * Create the application.
 	 */
-	public HandongMRC(Inventory inInv) {
+	public HandongDungeons(Inventory inInv) {
 		initialize();
 		choiceP.setVisible(false);
 		inv = inInv;

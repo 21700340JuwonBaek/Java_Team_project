@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import grade.*;
-import windowbuilder.HandongMRC;
+import windowbuilder.HandongDungeons;
 
 public class Select implements ActionListener{
 		JFrame f4;
@@ -57,7 +57,7 @@ public class Select implements ActionListener{
 		}
 		else if(e.getActionCommand() == "Major Require") {
 			// new HandongMRClass();
-			new HandongMRC(null);
+			new HandongDungeons(null);
 			f4.setVisible(false);
 			Handong1.f2.setVisible(false);
 		}
