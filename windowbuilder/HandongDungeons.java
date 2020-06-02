@@ -7,8 +7,7 @@ import javax.swing.JPanel;
 
 import character.Me;
 import character.Monster;
-import dungeon.Dungeon;
-import dungeon.Major_require;
+import dungeon.*;
 import fgame.GetCharacter;
 import grade.Freshman;
 import inventory.Inventory;
@@ -20,10 +19,11 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -31,6 +31,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
@@ -40,23 +42,23 @@ public class HandongDungeons implements ActionListener {
 	public JFrame frame;
 	public static JPanel msgP = new JPanel();
 	public static JPanel choiceP = new JPanel();
-	public static JPanel monster1P = new JPanel();
+	public static JLabel monster1L = new JLabel("");
 	public static JLabel monster1NameL = new JLabel("Monster name");
 	public static JLabel monster1HpL = new JLabel("HP: ??");
+	public static JLabel monster2L = new JLabel("");
 	public static JLabel monster2HpL = new JLabel("HP: ??");
-	public static JPanel monster2P = new JPanel();
 	public static JLabel monster2NameL = new JLabel("Monster name");
+	public static JLabel monster3L = new JLabel("");
 	public static JLabel monster3HpL = new JLabel("HP: ??");
-	public static JPanel monster3P = new JPanel();
 	public static JLabel monster3NameL = new JLabel("Monster name");
 	public static JLabel monster4HpL = new JLabel("HP: ??");
-	public static JPanel monster4P = new JPanel();
 	public static JLabel monster4NameL = new JLabel("Monster name");
-	public static JPanel playerP = new JPanel();
+	public static JLabel monster4L = new JLabel("");
+	public static JLabel monster5L = new JLabel("");
+	public static JLabel playerL = new JLabel("");
 	public static JLabel playerHpL = new JLabel("HP: ??");
 	public static JLabel playerMpL = new JLabel("MP: ??");
 	public static JLabel monster5HpL = new JLabel("HP: ??");
-	public static JPanel monster5P = new JPanel();
 	public static JLabel monster5NameL = new JLabel("Monster name");
 	public static JLabel bgL = new JLabel("");
 	public static JButton msgPBtn = new JButton("계속");
@@ -73,6 +75,8 @@ public class HandongDungeons implements ActionListener {
 	
 	// BGM
 	private static Clip clip;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -88,7 +92,7 @@ public class HandongDungeons implements ActionListener {
 				}
 			}
 		});
-		Major_require.fight(GetCharacter.me, Freshman.skill, Freshman.MR, inv);
+		//Major_require.fight(GetCharacter.me, Freshman.skill, Freshman.MR, inv);
 	}
 
 	/**
@@ -96,7 +100,6 @@ public class HandongDungeons implements ActionListener {
 	 */
 	public HandongDungeons(Inventory inInv) {
 		initialize();
-		choiceP.setVisible(false);
 		inv = inInv;
 	}
 
@@ -114,6 +117,12 @@ public class HandongDungeons implements ActionListener {
 		frame.setBounds(100, 100, 600, 500);
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		monster5L.setBounds(467, 53, 87, 117);
+		
+		frame.getContentPane().add(monster5L);
+		monster4L.setBounds(366, 53, 87, 117);
+		
+		frame.getContentPane().add(monster4L);
 		msgP.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		msgP.setBackground(Color.WHITE);
 		
@@ -137,7 +146,10 @@ public class HandongDungeons implements ActionListener {
 		msgPLbl.setBounds(12, 10, 386, 80);
 		msgP.add(msgPLbl);
 		
+		choiceP.setVisible(false);
 		choiceP.setBounds(307, 226, 277, 235);
+		choiceP.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		choiceP.setBackground(Color.WHITE);
 		frame.getContentPane().add(choiceP);
 		choiceP.setLayout(null);
 		choice1Btn.addMouseListener(new MouseAdapter() {
@@ -150,7 +162,7 @@ public class HandongDungeons implements ActionListener {
 		});
 		
 		choice1Btn.addActionListener(this);
-		choice1Btn.setBounds(89, 10, 176, 35);
+		choice1Btn.setBounds(82, 10, 187, 35);
 		choiceP.add(choice1Btn);
 		choice2Btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -163,7 +175,7 @@ public class HandongDungeons implements ActionListener {
 		
 		choice2Btn.addActionListener(this);
 		choice2Btn.setFont(new Font("굴림", Font.PLAIN, 11));
-		choice2Btn.setBounds(89, 55, 176, 35);
+		choice2Btn.setBounds(82, 55, 187, 35);
 		choiceP.add(choice2Btn);
 		choice3Btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -175,7 +187,7 @@ public class HandongDungeons implements ActionListener {
 		});
 		
 		choice3Btn.addActionListener(this);
-		choice3Btn.setBounds(89, 100, 176, 35);
+		choice3Btn.setBounds(82, 100, 187, 35);
 		choiceP.add(choice3Btn);
 		choice4Btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -187,7 +199,7 @@ public class HandongDungeons implements ActionListener {
 		});
 		
 		choice4Btn.addActionListener(this);
-		choice4Btn.setBounds(89, 145, 176, 35);
+		choice4Btn.setBounds(82, 145, 187, 35);
 		
 		choiceP.add(choice4Btn);
 		choice5Btn.addMouseListener(new MouseAdapter() {
@@ -200,7 +212,7 @@ public class HandongDungeons implements ActionListener {
 		});
 		
 		choice5Btn.addActionListener(this);
-		choice5Btn.setBounds(89, 190, 176, 35);
+		choice5Btn.setBounds(82, 190, 187, 35);
 		choiceP.add(choice5Btn);
 		
 		choicePotionBtn.addActionListener(this);
@@ -216,58 +228,81 @@ public class HandongDungeons implements ActionListener {
 		
 		choiceP.add(choicePotionBtn);
 		
-		monster1P.setBounds(71, 53, 87, 117);
-		frame.getContentPane().add(monster1P);
+		
+		monster1L.setBounds(71, 53, 87, 117);
+		frame.getContentPane().add(monster1L);
+		monster1NameL.setOpaque(true);
+		monster1NameL.setBackground(Color.WHITE);
 		
 		monster1NameL.setBounds(71, 180, 87, 15);
 		frame.getContentPane().add(monster1NameL);
+		monster1HpL.setOpaque(true);
+		monster1HpL.setBackground(Color.WHITE);
+		monster1HpL.setFont(new Font("굴림", Font.PLAIN, 14));
 		
-		monster1HpL.setBounds(71, 28, 57, 15);
+		monster1HpL.setBounds(71, 28, 87, 18);
 		frame.getContentPane().add(monster1HpL);
+		monster2L.setBounds(170, 53, 87, 117);
 		
-		monster2HpL.setBounds(168, 28, 57, 15);
+		frame.getContentPane().add(monster2L);
+		monster2HpL.setOpaque(true);
+		monster2HpL.setBackground(Color.WHITE);
+		monster2HpL.setFont(new Font("굴림", Font.PLAIN, 14));
+		
+		monster2HpL.setBounds(168, 28, 89, 18);
 		frame.getContentPane().add(monster2HpL);
-		
-		monster2P.setBounds(170, 53, 87, 117);
-		frame.getContentPane().add(monster2P);
+		monster2NameL.setOpaque(true);
+		monster2NameL.setBackground(Color.WHITE);
 		
 		monster2NameL.setBounds(168, 180, 89, 15);
 		frame.getContentPane().add(monster2NameL);
 		
-		monster3HpL.setBounds(267, 28, 57, 15);
-		frame.getContentPane().add(monster3HpL);
+		monster3L.setBounds(267, 53, 87, 117);		
+		frame.getContentPane().add(monster3L);
+		monster3HpL.setOpaque(true);
+		monster3HpL.setBackground(Color.WHITE);
+		monster3HpL.setFont(new Font("굴림", Font.PLAIN, 14));
 		
-		monster3P.setBounds(269, 53, 87, 117);
-		frame.getContentPane().add(monster3P);
+		monster3HpL.setBounds(267, 28, 89, 18);
+		frame.getContentPane().add(monster3HpL);
+		monster3NameL.setOpaque(true);
+		monster3NameL.setBackground(Color.WHITE);
 		
 		monster3NameL.setBounds(267, 180, 89, 15);
 		frame.getContentPane().add(monster3NameL);
+		monster4HpL.setOpaque(true);
+		monster4HpL.setBackground(Color.WHITE);
+		monster4HpL.setFont(new Font("굴림", Font.PLAIN, 14));
 		
-		monster4HpL.setBounds(368, 28, 57, 15);
+		monster4HpL.setBounds(368, 28, 87, 18);
 		frame.getContentPane().add(monster4HpL);
-		
-		monster4P.setBounds(368, 53, 87, 117);
-		frame.getContentPane().add(monster4P);
+		monster4NameL.setOpaque(true);
+		monster4NameL.setBackground(Color.WHITE);
 		
 		monster4NameL.setBounds(368, 180, 87, 15);
 		frame.getContentPane().add(monster4NameL);
 		
-		playerP.setBounds(158, 246, 125, 159);
-		frame.getContentPane().add(playerP);
+		
+		playerL.setBounds(154, 259, 130, 150);
+		frame.getContentPane().add(playerL);
+		playerHpL.setBackground(Color.WHITE);
 		
 		playerHpL.setFont(new Font("굴림", Font.PLAIN, 18));
-		playerHpL.setBounds(71, 284, 125, 18);
+		playerHpL.setBounds(51, 284, 80, 18);
 		frame.getContentPane().add(playerHpL);
+		playerMpL.setBackground(Color.WHITE);
 		
 		playerMpL.setFont(new Font("굴림", Font.PLAIN, 18));
-		playerMpL.setBounds(71, 312, 125, 18);
+		playerMpL.setBounds(51, 308, 80, 18);
 		frame.getContentPane().add(playerMpL);
+		monster5HpL.setOpaque(true);
+		monster5HpL.setBackground(Color.WHITE);
+		monster5HpL.setFont(new Font("굴림", Font.PLAIN, 14));
 		
-		monster5HpL.setBounds(467, 28, 57, 15);
+		monster5HpL.setBounds(467, 28, 87, 18);
 		frame.getContentPane().add(monster5HpL);
-		
-		monster5P.setBounds(467, 53, 87, 117);
-		frame.getContentPane().add(monster5P);
+		monster5NameL.setOpaque(true);
+		monster5NameL.setBackground(Color.WHITE);
 		
 		monster5NameL.setBounds(467, 180, 87, 15);
 		frame.getContentPane().add(monster5NameL);
@@ -278,6 +313,11 @@ public class HandongDungeons implements ActionListener {
 		instructionTArea.setLineWrap(true);
 		instructionTArea.setBounds(12, 365, 134, 67);
 		frame.getContentPane().add(instructionTArea);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(39, 282, 96, 48);
+		frame.getContentPane().add(panel);
 		
 		bgL.setBounds(0, 0, 584, 461);
 		frame.getContentPane().add(bgL);
@@ -300,47 +340,91 @@ public class HandongDungeons implements ActionListener {
 	
 	public static void showMonsters(Monster[] list) {
 		// visible은 디자인에서 건드리면 안 됩니다
-		monster1P.setVisible(false);
+		monster1L.setVisible(false);
 		monster1NameL.setVisible(false);
 		monster1HpL.setVisible(false);
-		monster2P.setVisible(false);
+		monster2L.setVisible(false);
 		monster2NameL.setVisible(false);
 		monster2HpL.setVisible(false);
-		monster3P.setVisible(false);
+		monster3L.setVisible(false);
 		monster3NameL.setVisible(false);
 		monster3HpL.setVisible(false);
-		monster4P.setVisible(false);
+		monster4L.setVisible(false);
 		monster4NameL.setVisible(false);
 		monster4HpL.setVisible(false);
-		monster5P.setVisible(false);
+		monster5L.setVisible(false);
 		monster5NameL.setVisible(false);
 		monster5HpL.setVisible(false);
+		
 		for (int i = 0; i < list.length; i++) {
 			if (i == 0) {
-				monster1P.setVisible(true);
+				monster1L.setVisible(true);
 				monster1NameL.setVisible(true);
 				monster1HpL.setVisible(true);
 			}
 			else if (i == 1) {
-				monster2P.setVisible(true);
+				monster2L.setVisible(true);
 				monster2NameL.setVisible(true);
 				monster2HpL.setVisible(true);
 			}
 			else if (i == 2) {
-				monster3P.setVisible(true);
+				monster3L.setVisible(true);
 				monster3NameL.setVisible(true);
 				monster3HpL.setVisible(true);
 			}
 			else if (i == 3) {
-				monster4P.setVisible(true);
+				monster4L.setVisible(true);
 				monster4NameL.setVisible(true);
 				monster4HpL.setVisible(true);
 			}
 			else {
-				monster5P.setVisible(true);
+				monster5L.setVisible(true);
 				monster5NameL.setVisible(true);
 				monster5HpL.setVisible(true);
 			}
+		}
+	}
+	
+	public void showMonsterImage(Monster[] list, int myGrade) {
+		String filename = new String();
+		
+		if (myGrade == 1) {
+			filename = "/res/img/monster_1.png";
+		}
+		else if (myGrade == 2) {
+			filename = "/res/img/monster_2.png";
+		}
+		else if (myGrade == 3) {
+			filename = "/res/img/monster_3.png";
+		}
+		else {
+			filename = "/res/img/monster_4.png";
+		}
+		
+		try {
+			BufferedImage imgMonster = ImageIO.read(this.getClass().getResource(filename));
+			ImageIcon icon = new ImageIcon(imgMonster);
+			for (int i = 0; i < list.length; i++) {
+				if (i == 0) {
+					monster1L.setIcon(icon);
+				}
+				else if (i == 1) {
+					monster2L.setIcon(icon);
+				}
+				else if (i == 2) {
+					monster3L.setIcon(icon);
+				}
+				else if (i == 3) {
+					monster4L.setIcon(icon);
+				}
+				else {
+					monster5L.setIcon(icon);
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "몬스터 이미지 읽기 오류", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -349,27 +433,27 @@ public class HandongDungeons implements ActionListener {
 		Object[][] monsterComponents = new Object[list.length][3];
 		for (int i = 0; i < list.length; i++) {
 			if (i == 0) {
-				monsterComponents[i][0] = monster1P;
+				monsterComponents[i][0] = monster1L;
 				monsterComponents[i][1] = monster1NameL;
 				monsterComponents[i][2] = monster1HpL;
 			}
 			else if (i == 1) {
-				monsterComponents[i][0] = monster2P;
+				monsterComponents[i][0] = monster2L;
 				monsterComponents[i][1] = monster2NameL;
 				monsterComponents[i][2] = monster2HpL;
 			}
 			else if (i == 2) {
-				monsterComponents[i][0] = monster3P;
+				monsterComponents[i][0] = monster3L;
 				monsterComponents[i][1] = monster3NameL;
 				monsterComponents[i][2] = monster3HpL;
 			}
 			else if (i == 3) {
-				monsterComponents[i][0] = monster4P;
+				monsterComponents[i][0] = monster4L;
 				monsterComponents[i][1] = monster4NameL;
 				monsterComponents[i][2] = monster4HpL;
 			}
 			else {
-				monsterComponents[i][0] = monster5P;
+				monsterComponents[i][0] = monster5L;
 				monsterComponents[i][1] = monster5NameL;
 				monsterComponents[i][2] = monster5HpL;
 			}
@@ -377,6 +461,7 @@ public class HandongDungeons implements ActionListener {
 		
 		// monsterP (image)
 		for (int i = 0; i < list.length; i++) {
+			// 몬스터 이미지 바꿔야 하나?
 			//((JPanel)monsterComponents[i][0]).setVisible(true);
 		}
 		
@@ -555,6 +640,34 @@ public class HandongDungeons implements ActionListener {
 		}
 	}
 
+	public void showPlayer(Me me) {
+		String filename = new String();
+		
+		if (me.getGrade() == 1) {
+			filename = "/res/img/player_1.png";
+		}
+		else if (me.getGrade() == 2) {
+			filename = "/res/img/player_2.png";
+		}
+		else if (me.getGrade() == 3) {
+			filename = "/res/img/player_3.png";
+		}
+		else {
+			filename = "/res/img/player_4.png";
+		}
+		
+		BufferedImage imgPlayer;
+		try {
+			imgPlayer = ImageIO.read(this.getClass().getResource(filename));
+			ImageIcon icon = new ImageIcon(imgPlayer);
+			playerL.setIcon(icon);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "배경 이미지 읽기 오류", "오류", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
 	public void playBGM() {
 	    try {
 	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/res/aud/dungeon_bgm.wav"));
@@ -568,5 +681,33 @@ public class HandongDungeons implements ActionListener {
 	
 	public static void stopBGM() {
 		clip.stop();
+	}
+	
+	public void showBG(int dungeonType) {
+		String filename = new String();
+		
+		if (dungeonType == 1) {
+			filename = "/res/img/bg_mr.jpg";
+		}
+		else if (dungeonType == 2) {
+			filename = "/res/img/bg_ms.jpg";
+		}
+		else if (dungeonType == 3) {
+			filename = "/res/img/bg_er.jpg";
+		}
+		else {
+			filename = "/res/img/bg_es.jpg";
+		}
+		
+		BufferedImage imgBg;
+		try {
+			imgBg = ImageIO.read(this.getClass().getResource(filename));
+			ImageIcon icon = new ImageIcon(imgBg);
+			bgL.setIcon(icon);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "배경 이미지 읽기 오류", "오류", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }
