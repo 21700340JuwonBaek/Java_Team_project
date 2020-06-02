@@ -12,36 +12,36 @@ public class Junior extends Sophomore{
 		
 		public final static Monster[] ER3 = new Monster[4]; {
 			
-			ER3[0] = new Monster("3학년교필 서평",1,1,5,1,60 );
-			ER3[1] = new Monster("3학년교필중간고사",1,1,5,1,60 );
-			ER3[2] = new Monster("3학년교필기말고사",1,1,5,1,60 );
-			ER3[3] = new Monster("3학년교필기말고사",1,1,5,1,60 );
+			ER3[0] = new Monster("3학년교필 서평",1,1,5,1,6 );
+			ER3[1] = new Monster("3학년교필중간고사",1,1,5,1,6 );
+			ER3[2] = new Monster("3학년교필기말고사",1,1,5,1,6 );
+			ER3[3] = new Monster("3학년교필기말고사",1,1,5,1,6 );
 
 			}
 			
 			
 			public final static Monster[]MR3 = new Monster[4];{
-			MR3[0] = new Monster("3학년전필코딩과제",1,1,5,1,60 );
-			MR3[1] = new Monster("3학년전필중간고사",1,1,5,1,60 );
-			MR3[2] = new Monster("3학년전필기말고사",1,1,5,1,60 );
-			ER3[3] = new Monster("3학년교필기말고사",1,1,5,1,60 );
+			MR3[0] = new Monster("3학년전필코딩과제",1,1,5,1,6 );
+			MR3[1] = new Monster("3학년전필중간고사",1,1,5,1,6 );
+			MR3[2] = new Monster("3학년전필기말고사",1,1,5,1,6 );
+			MR3[3] = new Monster("3학년교필기말고사",1,1,5,1,6 );
 
 			}
 			
 			public final static Monster[] ES3 = new Monster[4]; {
 				
-			ES3[0] = new Monster("3학년교선서평",1,1,5,1,60 );
-			ES3[1] = new Monster("3학년교션중간고사",1,1,5,1,60 );
-			ES3[2] = new Monster("3학년교선기말고사",1,1,5,1,60 );
-			ER3[3] = new Monster("3학년교필기말고사",1,1,5,1,60 );
+			ES3[0] = new Monster("3학년교선서평",1,1,5,1,6 );
+			ES3[1] = new Monster("3학년교션중간고사",1,1,5,1,6 );
+			ES3[2] = new Monster("3학년교선기말고사",1,1,5,1,6 );
+			ES3[3] = new Monster("3학년교필기말고사",1,1,5,1,6 );
 
 			}
 			
 			public final static Monster[]MS3 = new Monster[4];{
-			MS3[0] = new Monster("3학년전선코딩과제",1,1,5,1,60 );
-			MS3[1] = new Monster("3학년전선중간고사",1,1,5,1,60 );
-			MS3[2] = new Monster("3학년전선기말고사",1,1,5,1,60 );
-			ER3[3] = new Monster("3학년교필기말고사",1,1,5,1,60 );
+			MS3[0] = new Monster("3학년전선코딩과제",1,1,5,1,6 );
+			MS3[1] = new Monster("3학년전선중간고사",1,1,5,1,6 );
+			MS3[2] = new Monster("3학년전선기말고사",1,1,5,1,6 );
+			MS3[3] = new Monster("3학년교필기말고사",1,1,5,1,6 );
 
 			}
 			

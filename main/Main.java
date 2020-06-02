@@ -90,7 +90,7 @@ public class Main {
 	me.enterName(me); //플레이어의 이름을 받습니다.
 	   
 	invent.applyWeapon(me, Ipad);
-	me.setGrade(4);
+	me.setGrade(3);
 		
 
       while(me.getGrade()<5) {
@@ -132,7 +132,7 @@ public class Main {
 		
       }//while first grade
 		
-		
+		new Sophomore("Data Structure","Java","ERC","Statistic");
 		while(me.getGrade()==2) {
 			System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
 			int select = sc.nextInt();
@@ -161,11 +161,16 @@ public class Main {
 		
       }//while Second grade
 	    
-
+		new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
 
 		
 		while(me.getGrade()==3) {
 			System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
+			System.out.println("ER: "+me.get_clear_education_require());
+			System.out.println("MR: "+me.get_clear_major_require());
+			System.out.println("ES: "+me.get_clear_education_select());
+			System.out.println("MS: "+me.get_clear_major_select());
+
 			int select = sc.nextInt();
 		if(select == 1) {
 			Junior.GoToDungeon(me, invent);
@@ -194,6 +199,8 @@ public class Main {
 				me.set_clear_education_require(false);me.set_clear_education_select(false);me.set_clear_major_require(false);me.set_clear_major_select(false);}
 		
       }//while thrid grade
+		
+		new Senior("Graduation(MAJOR)","Graduation","Graduation(EDUCATION)","Graduation");
 		
 		while(me.getGrade()==4) {
 			System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
