@@ -12,8 +12,8 @@ public class Inventory implements Serializable {
 	private	Armor armor1;
 	private	Armor armor2;
 	private	Armor armor3;
-	private	Potion HpPotion;
-	private	Potion MpPotion;
+	public	Potion HpPotion;
+	public	Potion MpPotion;
 	
 	public  Inventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Potion HpPotion, Potion MpPotion) {
 		this.weapon1 = weapon1;
@@ -48,6 +48,16 @@ public class Inventory implements Serializable {
 	}
 	//저장된 파일을 불러왔을 때에 instatnceVariable에 값이 저장되어 있을테니,
 	//get함수를 통해서 parameter들에게 저장된 값을 할당하려는 의도. 잘 될런지는 모르겠다. 
+	
+	public void  setInventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Potion HpPotion, Potion MpPotion) {
+		this.weapon1 = weapon1;
+		this.weapon2 = weapon2;
+		this.weapon3 = weapon3;
+		this.weapon4 = weapon4;
+		this.armor2 = armor1;
+		this.HpPotion = HpPotion;
+		this.MpPotion = MpPotion;
+	}
 	
 	public void getInventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
 		weapon1 = this.weapon1;
@@ -125,7 +135,7 @@ public class Inventory implements Serializable {
 	
 	public static void useMpPotion(Me me, Potion potion) {
 		if(potion.getNumber()==0) return;
-		me.setHp(me.getMp()+potion.getRecovory());
+		me.setMp(me.getMp()+potion.getRecovory());
 		potion.setNumber(potion.getNumber()-1);
 	}
 	
