@@ -1,6 +1,7 @@
 package dungeon;
 
 import character.Me;
+import inventory.Inventory;
 import character.Monster;
 import skill.Skill;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class Education_require extends Dungeon {
 		super(name);
 	}
 
-	public static void fight(Me me, Skill mySkill[], Monster monsters[]) {
+	public static void fight(Me me, Skill mySkill[], Monster monsters[], Inventory invent) {
 		Scanner sc = new Scanner(System.in);
 		// Print Dungeon name and Monsters
 		System.out.println("Enter the dungeon");
@@ -40,20 +41,30 @@ public class Education_require extends Dungeon {
 			
 			
 			System.out.println();
-			for(int i = 0 ; i < mySkill.length; i++) {
-				if(mySkill[i].getOpen()==false) continue;
+			int i;
+			for( i = 0 ; i < mySkill.length; i++) {
+				if(mySkill[i].getOpen()==false) break;
 				
 				System.out.println(i+". "+mySkill[i].getName() + " 공격력 : 기본 데미지("+me.getAtk()+")"+"+" + mySkill[i].getDamage()+ " 필요 지식량: " + mySkill[i].getMana() + ")");
 			}
+			System.out.println(i+". 포션사용하기");
 			System.out.println("스킬을 선택해주세요!");
 			int select_skill = sc.nextInt();
+			if(select_skill == i) {
+				System.out.println("1. HP 포션 (소지한 포션 :" + invent.HpPotion.getNumber() +")");
+				System.out.println("2. MP 포션 (소지한 포션 :" + invent.MpPotion.getNumber() +")");
+				int Select_potion = sc.nextInt();
+				if(Select_potion ==1) { Inventory.useHpPotion(me, invent.HpPotion); continue;}
+				if(Select_potion ==2) { Inventory.useMpPotion(me, invent.MpPotion); continue;}
+
+			}
 			if(mySkill[select_skill].getRange()>monsters.length) {
-				for(int i = 0; i < monsters.length;i++)
+				for( i = 0; i < monsters.length;i++)
 				Me.Attack(mySkill[select_skill], monsters[i], me);
 			}
 			
 			else {
-			for(int i = 0; i < mySkill[select_skill].getRange();i++) {
+			for( i = 0; i < mySkill[select_skill].getRange();i++) {
 				System.out.println("공격할 몬스터를 선택해주세요!");
 				int select = sc.nextInt();
 			Me.Attack(mySkill[select_skill], monsters[select], me);
@@ -61,7 +72,7 @@ public class Education_require extends Dungeon {
 			}
 
 			// Clear condition
-			int i;
+			
 			for (i = 0; i < monsters.length; i++) {
 				if (monsters[i].getHp() > 0)
 					break;
