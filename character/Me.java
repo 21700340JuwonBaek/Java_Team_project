@@ -54,7 +54,7 @@ public class Me extends Character {
 	public static String enterName(Me me) {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("당신의 이름을 적어주세요. ");
+		System.out.print("닉네임 설정 : ");
 		String name = sc.nextLine();
 		
 		return name;
