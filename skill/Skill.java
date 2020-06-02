@@ -49,7 +49,9 @@ public class Skill {
 	public int getMana() {
 		return this.mana;
 	}
-	
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
 	public boolean getOpen() {
 		return this.open;
 	}
