@@ -9,7 +9,7 @@ import item.Potion;
 
 public class shop {
 	
-	public static void buy(Me me) {
+	public static void buy(Me me, Potion hp, Potion mp, Weapon Ipad, Weapon Macbook, Weapon Note, Weapon TA, Armor Hood) {
 		Scanner sc = new Scanner(System.in);
 		int item = 0;
 		int kind = 0;
@@ -29,11 +29,11 @@ public class shop {
 				if(item == 1) {
 					System.out.println("HP 포션을 구매하였습니다! 10골드 차감.");
 					me.setGold(me.getGold()-10);
-					Potion hp = new Potion("HP Potion",10,10,0,100,1);
+					hp.setNumber(hp.getNumber()+1);
 				}else if(item==2) {
 					System.out.println("MP 포션을 구매하였습니다! 10골드 차감.");
 					me.setGold(me.getGold()-10);
-					Potion mp = new Potion("Mp Potion",10,10,0,100,1);
+					mp.setNumber(mp.getNumber()+1);
 				}else System.out.println("그럼 다른 아이템을 구매 하실건가요?");
 			}else if(kind==2) {
 				System.out.println("구매하려는 아이템을 골라주세요! ");
@@ -45,27 +45,28 @@ public class shop {
 				}else if(item==1) {
 					System.out.println("아이패드를 구매하였습니다. 공격력 +5 ");
 					me.setGold(me.getGold()-20);
-					Weapon Ipad = new Weapon("Ipad", 100,100,1,10,10);
+					Ipad.setIs_bought(true);
 				}else if(item==2) {
 					System.out.println("새내기 후드티를 구매하였습니다. 방어력 +5 ");
 					me.setGold(me.getGold()-20);
-					Armor Hood = new Armor("Hood", 100,100,1,1,10);
+					Hood.setIs_bought(true);
 				}else if(item==3) {
 					System.out.println("맥북을 구매하였습니다. 공격력 +7 ");
 					me.setGold(me.getGold()-30);
-					Weapon Macbook = new Weapon("Macbook", 100,100,1,10,10);
+					Macbook.setIs_bought(true);
 				}else if(item==4) {
 					System.out.println("선배의 필기노트를 구매하였습니다. 공격력 +10 ");
 					me.setGold(me.getGold()-50);
-					Weapon Note = new Weapon("Note", 100,100,1,10,10);
+					Note.setIs_bought(true);
 				}else if(item==5) {
 					System.out.println("TA 세션을 들었습니다. 공격력 +12 ");
 					me.setGold(me.getGold()-60);
-					Weapon TA = new Weapon("TA", 100,100,1,10,10);
+					TA.setIs_bought(true);
 				}
 			}
 		}while(kind!=0);
 		
 		System.out.println("안녕히가세요!");	
 	
+	}
 }

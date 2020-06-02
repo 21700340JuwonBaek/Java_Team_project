@@ -75,7 +75,7 @@ public class Main {
    public static void main (String[] args) {
 	   //Inventory inventory = new Inventory
       
-     Me me = new Me("이름",10,1,500,1,100,100,100,100);
+      Me me = new Me("이름",10,1,500,1,100,100,100,100);
       //이름/공격력/방어력/소지골드/크리티컬/체력/마나/최대체력/최대마나 입니다
 	   Potion hp = new Potion("HP Potion",10,10,0,100,1);
 	   Potion mp = new Potion("Mp Potion",10,10,0,100,1);
@@ -86,6 +86,7 @@ public class Main {
 	   Armor Hood = new Armor("Hood", 100,100,1,1,10);
 	   
 	  Inventory invent = new Inventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
+
 	me.enterName(me); //플레이어의 이름을 받습니다.
 	   
 	invent.applyWeapon(me, Ipad);
@@ -100,9 +101,9 @@ public class Main {
 		System.out.println(me.getMp());
 		System.out.println(me.get_clear_major_require());
 		System.out.println(me.getName());
-		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4. 상점");
+		System.out.println("메뉴를 선택해주세요!\\n1.던전으로 가기.\\n2.저장하기\\n3.불러오기\\n4.상점");
 		Scanner sc = new Scanner(System.in);
-		
+
 		int select = sc.nextInt();
 		if(select == 1) {
 			Freshman.GoToDungeon(me, invent);
@@ -128,7 +129,7 @@ public class Main {
 		}
 		
 	      	else if (select == 4) {
-	      		shop.buy(me);
+	      		shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
 		}//while
 		
       }
@@ -139,4 +140,3 @@ public class Main {
 	}//main
 		
 	}//class
-
