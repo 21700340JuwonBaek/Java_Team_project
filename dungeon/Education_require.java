@@ -110,7 +110,7 @@ public class Education_require extends Dungeon {
 				HandongDungeons.showMessage(clearMsg);
 				dungeon.stopBGM();
 				dungeon.frame.setVisible(false);
-				me.set_clear_major_require(true);
+				me.set_clear_education_require(true);
 				return;
 			}
 
