@@ -105,11 +105,11 @@ public class Main {
 		//public Weapon(String name, int buy_gold, int sell_gold, int grade, int atk, int cri)
 		Potion hp = new Potion("HP Potion", 10, 10, 0, 100, 1);
 		Potion mp = new Potion("Mp Potion", 10, 10, 0, 100, 1);
-		Weapon Ipad = new Weapon("Ipad", 100, 100, 1, 5, 10);
-		Weapon Macbook = new Weapon("Macbook", 100, 100, 1, 7, 10);
-		Weapon Note = new Weapon("Note", 100, 100, 1, 10, 10);
-		Weapon TA = new Weapon("TA", 100, 100, 1, 15, 12);
-		Armor Hood = new Armor("Sanaegi Hood", 100, 100, 1, 5, 10);
+		Weapon Ipad = new Weapon("Ipad", 20, 100, 1, 5, 10);
+		Weapon Macbook = new Weapon("Macbook", 30, 100, 1, 7, 10);
+		Weapon Note = new Weapon("Note", 50, 100, 1, 10, 10);
+		Weapon TA = new Weapon("TA", 60, 100, 1, 15, 12);
+		Armor Hood = new Armor("Sanaegi Hood", 20, 100, 1, 5, 10);
 
 		Inventory invent = new Inventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
 
