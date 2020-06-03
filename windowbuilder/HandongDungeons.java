@@ -336,7 +336,7 @@ public class HandongDungeons implements ActionListener {
 			}
 		}
 		msgP.setVisible(false);
-	}
+	}	
 	
 	public static void showMonsters(Monster[] list) {
 		// visible은 디자인에서 건드리면 안 됩니다

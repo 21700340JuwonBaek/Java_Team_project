@@ -59,9 +59,6 @@ public class Freshman {
 		
 	}
 	public static void GoToDungeon(Me me,Inventory invent){
-
-		
-		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please Select the Dungeon\n\n1."+Major_require.getName());
 		System.out.println("2."+Education_require.getName());
