@@ -46,40 +46,7 @@ public class Main {
 			System.out.println("Error2");
 		}
 		
-		ObjectOutputStream outputStream2 = null;
-		String fileName2 = "Weapon";
-		try {
-			outputStream2 = new ObjectOutputStream(new FileOutputStream(fileName2));
-		} catch (IOException e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		try {
-			outputStream2.writeObject(Ipad);
-			outputStream2.writeObject(Macbook);
-			outputStream2.writeObject(Note);
-			outputStream2.writeObject(TA);
-			outputStream2.close();
-		} catch (IOException e) {
-			System.out.println("Error4");
-		}
 		
-		ObjectOutputStream outputStream3 = null;
-		String fileName3 = "Armor";
-		try {
-			outputStream3 = new ObjectOutputStream(new FileOutputStream(fileName3));
-		} catch (IOException e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		try {
-			outputStream3.writeObject(Hood);
-			outputStream3.close();
-		} catch (IOException e) {
-			System.out.println("Error4");
-		}
 		
 	}
 
@@ -127,49 +94,7 @@ public class Main {
 		return inventory;
 	}
 	
-	public static Weapon LoadWeapon() {
-		ObjectInputStream inputStream = null;
-		Weapon weapon = null;
-		try {
-			inputStream = new ObjectInputStream(new FileInputStream("Weapon"));
-		} catch (IOException e) {
-			System.out.println("No File!!");
-		}
-
-		try {
-			weapon = (Weapon) inputStream.readObject();
-			inputStream.close();
-		}
-
-		catch (Exception e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		return weapon;
-	}
 	
-	public static Armor LoadArmor() {
-		ObjectInputStream inputStream = null;
-		Armor armor = null;
-		try {
-			inputStream = new ObjectInputStream(new FileInputStream("Armor"));
-		} catch (IOException e) {
-			System.out.println("No File!!");
-		}
-
-		try {
-			armor = (Armor) inputStream.readObject();
-			inputStream.close();
-		}
-
-		catch (Exception e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		return armor;
-	}
 
 	public static void main(String[] args) {
 		// Inventory inventory = new Inventory
