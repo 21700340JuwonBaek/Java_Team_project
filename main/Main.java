@@ -107,9 +107,7 @@ public class Main {
 		Inventory invent = new Inventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
 
 		me.enterName(me); // 플레이어의 이름을 받습니다.
-
-		invent.applyWeapon(me, Ipad);
-		me.setGrade(1);
+		
 
 		while (me.getGrade() < 5) {
 			// RpgGui gui = new RpgGui();
@@ -126,8 +124,13 @@ public class Main {
 			}
 
 			Scanner sc = new Scanner(System.in);
-
+			
 			while (me.getGrade() == 1) {
+				System.out.println("Ipad "+invent.weapon1.getIs_bought()+" Macbook "+invent.weapon2.getIs_bought()+
+						" Note "+invent.weapon3.getIs_bought()+" TA "+invent.weapon4.getIs_bought());
+				
+				System.out.println("Curr money :"+ me.getGold());
+				
 				System.out.println("메뉴를 선택해주세요 ");
 				System.out.println("1.던전으로 가기");
 				System.out.println("2.저장하기");
@@ -147,10 +150,12 @@ public class Main {
 				else if (select == 3) {
 					me = Main.LoadMe();
 					invent = Main.LoadInventory();
+					invent.getInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
+					//TA = invent.weapon4;
 				}
 
 				else if (select == 4) {
-					shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+					shop.buy(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
 				}
 				
 				else if (select == 0) {
@@ -205,7 +210,7 @@ public class Main {
 				}
 
 				else if (select == 4) {
-					shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+					shop.buy(me,invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
 				}
 				
 				else if (select == 0) {
@@ -269,7 +274,7 @@ public class Main {
 				}
 
 				else if (select == 4) {
-					shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+					shop.buy(me,invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
 				}
 				
 				else if (select == 0) {
@@ -333,7 +338,7 @@ public class Main {
 				}
 
 				else if (select == 4) {
-					shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+					shop.buy(me,invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
 				}
 				
 				else if (select == 0) {

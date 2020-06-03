@@ -5,13 +5,13 @@ import java.io.Serializable;
 
 public class Inventory implements Serializable {
 	
-	private Weapon weapon1;
-	private	Weapon weapon2;
-	private	Weapon weapon3;
-	private	Weapon weapon4;
-	private	Armor armor1;
-	private	Armor armor2;
-	private	Armor armor3;
+	public Weapon weapon1;
+	public	Weapon weapon2;
+	public	Weapon weapon3;
+	public	Weapon weapon4;
+	public	Armor armor1;
+	public	Armor armor2;
+	public	Armor armor3;
 	public	Potion HpPotion;
 	public	Potion MpPotion;
 	
@@ -70,18 +70,27 @@ public class Inventory implements Serializable {
 		MpPotion = this.MpPotion;
 	}
 	
+	public Weapon getWeapon4() {
+		return this.weapon4;
+	}
+	
 	public void setWeapon1(Weapon weapon1) {
 		this.weapon1 = weapon1;
 	}
 	//아이템을 판매하거나 구매했을 때 혹은 아이템을 사용했을 때에 set함수를 사용한다. 
 	
 	public void setWeapon2(Weapon weapon2) {
-		this.weapon1 = weapon1;
+		this.weapon2 = weapon2;
 	}
 	
 	public void setWeapon3(Weapon weapon3) {
-		this.weapon1 = weapon1;
+		this.weapon3 = weapon3;
 	}
+	
+	public void setWeapon4(Weapon weapon4) {
+		this.weapon4 = weapon4;
+	}
+	
 	
 	public void setArmor1(Armor armor) {
 		this.armor1 = armor;
