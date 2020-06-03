@@ -12,7 +12,7 @@ import item.*;
 public class Main {
 	public static Me userMe;
 
-	public static void Save(Me me, Inventory inventory) // Save Method.
+	public static void Save(Me me, Inventory inventory, Weapon Ipad, Weapon Macbook, Weapon Note, Weapon TA, Armor Hood) // Save Method.
 	{
 		ObjectOutputStream outputStream = null;
 		String fileName = "My.records";
@@ -45,6 +45,42 @@ public class Main {
 		} catch (IOException e) {
 			System.out.println("Error2");
 		}
+		
+		ObjectOutputStream outputStream2 = null;
+		String fileName2 = "Weapon";
+		try {
+			outputStream2 = new ObjectOutputStream(new FileOutputStream(fileName2));
+		} catch (IOException e) {
+			System.out.println("Error3");
+			System.exit(0);
+		}
+
+		try {
+			outputStream2.writeObject(Ipad);
+			outputStream2.writeObject(Macbook);
+			outputStream2.writeObject(Note);
+			outputStream2.writeObject(TA);
+			outputStream2.close();
+		} catch (IOException e) {
+			System.out.println("Error4");
+		}
+		
+		ObjectOutputStream outputStream3 = null;
+		String fileName3 = "Armor";
+		try {
+			outputStream3 = new ObjectOutputStream(new FileOutputStream(fileName3));
+		} catch (IOException e) {
+			System.out.println("Error3");
+			System.exit(0);
+		}
+
+		try {
+			outputStream3.writeObject(Hood);
+			outputStream3.close();
+		} catch (IOException e) {
+			System.out.println("Error4");
+		}
+		
 	}
 
 	public static Me LoadMe()// Load Method
@@ -90,6 +126,50 @@ public class Main {
 
 		return inventory;
 	}
+	
+	public static Weapon LoadWeapon() {
+		ObjectInputStream inputStream = null;
+		Weapon weapon = null;
+		try {
+			inputStream = new ObjectInputStream(new FileInputStream("Weapon"));
+		} catch (IOException e) {
+			System.out.println("No File!!");
+		}
+
+		try {
+			weapon = (Weapon) inputStream.readObject();
+			inputStream.close();
+		}
+
+		catch (Exception e) {
+			System.out.println("Error3");
+			System.exit(0);
+		}
+
+		return weapon;
+	}
+	
+	public static Armor LoadArmor() {
+		ObjectInputStream inputStream = null;
+		Armor armor = null;
+		try {
+			inputStream = new ObjectInputStream(new FileInputStream("Armor"));
+		} catch (IOException e) {
+			System.out.println("No File!!");
+		}
+
+		try {
+			armor = (Armor) inputStream.readObject();
+			inputStream.close();
+		}
+
+		catch (Exception e) {
+			System.out.println("Error3");
+			System.exit(0);
+		}
+
+		return armor;
+	}
 
 	public static void main(String[] args) {
 		// Inventory inventory = new Inventory
@@ -98,11 +178,11 @@ public class Main {
 		// 이름/공격력/방어력/소지골드/크리티컬/체력/마나/최대체력/최대마나 입니다
 		Potion hp = new Potion("HP Potion", 10, 10, 0, 100, 1);
 		Potion mp = new Potion("Mp Potion", 10, 10, 0, 100, 1);
-		Weapon Ipad = new Weapon("Ipad", 100, 100, 1, 10, 10);
-		Weapon Macbook = new Weapon("Macbook", 100, 100, 1, 10, 10);
+		Weapon Ipad = new Weapon("Ipad", 100, 100, 1, 5, 10);
+		Weapon Macbook = new Weapon("Macbook", 100, 100, 1, 7, 10);
 		Weapon Note = new Weapon("Note", 100, 100, 1, 10, 10);
-		Weapon TA = new Weapon("TA", 100, 100, 1, 10, 10);
-		Armor Hood = new Armor("Sanaegi Hood", 100, 100, 1, 1, 10);
+		Weapon TA = new Weapon("TA", 100, 100, 1, 10, 12);
+		Armor Hood = new Armor("Sanaegi Hood", 100, 100, 1, 5, 10);
 
 		Inventory invent = new Inventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
 
@@ -130,6 +210,8 @@ public class Main {
 						" Note "+invent.weapon3.getIs_bought()+" TA "+invent.weapon4.getIs_bought());
 				
 				System.out.println("Curr money :"+ me.getGold());
+				System.out.println("atk :"+ me.getAtk()); //지우기
+				System.out.println("def :"+ me.getDef()); //지우기
 				
 				System.out.println("메뉴를 선택해주세요 ");
 				System.out.println("1.던전으로 가기");
@@ -144,12 +226,17 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
 					invent = Main.LoadInventory();
+					Ipad = Main.LoadWeapon();
+					Macbook = Main.LoadWeapon();
+					Note = Main.LoadWeapon();
+					TA = Main.LoadWeapon();
+					Hood = Main.LoadArmor();
 					invent.getInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
 					//TA = invent.weapon4;
 				}
@@ -201,11 +288,16 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
+					Ipad = Main.LoadWeapon();
+					Macbook = Main.LoadWeapon();
+					Note = Main.LoadWeapon();
+					TA = Main.LoadWeapon();
+					Hood = Main.LoadArmor();
 					invent = Main.LoadInventory();
 				}
 
@@ -265,11 +357,16 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
+					Ipad = Main.LoadWeapon();
+					Macbook = Main.LoadWeapon();
+					Note = Main.LoadWeapon();
+					TA = Main.LoadWeapon();
+					Hood = Main.LoadArmor();
 					invent = Main.LoadInventory();
 				}
 
@@ -329,11 +426,16 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
+					Ipad = Main.LoadWeapon();
+					Macbook = Main.LoadWeapon();
+					Note = Main.LoadWeapon();
+					TA = Main.LoadWeapon();
+					Hood = Main.LoadArmor();
 					invent = Main.LoadInventory();
 				}
 
