@@ -26,10 +26,11 @@ public class Inventory implements Serializable {
 	}
 	
 	
-	public  Inventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
+	public  Inventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
 		this.weapon1 = weapon1;
 		this.weapon2 = weapon2;
 		this.weapon3 = weapon3;
+		this.weapon4 = weapon4;
 		this.armor1 = armor1;
 		this.armor2 = armor2;
 		this.armor3 = armor3;
@@ -46,8 +47,8 @@ public class Inventory implements Serializable {
 		HpPotion = this.HpPotion;
 		MpPotion = this.MpPotion;
 	}
-	//저장된 파일을 불러왔을 때에 instatnceVariable에 값이 저장되어 있을테니,
-	//get함수를 통해서 parameter들에게 저장된 값을 할당하려는 의도. 잘 될런지는 모르겠다. 
+	//���옣�맂 �뙆�씪�쓣 遺덈윭�솕�쓣 �븣�뿉 instatnceVariable�뿉 媛믪씠 ���옣�릺�뼱 �엳�쓣�뀒�땲,
+	//get�븿�닔瑜� �넻�빐�꽌 parameter�뱾�뿉寃� ���옣�맂 媛믪쓣 �븷�떦�븯�젮�뒗 �쓽�룄. �옒 �맆�윴吏��뒗 紐⑤Ⅴ寃좊떎. 
 	
 	public void  setInventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Potion HpPotion, Potion MpPotion) {
 		this.weapon1 = weapon1;
@@ -59,10 +60,11 @@ public class Inventory implements Serializable {
 		this.MpPotion = MpPotion;
 	}
 	
-	public void getInventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
+	public void getInventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
 		weapon1 = this.weapon1;
 		weapon2 = this.weapon2;
 		weapon3 = this.weapon3;
+		weapon4 = this.weapon4;
 		armor1 = this.armor1;
 		armor2 = this.armor2;
 		armor3 = this.armor3;
@@ -77,7 +79,7 @@ public class Inventory implements Serializable {
 	public void setWeapon1(Weapon weapon1) {
 		this.weapon1 = weapon1;
 	}
-	//아이템을 판매하거나 구매했을 때 혹은 아이템을 사용했을 때에 set함수를 사용한다. 
+	//�븘�씠�뀥�쓣 �뙋留ㅽ븯嫄곕굹 援щℓ�뻽�쓣 �븣 �샊�� �븘�씠�뀥�쓣 �궗�슜�뻽�쓣 �븣�뿉 set�븿�닔瑜� �궗�슜�븳�떎. 
 	
 	public void setWeapon2(Weapon weapon2) {
 		this.weapon2 = weapon2;
@@ -123,7 +125,7 @@ public class Inventory implements Serializable {
 		me.setAtk(me.getAtk()-weapon.getAtk());
 	}
 	
-	public static void applyAromor(Me me, Armor armor) {
+	public static void applyArmor(Me me, Armor armor) {
 		if(armor.getIs_bought() == false) { return;}
 		me.setMaxHp(me.getMaxHp()+armor.getHp());
 		me.setDef(me.getDef()+armor.getDef());
