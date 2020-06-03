@@ -45,30 +45,45 @@ public class shop {
 				if(item == 0) {
 					System.out.println("그럼 다른 아이템을 구매 하실건가요?");
 				}else if(item==1) {
-					System.out.println("아이패드를 구매하였습니다. 공격력 +5 ");
-					me.setGold(me.getGold()-20);
-					Ipad.setIs_bought(true);
-					invent.setWeapon1(Ipad);
+					if(!Ipad.getIs_bought()) {
+						System.out.println("아이패드를 구매하였습니다. 공격력 +5 ");
+						me.setGold(me.getGold()-20);
+						Ipad.setIs_bought(true);
+						invent.setWeapon1(Ipad);
+						invent.applyWeapon(me, Ipad);
+					}else {System.out.println("이미 가지고 있는 아이텝입니다.");}
 				}else if(item==2) {
-					System.out.println("새내기 후드티를 구매하였습니다. 방어력 +5 ");
-					me.setGold(me.getGold()-20);
-					Hood.setIs_bought(true);
-					invent.setArmor1(Hood);
+					if(!Hood.getIs_bought()) {
+						System.out.println("새내기 후드티를 구매하였습니다. 방어력 +5 ");
+						me.setGold(me.getGold()-20);
+						Hood.setIs_bought(true);
+						invent.setArmor1(Hood);
+						invent.applyArmor(me, Hood);
+					}else {System.out.println("이미 가지고 있는 아이텝입니다.");}
 				}else if(item==3) {
-					System.out.println("맥북을 구매하였습니다. 공격력 +7 ");
-					me.setGold(me.getGold()-30);
-					Macbook.setIs_bought(true);
-					invent.setWeapon2(Macbook);
+					if(!Macbook.getIs_bought()) {
+						System.out.println("맥북을 구매하였습니다. 공격력 +7 ");
+						me.setGold(me.getGold()-30);
+						Macbook.setIs_bought(true);
+						invent.setWeapon2(Macbook);
+						invent.applyWeapon(me, Macbook);
+					}else {System.out.println("이미 가지고 있는 아이텝입니다.");}
 				}else if(item==4) {
-					System.out.println("선배의 필기노트를 구매하였습니다. 공격력 +10 ");
-					me.setGold(me.getGold()-50);
-					Note.setIs_bought(true);
-					invent.setWeapon3(Note);
-				}else if(item==5) {
-					System.out.println("TA 세션을 들었습니다. 공격력 +12 ");
-					me.setGold(me.getGold()-60);
-					TA.setIs_bought(true);
-					invent.setWeapon4(TA);
+					if(!Note.getIs_bought()) {
+						System.out.println("선배의 필기노트를 구매하였습니다. 공격력 +10 ");
+						me.setGold(me.getGold()-50);
+						Note.setIs_bought(true);
+						invent.setWeapon3(Note);
+						invent.applyWeapon(me, Note);
+					}else {System.out.println("이미 가지고 있는 아이텝입니다.");}
+				}else if(item==5) {	
+					if(!TA.getIs_bought()) {
+						System.out.println("TA 세션을 들었습니다. 공격력 +12 ");
+						me.setGold(me.getGold()-60);
+						TA.setIs_bought(true);
+						invent.setWeapon4(TA);
+						invent.applyWeapon(me, TA);
+					}else {System.out.println("이미 가지고 있는 아이텝입니다.");}
 				}
 			}
 		}while(kind!=0);
