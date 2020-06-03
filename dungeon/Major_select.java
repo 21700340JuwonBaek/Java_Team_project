@@ -111,7 +111,7 @@ public class Major_select extends Dungeon {
 			System.out.println();
 
 			// Clear condition
-			for (; j < monsters.length; i++) {
+			for (; j < monsters.length; j++) {
 				if (monsters[j].getHp() > 0)
 					break;
 			}
