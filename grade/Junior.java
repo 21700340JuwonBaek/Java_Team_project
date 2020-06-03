@@ -67,9 +67,21 @@ public class Junior extends Sophomore{
 		}
 		if(select == 4) {
 			Education_select.fight(me, skill, ES3, invent);
-		}
-		
+		}	
 	}
+	public static void Major_r(Me me,Inventory invent) {
+		Major_require.fight(me, skill, MR, invent);
+	}
+	public static void Education_r(Me me,Inventory invent) {
+		Education_require.fight(me, skill, ER, invent);
+	}
+	public static void Major_s(Me me,Inventory invent) {
+		Major_select.fight(me, skill, MS, invent);
+	}
+	public static void Education_s(Me me,Inventory invent) {
+		Education_select.fight(me, skill, ES, invent);
+	}
+	
 	
 	
 }

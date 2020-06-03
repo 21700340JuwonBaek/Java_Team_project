@@ -1,5 +1,6 @@
 package character;
 import skill.Skill;
+import windowbuilder.EnterName;
 import windowbuilder.HandongDungeons;
 
 import java.util.Scanner;
@@ -51,15 +52,16 @@ public class Me extends Character {
 		this.clear_education_require = false;
 	}
 	
-	public static String enterName(Me me) {
+	public String enterName(Me me) {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("당신의 이름을 적어주세요. ");
 		String name = sc.nextLine();
+		//super.setName(name);
 		
 		return name;
 	}
-	
+		
 	public static boolean Critical() { //1부터 100 사이에서 랜덤값이 1~10일 경우 데미지 2배
 		int random = (int)(Math.random()*100) + 1;
 		

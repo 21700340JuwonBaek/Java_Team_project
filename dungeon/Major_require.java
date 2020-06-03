@@ -29,15 +29,16 @@ public class Major_require extends Dungeon {
 			monsterMsg += msg + "<br/>";
 		}
 		monsterMsg += "</html>";
+		//System.out.println(me.getGrade());
 		HandongDungeons.showMonsters(monsters);
+		//System.out.println(me.getGrade());
 		dungeon.showMonsterImage(monsters, me.getGrade());
 		HandongDungeons.updateMonsters(monsters);
 		HandongDungeons.updateMe(me);
 		HandongDungeons.showMessage(monsterMsg);
-
+		
 		// Battle
 		while (me.getHp() > 0) {
-			
 			// Print my status
 			System.out.println();
 			System.out.println("[My status]");
