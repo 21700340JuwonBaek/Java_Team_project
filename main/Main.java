@@ -12,7 +12,7 @@ import item.*;
 public class Main {
 	public static Me userMe;
 
-	public static void Save(Me me, Inventory inventory) // Save Method.
+	public static void Save(Me me, Inventory inventory, Weapon Ipad, Weapon Macbook, Weapon Note, Weapon TA, Armor Hood) // Save Method.
 	{
 		ObjectOutputStream outputStream = null;
 		String fileName = "My.records";
@@ -45,6 +45,9 @@ public class Main {
 		} catch (IOException e) {
 			System.out.println("Error2");
 		}
+		
+		
+		
 	}
 
 	public static Me LoadMe()// Load Method
@@ -90,19 +93,23 @@ public class Main {
 
 		return inventory;
 	}
+	
+	
 
 	public static void main(String[] args) {
 		// Inventory inventory = new Inventory
 
-		Me me = new Me("이름", 10, 1, 500, 1, 1, 100, 100, 100);
+		Me me = new Me("이름", 10, 1, 500, 1, 100, 100, 100, 100);
 		// 이름/공격력/방어력/소지골드/크리티컬/체력/마나/최대체력/최대마나 입니다
+		
+		//public Weapon(String name, int buy_gold, int sell_gold, int grade, int atk, int cri)
 		Potion hp = new Potion("HP Potion", 10, 10, 0, 100, 1);
 		Potion mp = new Potion("Mp Potion", 10, 10, 0, 100, 1);
-		Weapon Ipad = new Weapon("Ipad", 100, 100, 1, 10, 10);
-		Weapon Macbook = new Weapon("Macbook", 100, 100, 1, 10, 10);
-		Weapon Note = new Weapon("Note", 100, 100, 1, 10, 10);
-		Weapon TA = new Weapon("TA", 100, 100, 1, 10, 10);
-		Armor Hood = new Armor("Sanaegi Hood", 100, 100, 1, 1, 10);
+		Weapon Ipad = new Weapon("Ipad", 20, 100, 1, 5, 10);
+		Weapon Macbook = new Weapon("Macbook", 30, 100, 1, 7, 10);
+		Weapon Note = new Weapon("Note", 50, 100, 1, 10, 10);
+		Weapon TA = new Weapon("TA", 60, 100, 1, 15, 12);
+		Armor Hood = new Armor("Sanaegi Hood", 20, 100, 1, 5, 10);
 
 		Inventory invent = new Inventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
 
@@ -130,6 +137,10 @@ public class Main {
 						" Note "+invent.weapon3.getIs_bought()+" TA "+invent.weapon4.getIs_bought());
 				
 				System.out.println("Curr money :"+ me.getGold());
+				System.out.println("atk :"+ me.getAtk()); //지우기
+				System.out.println("def :"+ me.getDef()); //지우기
+				System.out.println("Cri :"+ me.getCri());
+				System.out.println("HP potion : "+hp.getNumber()+" MP Potion : "+ mp.getNumber());
 				
 				System.out.println("메뉴를 선택해주세요 ");
 				System.out.println("1.던전으로 가기");
@@ -144,13 +155,19 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
 					invent = Main.LoadInventory();
-					invent.getInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
+					Ipad = invent.getWeapon1();
+					Macbook = invent.getWeapon2();
+					Note = invent.getWeapon3();
+					TA = invent.getWeapon4();
+					hp = invent.getHpPotion();
+					mp = invent.getMpPotion();
+					
 					//TA = invent.weapon4;
 				}
 
@@ -201,12 +218,18 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
 					invent = Main.LoadInventory();
+					Ipad = invent.getWeapon1();
+					Macbook = invent.getWeapon2();
+					Note = invent.getWeapon3();
+					TA = invent.getWeapon4();
+					hp = invent.getHpPotion();
+					mp = invent.getMpPotion();
 				}
 
 				else if (select == 4) {
@@ -265,12 +288,18 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
 					invent = Main.LoadInventory();
+					Ipad = invent.getWeapon1();
+					Macbook = invent.getWeapon2();
+					Note = invent.getWeapon3();
+					TA = invent.getWeapon4();
+					hp = invent.getHpPotion();
+					mp = invent.getMpPotion();
 				}
 
 				else if (select == 4) {
@@ -329,12 +358,18 @@ public class Main {
 
 				else if (select == 2) {
 					invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
-					Main.Save(me, invent);
+					Main.Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 				}
 
 				else if (select == 3) {
 					me = Main.LoadMe();
 					invent = Main.LoadInventory();
+					Ipad = invent.getWeapon1();
+					Macbook = invent.getWeapon2();
+					Note = invent.getWeapon3();
+					TA = invent.getWeapon4();
+					hp = invent.getHpPotion();
+					mp = invent.getMpPotion();
 				}
 
 				else if (select == 4) {

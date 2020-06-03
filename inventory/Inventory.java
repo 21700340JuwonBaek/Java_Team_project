@@ -26,10 +26,11 @@ public class Inventory implements Serializable {
 	}
 	
 	
-	public  Inventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
+	public  Inventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
 		this.weapon1 = weapon1;
 		this.weapon2 = weapon2;
 		this.weapon3 = weapon3;
+		this.weapon4 = weapon4;
 		this.armor1 = armor1;
 		this.armor2 = armor2;
 		this.armor3 = armor3;
@@ -37,15 +38,6 @@ public class Inventory implements Serializable {
 		this.MpPotion = MpPotion;
 	}
 	
-	public void getInventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Potion HpPotion, Potion MpPotion) {
-		weapon1 = this.weapon1;
-		weapon2 = this.weapon2;
-		weapon3 = this.weapon3;
-		weapon4 = this.weapon4;
-		armor1 = this.armor1;
-		HpPotion = this.HpPotion;
-		MpPotion = this.MpPotion;
-	}
 	//저장된 파일을 불러왔을 때에 instatnceVariable에 값이 저장되어 있을테니,
 	//get함수를 통해서 parameter들에게 저장된 값을 할당하려는 의도. 잘 될런지는 모르겠다. 
 	
@@ -59,20 +51,6 @@ public class Inventory implements Serializable {
 		this.MpPotion = MpPotion;
 	}
 	
-	public void getInventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
-		weapon1 = this.weapon1;
-		weapon2 = this.weapon2;
-		weapon3 = this.weapon3;
-		armor1 = this.armor1;
-		armor2 = this.armor2;
-		armor3 = this.armor3;
-		HpPotion = this.HpPotion;
-		MpPotion = this.MpPotion;
-	}
-	
-	public Weapon getWeapon4() {
-		return this.weapon4;
-	}
 	
 	public void setWeapon1(Weapon weapon1) {
 		this.weapon1 = weapon1;
@@ -112,6 +90,33 @@ public class Inventory implements Serializable {
 		this.MpPotion = MpPotion;
 	}
 	
+	public Weapon getWeapon1() {
+		return this.weapon1;
+	}
+	
+	public Weapon getWeapon2() {
+		return this.weapon2;
+	}	
+	
+	public Weapon getWeapon3() {
+		return this.weapon3;
+	}
+	
+	public Weapon getWeapon4() {
+		return this.weapon4;
+	}
+	
+	public Armor getArmor1() {
+		return this.armor1;
+	}
+	
+	public Potion getHpPotion() {
+		return this.HpPotion;
+	}
+	
+	public Potion getMpPotion() {
+		return this.MpPotion;
+	}
 	
 	public static void detatchArmor(Me me, Armor armor) {
 		me.setMaxHp(me.getMaxHp()-armor.getHp());
@@ -123,7 +128,7 @@ public class Inventory implements Serializable {
 		me.setAtk(me.getAtk()-weapon.getAtk());
 	}
 	
-	public static void applyAromor(Me me, Armor armor) {
+	public static void applyArmor(Me me, Armor armor) {
 		if(armor.getIs_bought() == false) { return;}
 		me.setMaxHp(me.getMaxHp()+armor.getHp());
 		me.setDef(me.getDef()+armor.getDef());

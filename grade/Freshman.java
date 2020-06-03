@@ -92,10 +92,17 @@ public class Freshman {
 
 		}
 			Scanner sc = new Scanner(System.in);
-			System.out.println("던전 선택\n1." + Major_require.getName());
-			System.out.println("2." + Education_require.getName());
-			System.out.println("3." + Major_select.getName());
-			System.out.println("4." + Education_select.getName());
+			if(me.get_clear_major_require()==false)System.out.println("던전 선택\n1." + Major_require.getName());
+			else System.out.println("던전 선택\n1." + Major_require.getName()+"(Clear!)");
+			
+			if(me.get_clear_education_require()==false)System.out.println("2." + Education_require.getName());
+			else System.out.println("2." + Education_require.getName()+"(Clear!)");
+			
+			if(me.get_clear_major_select()==false) System.out.println("3." + Major_select.getName());
+			else System.out.println("3." + Major_select.getName()+"(Clear!)");
+			
+			if(me.get_clear_education_select()==false)System.out.println("4." + Education_select.getName());
+			else System.out.println("4." + Education_select.getName()+"(Clear!)");
 			System.out.println("5. 뒤로가기");
 			int select = sc.nextInt();
 
