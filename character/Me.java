@@ -23,6 +23,8 @@ public class Me extends Character {
 		super.setGold(500);
 		super.setCri(1);
 		super.setHp(100);
+		super.setMaxHp(100);
+		super.setMaxMp(100);
 		super.setMp(100); 
 		this.clear_major_require = false;
 		this.clear_major_select = false;
@@ -32,14 +34,16 @@ public class Me extends Character {
 	}
 	
 	
-	public Me(String name, int attack, int defense, int gold, int critical, int hp, int mp) {
+	public Me(String name, int attack, int defense, int gold, int critical, int hp, int mp,int maxhp,int maxmp) {
 		super.setName(name);
 		super.setAtk(attack);
 		super.setDef(defense);
 		super.setGold(gold);
 		super.setCri(critical);
 		super.setHp(hp);
-		super.setMp(mp); 
+		super.setMp(mp);
+		super.setMaxHp(maxhp);
+		super.setMaxMp(maxmp);
 		this.Mp = mp;
 		this.clear_major_require = false;
 		this.clear_major_select = false;
@@ -50,7 +54,7 @@ public class Me extends Character {
 	public static String enterName(Me me) {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("당신의 이름을 적어주세요. ");
+		System.out.print("닉네임 설정 : ");
 		String name = sc.nextLine();
 		
 		return name;
@@ -77,7 +81,7 @@ public class Me extends Character {
 			monsters.setHp( monsters.getHp()-(damage*2));
 		}else monsters.setHp( monsters.getHp()-damage);
 		 me.setMp(me.getMp()-mp);
-		 if(monsters.getHp()<0) me.setGold(me.getGold()+gold);
+		// if(monsters.getHp()<0) me.setGold(me.getGold()+gold);
 	}
 	
 	public void setGrade(int grade) {
