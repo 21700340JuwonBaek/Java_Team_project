@@ -92,6 +92,7 @@ public class Education_select extends Dungeon {
 			int remember_mana = mySkill[select_skill].getMana();
 			if (mySkill[select_skill].getRange() > monsters.length) {
 				for (i = 0; i < monsters.length; i++) {
+					if(mySkill[select_skill].getMana()> me.getMp()) break;
 					Me.Attack(mySkill[select_skill], monsters[i], me);
 					mySkill[select_skill].setMana(0);
 				}
@@ -122,7 +123,10 @@ public class Education_select extends Dungeon {
 				System.out.println("Dungeon Clear!");
 				System.out.println();
 				String clearMsg = "과목을 클리어 했습니다!";
-
+				
+				for(int k = 0; k<monsters.length;k++) {
+					me.setGold(me.getGold()+monsters[k].getGold());
+				}
 				/////////////////////////////////////////////////////
 				System.out.println("골드를 획득했습니다! +" + getMoney);
 				//////////////////////////////////////////////////////

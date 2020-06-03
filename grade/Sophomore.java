@@ -14,6 +14,9 @@ public class Sophomore extends Freshman {
 		MR2[0] = new Monster("이진탐색", 4, 1, 5, 1, 40);
 		MR2[1] = new Monster("중간고사", 6, 1, 5, 1, 60);
 		MR2[2] = new Monster("기말고사", 6, 1, 5, 1, 60);
+		for(int i = 0; i < MR2.length; i++) {
+			MR2[i].setMaxHp(MR2[i].getHp());
+		}
 	}
 
 	public final static Monster[] ER2 = new Monster[3];
@@ -22,6 +25,9 @@ public class Sophomore extends Freshman {
 		ER2[0] = new Monster("Essay", 3, 1, 5, 1, 40);
 		ER2[1] = new Monster("Midterm exam", 5, 1, 5, 1, 50);
 		ER2[2] = new Monster("Final exam", 5, 1, 5, 1, 50);
+		for(int i = 0; i < MR2.length; i++) {
+			ER2[i].setMaxHp(ER2[i].getHp());
+		}
 	}
 
 	public final static Monster[] MS2 = new Monster[3];
@@ -30,6 +36,9 @@ public class Sophomore extends Freshman {
 		MS2[0] = new Monster("LMS 강의", 5, 1, 5, 1, 40);
 		MS2[1] = new Monster("Lab problems", 7, 1, 5, 1, 60);
 		MS2[2] = new Monster("Team project", 7, 1, 5, 1, 60);
+		for(int i = 0; i < MR2.length; i++) {
+			MS2[i].setMaxHp(MS2[i].getHp());
+		}
 	}
 
 	public final static Monster[] ES2 = new Monster[3];
@@ -38,6 +47,9 @@ public class Sophomore extends Freshman {
 		ES2[0] = new Monster("LMS 강의", 4, 1, 5, 1, 40);
 		ES2[1] = new Monster("중간고사", 6, 1, 5, 1, 50);
 		ES2[2] = new Monster("기말고사", 6, 1, 5, 1, 50);
+		for(int i = 0; i < MR2.length; i++) {
+			ES2[i].setMaxHp(ES2[i].getHp());
+		}
 	}
 
 	public Sophomore(String major1, String major2, String education1, String eucation2) {
@@ -46,7 +58,13 @@ public class Sophomore extends Freshman {
 	}
 
 	public static void GoToDungeon(Me me, Inventory invent) {
+		for(int i = 0; i < MR2.length;i++) {			
+			MR2[i].setHp(MR2[i].getMaxHp());
+			ER2[i].setHp(ER2[i].getMaxHp());
+			MS2[i].setHp(MS2[i].getMaxHp());
+			ES2[i].setHp(ES2[i].getMaxHp());
 
+		}
 		while (true) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Please Select the Dungeon\n\n1." + Major_require.getName());
@@ -57,14 +75,29 @@ public class Sophomore extends Freshman {
 			int select = sc.nextInt();
 
 			if (select == 1) {
+				if(me.get_clear_major_require()== true) return;
 				Major_require.fight(me, skill, MR2, invent);
-			} else if (select == 2) {
+				me.setHp(me.getMaxHp());
+				me.setMp(me.getMaxMp());
+			}
+			else if (select == 2) {
+				if(me.get_clear_education_require()== true) return;
 				Education_require.fight(me, skill, ER2, invent);
-			} else if (select == 3) {
+				me.setHp(me.getMaxHp());
+				me.setMp(me.getMaxMp());
+			}
+			else if (select == 3) {
+				if(me.get_clear_major_select()== true) return;
 				Major_select.fight(me, skill, MS2, invent);
-			} else if (select == 4) {
+				me.setHp(me.getMaxHp());
+				me.setMp(me.getMaxMp());
+			}
+			else if (select == 4) {
+				if(me.get_clear_education_select()== true) return;
 				Education_select.fight(me, skill, ES2, invent);
-			} else if (select == 5) {
+				me.setHp(me.getMaxHp());
+				me.setMp(me.getMaxMp());
+			}else if (select == 5) {
 				break;
 			}
 		}

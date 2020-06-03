@@ -81,7 +81,7 @@ public class Me extends Character {
 			monsters.setHp( monsters.getHp()-(damage*2));
 		}else monsters.setHp( monsters.getHp()-damage);
 		 me.setMp(me.getMp()-mp);
-		 if(monsters.getHp()<0) me.setGold(me.getGold()+gold);
+		// if(monsters.getHp()<0) me.setGold(me.getGold()+gold);
 	}
 	
 	public void setGrade(int grade) {
