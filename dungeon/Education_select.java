@@ -6,6 +6,7 @@ import character.Monster;
 import inventory.Inventory;
 import skill.Skill;
 import windowbuilder.HandongDungeons;
+import windowbuilder.Info;
 
 public class Education_select extends Dungeon {
 
@@ -107,10 +108,8 @@ public class Education_select extends Dungeon {
 				System.out.println();
 				String clearMsg = "과목을 클리어 했습니다!";
 				HandongDungeons.showMessage(clearMsg);
-				dungeon.stopBGM();
-				dungeon.frame.setVisible(false);
 				me.set_clear_education_require(true);
-				return;
+				break;
 			}
 
 			// Be attacked by monsters
@@ -125,5 +124,9 @@ public class Education_select extends Dungeon {
 			monsterAtkMsg += "</html>";
 			HandongDungeons.showMessage(monsterAtkMsg);
 		}
+		
+		dungeon.stopBGM();
+		dungeon.frame.setVisible(false);
+		Info.updateInfo();
 	}
 }
