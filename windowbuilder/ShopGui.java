@@ -32,9 +32,12 @@ import java.awt.Color;
 public class ShopGui extends JFrame {
 
 	private JPanel contentPane;
-	public static JPanel panel_1,panel_2,panel_3,panel_4;
+	public static JPanel panel,panel_1,panel_2,panel_3,panel_4;
 	ImageIcon icon,icon2;
+	ImageIcon [] icons = new ImageIcon[5];
 	int check;
+	String inform;
+	JLabel lblNewLabel_8;
 
 	/**
 	 * Launch the application.
@@ -62,20 +65,35 @@ public class ShopGui extends JFrame {
 		
 		BufferedImage hpPotion = null;
 		BufferedImage mpPotion = null;
+		BufferedImage [] items = new BufferedImage[5];
 		try {
 			hpPotion = ImageIO.read(this.getClass().getResource("/res/img/HPpotion.png"));
 			mpPotion = ImageIO.read(this.getClass().getResource("/res/img/mpPotion.png"));
+			items[0] = ImageIO.read(this.getClass().getResource("/res/img/ipad.png"));
+			items[1] = ImageIO.read(this.getClass().getResource("/res/img/MacBook.png"));
+			items[2] = ImageIO.read(this.getClass().getResource("/res/img/Note.png"));
+			items[3] = ImageIO.read(this.getClass().getResource("/res/img/TA.png"));
+			items[4] = ImageIO.read(this.getClass().getResource("/res/img/Hood.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			System.out.println("error! Didn't get picture!");
 		}
+		//HP MP Potions
 		Image imgHP = hpPotion.getScaledInstance(88, 78, Image.SCALE_SMOOTH);
 		Image imgMP = mpPotion.getScaledInstance(88, 78, Image.SCALE_SMOOTH);
 		icon = new ImageIcon(imgHP);
 		icon2 = new ImageIcon(imgMP);
+		
+		//Weapon, armors
+		Image [] imgs = new Image[5];
+		for(int i=0;i<5;i++) {
+			imgs[i] = items[i].getScaledInstance(88, 78, Image.SCALE_SMOOTH);
+			icons[i] = new ImageIcon(imgs[i]);
+		}
+		 
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(222, 151, 223, 122);
 		contentPane.add(panel);
@@ -85,34 +103,29 @@ public class ShopGui extends JFrame {
 		lblNewLabel.setBounds(74, 6, 79, 16);
 		panel.add(lblNewLabel);
 		
+		lblNewLabel_8 = new JLabel("");
+		lblNewLabel_8.setBounds(6, 34, 211, 82);
+		panel.add(lblNewLabel_8);
+		
 		panel_3 = new JPanel();
 		panel_3.setForeground(Color.WHITE);
 		panel_3.setBackground(Color.WHITE);
 		panel_3.setBounds(10, 146, 207, 127);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
-		//when enter 구매
-		JButton btnNewButton_3 = new JButton("구매하기");
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				
-			}
-		});
-		btnNewButton_3.setBounds(24, 38, 117, 29);
-		panel_3.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("나가기");
 		btnNewButton_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				showMessage("");
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);
 			}
 		});
-		btnNewButton_4.setBounds(24, 73, 117, 29);
+		btnNewButton_4.setBounds(41, 67, 117, 29);
 		panel_3.add(btnNewButton_4);
 		
 		panel_4 = new JPanel();
@@ -157,7 +170,7 @@ public class ShopGui extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton button_1 = new JButton("New button");
+		JButton button_1 = new JButton(icons[0]);
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -167,7 +180,7 @@ public class ShopGui extends JFrame {
 		button_1.setBounds(18, 6, 76, 72);
 		panel_1.add(button_1);
 		
-		JButton button_2 = new JButton("New button");
+		JButton button_2 = new JButton(icons[4]);
 		button_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -177,7 +190,7 @@ public class ShopGui extends JFrame {
 		button_2.setBounds(106, 6, 76, 72);
 		panel_1.add(button_2);
 		
-		JButton button_3 = new JButton("New button");
+		JButton button_3 = new JButton(icons[1]);
 		button_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -187,7 +200,7 @@ public class ShopGui extends JFrame {
 		button_3.setBounds(194, 6, 76, 72);
 		panel_1.add(button_3);
 		
-		JButton button_4 = new JButton("New button");
+		JButton button_4 = new JButton(icons[2]);
 		button_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -197,7 +210,7 @@ public class ShopGui extends JFrame {
 		button_4.setBounds(282, 6, 76, 72);
 		panel_1.add(button_4);
 		
-		JButton button_5 = new JButton("New button");
+		JButton button_5 = new JButton(icons[3]);
 		button_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -286,49 +299,57 @@ public class ShopGui extends JFrame {
 		return 0;
 	}
 	public int buyHpPotion(Me me, Potion hp) {
-		System.out.println("HP 포션을 구매하였습니다! 10골드 차감.");
+		inform = "HP 포션을 구매하였습니다! 10골드 차감.";
+		//System.out.println(inform);
+		showMessage(inform);
 		me.setGold(me.getGold()-10);
 		check = goldCheck(me,10);
 		if(check != 1) hp.setNumber(hp.getNumber()+1);
 		return 1;
 	}
 	public int buyMpPotion(Me me,Potion mp) {
-		System.out.println("MP 포션을 구매하였습니다! 10골드 차감.");
+		inform = "MP 포션을 구매하였습니다! 10골드 차감.";
+		showMessage(inform);
 		me.setGold(me.getGold()-10);
 		check = goldCheck(me,10);
 		if(check != 1) mp.setNumber(mp.getNumber()+1);
 		return 1;
 	}
 	public int buyIpad(Me me,Weapon Ipad) {
-		System.out.println("아이패드를 구매하였습니다. 공격력 +5 ");
+		inform ="아이패드를 구매하였습니다. 공격력 +5 ";
+		showMessage(inform);
 		me.setGold(me.getGold()-20);
 		check =goldCheck(me,20);
 		if(check != 1) Ipad.setIs_bought(true);
 		return 1;
 	}
 	public int buyHood(Me me,Armor Hood) {
-		System.out.println("새내기 후드티를 구매하였습니다. 방어력 +5 ");
+		inform = "새내기 후드티를 구매하였습니다. 방어력 +5 ";
+		showMessage(inform);
 		me.setGold(me.getGold()-20);
 		check = goldCheck(me,20);
 		if(check != 1) Hood.setIs_bought(true);
 		return 1;
 	}
 	public int buyMacbook(Me me,Weapon Macbook) {
-		System.out.println("맥북을 구매하였습니다. 공격력 +7 ");
+		inform = "맥북을 구매하였습니다. 공격력 +7 ";
+		showMessage(inform);
 		me.setGold(me.getGold()-30);
 		check = goldCheck(me,30);
 		if(check != 1) Macbook.setIs_bought(true);
 		return 1;
 	}
 	public int buyNote(Me me,Weapon Note) {
-		System.out.println("선배의 필기노트를 구매하였습니다. 공격력 +10 ");
+		inform = "선배의 필기노트를 구매하였습니다. 공격력 +10 ";
+		showMessage(inform);
 		me.setGold(me.getGold()-50);
 		check = goldCheck(me,50);
 		if(check != 1) Note.setIs_bought(true);
 		return 1;
 	}
 	public int buyTA(Me me,Weapon TA) {
-		System.out.println("TA 세션을 들었습니다. 공격력 +12 ");
+		inform = "TA 세션을 들었습니다. 공격력 +12 ";
+		showMessage(inform);
 		me.setGold(me.getGold()-60);
 		check = goldCheck(me,60);
 		if(check != 1) TA.setIs_bought(true);
@@ -343,5 +364,9 @@ public class ShopGui extends JFrame {
 		}
 		return 0;
 		
+	}
+	public void showMessage(String mes) {
+		lblNewLabel_8.setText(mes);
+		inform = null;
 	}
 }
