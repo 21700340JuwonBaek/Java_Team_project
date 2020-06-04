@@ -22,13 +22,14 @@ import java.awt.event.MouseEvent;
 public class selectDungeon extends JFrame {
 
 	private JPanel contentPane;
+	selectDungeon frame;
 
 	/**
 	 * Launch the application.
 	 */
 			public void run(Me me,Inventory invent) {
 				try {
-					selectDungeon frame = new selectDungeon(me,invent);
+					frame = new selectDungeon(me,invent);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,8 +41,8 @@ public class selectDungeon extends JFrame {
 	 */
 	public selectDungeon(Me me,Inventory invent) {
 		
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 200, 200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(180, 180, 200, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -55,32 +56,32 @@ public class selectDungeon extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Thread() {
-					@Override
+				int grade = me.getGrade();
+				new Thread(){
 					public void run() {
-						int grade = me.getGrade();
-						switch(grade) {
-							case 1: 
-								new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
-								Freshman.Education_r(me, invent);
-								break;
-							case 2:
-								new Sophomore("Data Structure","Java","ERC","Statistic");
-								Sophomore.Education_r(me, invent);
-								break;
-							case 3:
-								new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
-								Junior.Education_r(me, invent);
-								break;
-							case 4:
-								 new Senior("Graduation","Graduation","Graduation","Graduation");
-								 Senior.Education_r(me, invent);
-								 break;
-							default:
-								break;
-						}
-					}
-				}.start();
+				switch(grade) {
+					case 1: 
+						new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+						Freshman.Education_r(me, invent);
+						break;
+					case 2:
+						new Sophomore("Data Structure","Java","ERC","Statistic");
+						Sophomore.Education_r(me, invent);
+						break;
+					case 3:
+						new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
+						Junior.Education_r(me, invent);
+						break;
+					case 4:
+						 new Senior("Graduation","Graduation","Graduation","Graduation");
+						 Senior.Education_r(me, invent);
+						 break;
+					default:
+						break;
+				}
+				frame.setVisible(false);
+			}
+			}.start();
 			}
 		});
 		btnNewButton.setBounds(20, 41, 151, 29);
@@ -90,13 +91,12 @@ public class selectDungeon extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				int grade = me.getGrade();
 				new Thread() {
-					@Override
-					public void run() {
-						int grade = me.getGrade();
+					 public void run() {
 						switch(grade) {
 							case 1: 
-								new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+								Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
 								Freshman.Major_r(me, invent);
 								break;
 							case 2:
@@ -114,6 +114,7 @@ public class selectDungeon extends JFrame {
 							default:
 								break;
 						}
+						frame.setVisible(false);
 					}
 				}.start();
 			}
@@ -125,31 +126,31 @@ public class selectDungeon extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				int grade = me.getGrade();
 				new Thread() {
-					@Override
-					public void run() {
-						int grade = me.getGrade();
-						switch(grade) {
-							case 1: 
-								new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
-								Freshman.Education_s(me, invent);
-								break;
-							case 2:
-								new Sophomore("Data Structure","Java","ERC","Statistic");
-								Sophomore.Education_s(me, invent);
-								break;
-							case 3:
-								new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
-								Junior.Education_s(me, invent);
-								break;
-							case 4:
-								 new Senior("Graduation","Graduation","Graduation","Graduation");
-								 Senior.Education_s(me, invent);
-								 break;
-							default:
-								break;
-						}
-					}
+					 public void run() {
+							switch(grade) {
+								case 1: 
+									new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+									Freshman.Education_s(me, invent);
+									break;
+								case 2:
+									new Sophomore("Data Structure","Java","ERC","Statistic");
+									Sophomore.Education_s(me, invent);
+									break;
+								case 3:
+									new Junior("OS","Gong Pu Gi","EAP","linear Algebra");
+									Junior.Education_s(me, invent);
+									break;
+								case 4:
+									 new Senior("Graduation","Graduation","Graduation","Graduation");
+									 Senior.Education_s(me, invent);
+									 break;
+								default:
+									break;
+							}
+							frame.setVisible(false);
+					 }
 				}.start();
 			}
 		});
@@ -160,10 +161,9 @@ public class selectDungeon extends JFrame {
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				int grade = me.getGrade();
 				new Thread() {
-					@Override
-					public void run() {
-						int grade = me.getGrade();
+					 public void run() {
 						switch(grade) {
 							case 1: 
 								new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
@@ -183,8 +183,9 @@ public class selectDungeon extends JFrame {
 								 break;
 							default:
 								break;
-						}
-					}
+							}
+						frame.setVisible(false);
+					 }
 				}.start();
 			}
 		});

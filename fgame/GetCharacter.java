@@ -13,13 +13,13 @@ import javax.swing.JTextField;
 import character.Me;
 
 public class GetCharacter implements ActionListener {
-	JFrame f1;
+	 public static JFrame f1;
 	JPanel p1;
 	public static Me me;
 	JLabel j1;
 	JTextField t1;
 	JButton b1;
-	String name;
+	 public static String name;
 
 	public GetCharacter(){
 		
@@ -54,10 +54,9 @@ public class GetCharacter implements ActionListener {
 		// TODO Auto-generated method stub
 		if(e.getActionCommand() == "Enter") {
 			name = t1.getText();
-			me = new Me(name);
-			new Handong1();
-			HandongStart.f1.setVisible(false);
-			f1.setVisible(false);
+			//new Handong1();
+			//HandongStart.f1.setVisible(false);
+			//f1.setVisible(false);
 		}
 	}
 }

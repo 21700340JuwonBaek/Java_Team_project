@@ -134,8 +134,9 @@ public class Freshman {
 			}
 	}
 	
-	public static void Major_r(Me me,Inventory invent) {
-		Major_require.fight(me, skill, MR, invent);
+	public static void Education_s(Me me,Inventory invent) {
+		Education_select.fight(me, skill, ES, invent);
+
 		me.setHp(me.getMaxHp());
 		me.setMp(me.getMaxMp());
 	}

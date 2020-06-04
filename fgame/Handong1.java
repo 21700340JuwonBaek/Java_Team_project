@@ -97,7 +97,7 @@ public class Handong1 implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getActionCommand() == "Having class") {
-			new Select();
+			//new Select();
 		}
 		if(e.getActionCommand() == "Inventory") {
 			

@@ -81,19 +81,19 @@ public class HandongDungeons implements ActionListener {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HandongDungeons window = new HandongDungeons(inv);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		//Major_require.fight(GetCharacter.me, Freshman.skill, Freshman.MR, inv);
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					HandongDungeons window = new HandongDungeons(inv);
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//		//Major_require.fight(GetCharacter.me, Freshman.skill, Freshman.MR, inv);
+//	}
 
 	/**
 	 * Create the application.
@@ -346,6 +346,8 @@ public class HandongDungeons implements ActionListener {
 	}	
 	
 	public static void showMonsters(Monster[] list) {
+		
+		//System.out.println("Show monsters");
 		// visible은 디자인에서 건드리면 안 됩니다
 		monster1L.setVisible(false);
 		monster1NameL.setVisible(false);

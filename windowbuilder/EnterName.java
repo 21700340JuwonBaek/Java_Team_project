@@ -31,7 +31,7 @@ public class EnterName extends JFrame {
 		setBackground(new Color(255, 255, 255));
 		setTitle("Name");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 250, 200);
+		setBounds(180, 180, 250, 200);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

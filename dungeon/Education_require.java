@@ -37,6 +37,7 @@ public class Education_require extends Dungeon {
 		monsterMsg += "</html>";
 		HandongDungeons.showMonsters(monsters);
 		dungeon.showMonsterImage(monsters, me.getGrade());
+		System.out.println(me.getGrade());
 		HandongDungeons.updateMonsters(monsters);
 		HandongDungeons.updateMe(me);
 		HandongDungeons.showMessage(monsterMsg);
