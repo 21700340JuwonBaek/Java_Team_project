@@ -118,16 +118,24 @@ public class Senior extends Junior {
 		
 	}
 public static void Major_r(Me me,Inventory invent) {
-	Major_require.fight(me, skill, MR, invent);
+	Major_require.fight(me, skill, MR4, invent);
+	me.setHp(me.getMaxHp());
+	me.setMp(me.getMaxMp());
 }
 public static void Education_r(Me me,Inventory invent) {
-	Education_require.fight(me, skill, ER, invent);
+	Education_require.fight(me, skill, ER4, invent);
+	me.setHp(me.getMaxHp());
+	me.setMp(me.getMaxMp());
 }
 public static void Major_s(Me me,Inventory invent) {
-	Major_select.fight(me, skill, MS, invent);
+	Major_select.fight(me, skill, MS4, invent);
+	me.setHp(me.getMaxHp());
+	me.setMp(me.getMaxMp());
 }
 public static void Education_s(Me me,Inventory invent) {
-	Education_select.fight(me, skill, ES, invent);
+	Education_select.fight(me, skill, ES4, invent);
+	me.setHp(me.getMaxHp());
+	me.setMp(me.getMaxMp());
 }
 
 	
