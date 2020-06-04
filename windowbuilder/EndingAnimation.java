@@ -27,7 +27,7 @@ public class EndingAnimation {
 		"scr1.png",
 		"scr2.png",
 		"scr3.png",
-		"src4.png"
+		"scr4.png"
 	};
 	private Timer tm;
 	private int i = 0;
