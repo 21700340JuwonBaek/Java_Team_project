@@ -2,9 +2,14 @@ package windowbuilder;
 
 import java.awt.CardLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +22,7 @@ public class StartGame extends JFrame {
 	private JPanel contentPane;
 	private static StartGame frame;
 	//private final Action action = new SwingAction();
+	ImageIcon back;
 
 	/**
 	 * Launch the application.
@@ -45,6 +51,17 @@ public class StartGame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		
+		
+		BufferedImage backGround = null;
+		try {
+			backGround = ImageIO.read(this.getClass().getResource("/res/img/logo.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Image img = backGround.getScaledInstance(88, 78, Image.SCALE_SMOOTH);
+		back = new ImageIcon(img);
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, "name_86213402417667");

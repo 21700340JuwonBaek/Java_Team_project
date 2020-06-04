@@ -20,12 +20,13 @@ public class HandongStart implements ActionListener {
 			JPanel p1;
 			static int c_size = 320;
 			static int l_size = 620;
-			ImageIcon icon;
-			JScrollPane scrollPane;
+			static ImageIcon icon;
+			static JScrollPane scrollPane;
+			public static int select = 0;
+			static JButton b1;
+			static JButton b2;
 		
 		public HandongStart(){
-			
-			//System.out.print(What is this?");
 			icon = new ImageIcon("/Users/ryumi/Desktop/back.png");
 			f1 = new JFrame();
 			@SuppressWarnings("serial")
@@ -63,17 +64,21 @@ public class HandongStart implements ActionListener {
 		    f1.setContentPane(scrollPane);
 			//f1.add(p1);
 			f1.setVisible(true);
+			
 		}
-
+		
+		
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getActionCommand() == "New start") {
-				new GetCharacter();
+				//new GetCharacter();
+				select = 1;
 			}
 			if(e.getActionCommand() == "Resume") {
 				//불러오기 파
+				select = 2;
 			}
 			if(e.getActionCommand() == "End") {
 				System.exit(0);

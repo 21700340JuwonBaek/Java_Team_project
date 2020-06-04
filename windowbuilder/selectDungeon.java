@@ -42,7 +42,7 @@ public class selectDungeon extends JFrame {
 	public selectDungeon(Me me,Inventory invent) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 200, 200);
+		setBounds(180, 180, 200, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

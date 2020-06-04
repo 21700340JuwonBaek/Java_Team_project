@@ -36,7 +36,7 @@ public class ShopGui extends JFrame {
 	ImageIcon icon,icon2;
 	ImageIcon [] icons = new ImageIcon[5];
 	int check;
-	String inform;
+	String inform = "<html>";
 	JLabel lblNewLabel_8;
 
 	/**
@@ -299,60 +299,59 @@ public class ShopGui extends JFrame {
 		return 0;
 	}
 	public int buyHpPotion(Me me, Potion hp) {
-		inform = "HP 포션을 구매하였습니다! 10골드 차감.";
+		inform += "HP 포션을 구매하였습니다!<br/>10골드 차감.<br/>Gold : "+me.getGold();
 		//System.out.println(inform);
-		showMessage(inform);
 		me.setGold(me.getGold()-10);
 		check = goldCheck(me,10);
-		if(check != 1) hp.setNumber(hp.getNumber()+1);
+		if(check != 1) { hp.setNumber(hp.getNumber()+1); showMessage(inform);}
 		return 1;
 	}
 	public int buyMpPotion(Me me,Potion mp) {
-		inform = "MP 포션을 구매하였습니다! 10골드 차감.";
-		showMessage(inform);
+		inform += "MP 포션을 구매하였습니다!<br/>10골드 차감.<br/>Gold : "+me.getGold();
+		//showMessage(inform);
 		me.setGold(me.getGold()-10);
 		check = goldCheck(me,10);
-		if(check != 1) mp.setNumber(mp.getNumber()+1);
+		if(check != 1) {mp.setNumber(mp.getNumber()+1); showMessage(inform);}
 		return 1;
 	}
 	public int buyIpad(Me me,Weapon Ipad) {
-		inform ="아이패드를 구매하였습니다. 공격력 +5 ";
-		showMessage(inform);
+		inform +="아이패드를 구매하였습니다.<br/>공격력 +5.<br/>Gold : "+me.getGold();
+		//showMessage(inform);
 		me.setGold(me.getGold()-20);
 		check =goldCheck(me,20);
-		if(check != 1) Ipad.setIs_bought(true);
+		if(check != 1) {Ipad.setIs_bought(true); showMessage(inform);}
 		return 1;
 	}
 	public int buyHood(Me me,Armor Hood) {
-		inform = "새내기 후드티를 구매하였습니다. 방어력 +5 ";
-		showMessage(inform);
+		inform += "새내기 후드티를 구매하였습니다.<br/>방어력 +5.<br/>Gold : "+me.getGold();
+		//showMessage(inform);
 		me.setGold(me.getGold()-20);
 		check = goldCheck(me,20);
-		if(check != 1) Hood.setIs_bought(true);
+		if(check != 1) {Hood.setIs_bought(true); showMessage(inform);}
 		return 1;
 	}
 	public int buyMacbook(Me me,Weapon Macbook) {
-		inform = "맥북을 구매하였습니다. 공격력 +7 ";
-		showMessage(inform);
+		inform += "맥북을 구매하였습니다.<br/>공격력 +7.<br/>Gold : "+me.getGold();
+		//showMessage(inform);
 		me.setGold(me.getGold()-30);
 		check = goldCheck(me,30);
-		if(check != 1) Macbook.setIs_bought(true);
+		if(check != 1) {Macbook.setIs_bought(true); showMessage(inform);}
 		return 1;
 	}
 	public int buyNote(Me me,Weapon Note) {
-		inform = "선배의 필기노트를 구매하였습니다. 공격력 +10 ";
-		showMessage(inform);
+		inform += "선배의 필기노트를 구매하였습니다.<br/>공격력 +10.<br/>Gold : "+me.getGold();
+		//showMessage(inform);
 		me.setGold(me.getGold()-50);
 		check = goldCheck(me,50);
-		if(check != 1) Note.setIs_bought(true);
+		if(check != 1) {Note.setIs_bought(true); showMessage(inform);}
 		return 1;
 	}
 	public int buyTA(Me me,Weapon TA) {
-		inform = "TA 세션을 들었습니다. 공격력 +12 ";
-		showMessage(inform);
+		inform += "TA 세션을 들었습니다.<br/>공격력 +12.<br/>Gold : "+me.getGold();
+		//showMessage(inform);
 		me.setGold(me.getGold()-60);
 		check = goldCheck(me,60);
-		if(check != 1) TA.setIs_bought(true);
+		if(check != 1) {TA.setIs_bought(true); showMessage(inform);}
 		return 1;
 	}
 	
@@ -367,6 +366,6 @@ public class ShopGui extends JFrame {
 	}
 	public void showMessage(String mes) {
 		lblNewLabel_8.setText(mes);
-		inform = null;
+		inform = "<html>";
 	}
 }
