@@ -12,6 +12,7 @@ import fgame.GetCharacter;
 import grade.Freshman;
 import inventory.Inventory;
 import skill.Skill;
+import selectDungeon;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -107,6 +108,8 @@ public class HandongDungeons implements ActionListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		selectDungeon.quitFrame();
 		frame = new JFrame();
 		frame.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e){

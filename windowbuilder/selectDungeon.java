@@ -192,5 +192,7 @@ public class selectDungeon extends JFrame {
 		btnNewButton_3.setBounds(20, 132, 151, 29);
 		contentPane.add(btnNewButton_3);
 	}
-
+	public static void quitFrame() {
+		frame.setVisible(false);
+	}
 }
