@@ -24,10 +24,10 @@ public class EndingAnimation {
 
 	private JFrame frame;
 	private String[] scrArr = {
-		"img/scr1.png",
-		"img/scr2.png",
-		"img/scr3.png",
-		"img/src4.png"
+		"scr1.png",
+		"scr2.png",
+		"scr3.png",
+		"src4.png"
 	};
 	private Timer tm;
 	private int i = 0;
@@ -35,23 +35,6 @@ public class EndingAnimation {
 	// BGM
 	Clip clip;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EndingAnimation window = new EndingAnimation();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
 	/**
 	 * Create the application.
 	 */
