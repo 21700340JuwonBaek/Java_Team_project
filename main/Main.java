@@ -11,6 +11,7 @@ import inventory.Inventory;
 import shop.shop;
 import windowbuilder.EnterName;
 import windowbuilder.Info;
+import windowbuilder.ShopGui;
 import windowbuilder.StartGame;
 import windowbuilder.selectDungeon;
 import item.*;
@@ -224,7 +225,7 @@ public class Main {
 		invent.getInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
   }
   public static void selShop(Me me,Inventory invent) {
-	  shop.buy(me, hp, mp, Ipad, Macbook, Note, TA, Hood);
+	  ShopGui.run(me,invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
   }
   public static void clearCondition(Me me, Inventory invent) {
 	  if (me.get_clear_education_require() == true && me.get_clear_education_select() == true
@@ -246,9 +247,10 @@ public class Main {
 			me.set_clear_major_require(false);
 			me.set_clear_major_select(false);
 			System.out.println(me.getGrade()+"학년으로 올라갑니다!(Level up)");
+		
 		}
   }
-   public void getStart(Me me,Inventory invent) {
+   public static void getStart(Me me,Inventory invent) {
 	   		String str;
 		     // while(true) {
 		    	str = "<html>";

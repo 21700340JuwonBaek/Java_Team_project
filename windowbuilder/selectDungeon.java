@@ -56,9 +56,11 @@ public class selectDungeon extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int grade = me.getGrade();
+				new Thread(){
+					public void run() {
 				switch(grade) {
 					case 1: 
-						Freshman first = new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
+						new Freshman("Introductory Engineering","Python","Handong Insung GyeoYook","Introductory Physics");
 						Freshman.Education_r(me, invent);
 						break;
 					case 2:
@@ -76,6 +78,8 @@ public class selectDungeon extends JFrame {
 					default:
 						break;
 				}
+			}
+			}.start();
 			}
 		});
 		btnNewButton.setBounds(20, 41, 151, 29);
