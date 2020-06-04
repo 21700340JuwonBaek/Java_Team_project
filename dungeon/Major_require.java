@@ -1,8 +1,6 @@
 package dungeon;
 
-
 import java.util.Scanner;
-
 import character.*;
 import skill.Skill;
 import inventory.Inventory;
@@ -11,6 +9,7 @@ import windowbuilder.HandongDungeons;
 import windowbuilder.Info;
 
 public class Major_require extends Dungeon {
+	private static int getMoney = 0;
 
 	public Major_require(String name) {
 		super(name);
@@ -47,7 +46,6 @@ public class Major_require extends Dungeon {
 			System.out.println("[My status]");
 			System.out.println("HP :" + me.getHp());
 			System.out.println("MP :" + me.getMp());
-			System.out.println("돈 " + me.getGold());
 			System.out.println();
 			HandongDungeons.updateMe(me);
 
@@ -62,7 +60,7 @@ public class Major_require extends Dungeon {
 			}
 			HandongDungeons.updateMonsters(monsters);
 
-			// Print skill window
+			// My phase
 			System.out.println();
 			for (i = 0; i < mySkill.length; i++) {
 				if (mySkill[i].getOpen() == false)
@@ -90,10 +88,11 @@ public class Major_require extends Dungeon {
 
 			}
 			int remember_mana = mySkill[select_skill].getMana();
-			System.out.println("Original mana: "+remember_mana);
+			System.out.println("Original mana: " + remember_mana);
 			if (mySkill[select_skill].getRange() > monsters.length) {
 				for (i = 0; i < monsters.length; i++) {
-					if(mySkill[select_skill].getMana()> me.getMp()) break;
+					if (mySkill[select_skill].getMana() > me.getMp())
+						break;
 					Me.Attack(mySkill[select_skill], monsters[i], me);
 					mySkill[select_skill].setMana(0);
 				}
@@ -112,31 +111,7 @@ public class Major_require extends Dungeon {
 			}
 			System.out.println();
 
-			// Clear condition
-			for (; j < monsters.length; j++) {
-				if (monsters[j].getHp() > 0)
-					break;
-			}
-			if (j == monsters.length) {
-
-				System.out.println("Dungeon Clear!");
-				System.out.println();
-				String clearMsg = "과목을 클리어 했습니다!";
-				for(int k = 0; k<monsters.length;k++) {
-					me.setGold(me.getGold()+monsters[k].getGold());
-				}
-				/////////////////////////////////////////////////////
-				System.out.println("골드를 획득했습니다! +");
-				//////////////////////////////////////////////////////
-
-				HandongDungeons.showMessage(clearMsg);
-				dungeon.stopBGM();
-				dungeon.frame.setVisible(false);
-				me.set_clear_major_require(true);
-				return;
-			}
-
-			// Be attacked by monsters
+			// Monster phase
 			String monsterAtkMsg = "<html>";
 			for (i = 0; i < monsters.length; i++) {
 				if (monsters[i].getHp() > 0) {
@@ -147,8 +122,30 @@ public class Major_require extends Dungeon {
 			}
 			monsterAtkMsg += "</html>";
 			HandongDungeons.showMessage(monsterAtkMsg);
+
+			// Clear condition
+			for (; j < monsters.length; j++) {
+				if (monsters[j].getHp() > 0)
+					break;
+			}
+			if (j == monsters.length) {
+
+				System.out.println("Dungeon Clear!");
+				System.out.println();
+				String clearMsg = "과목을 클리어 했습니다!";
+
+				for (int k = 0; k < monsters.length; k++) {
+					getMoney += monsters[k].getGold();
+					me.setGold(me.getGold() + monsters[k].getGold());
+				}
+				System.out.println("골드를 획득했습니다! +" + getMoney + "G");
+				HandongDungeons.showMessage(clearMsg);
+				dungeon.stopBGM();
+				dungeon.frame.setVisible(false);
+				me.set_clear_major_require(true);
+				break;
+			}
 		}
-		
 		dungeon.stopBGM();
 		dungeon.frame.setVisible(false);
 		Info.updateInfo();
