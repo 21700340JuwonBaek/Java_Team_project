@@ -330,17 +330,19 @@ public class HandongDungeons implements ActionListener {
 
 	// 줄바꿈 하려면 html 태그된 스트링 주세요 (<html>....<br/>....</html>)
 	public static void showMessage(String msg) {
-		msgP.setVisible(true);
-		msgPLbl.setText(msg);
-		synchronized(msgPBtn) {
-			try {
-				msgPBtn.wait();
-			} 
-			catch (Exception e) {
-				System.out.println("interrupt");
+		if (!msg.equals("<html></html>")) {
+			msgP.setVisible(true);
+			msgPLbl.setText(msg);
+			synchronized(msgPBtn) {
+				try {
+					msgPBtn.wait();
+				} 
+				catch (Exception e) {
+					System.out.println("interrupt");
+				}
 			}
+			msgP.setVisible(false);
 		}
-		msgP.setVisible(false);
 	}	
 	
 	public static void showMonsters(Monster[] list) {

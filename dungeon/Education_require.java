@@ -2,6 +2,7 @@ package dungeon;
 
 import character.Me;
 import inventory.Inventory;
+import main.Main;
 import character.Monster;
 import skill.Skill;
 import windowbuilder.HandongDungeons;
@@ -134,23 +135,23 @@ public class Education_require extends Dungeon {
 
 				System.out.println("Dungeon Clear!");
 				System.out.println();
-				String clearMsg = "과목을 클리어 했습니다!";
+				String clearMsg = "<html>과목을 클리어 했습니다!<br/>";
 
 				for (int k = 0; k < monsters.length; k++) {
 					getMoney += monsters[k].getGold();
 					me.setGold(me.getGold() + monsters[k].getGold());
 				}
+				clearMsg += "골드를 획득했습니다! +" + getMoney + "G</html>";
 				System.out.println("골드를 획득했습니다! +" + getMoney + "G");
 
 				HandongDungeons.showMessage(clearMsg);
-				dungeon.stopBGM();
-				dungeon.frame.setVisible(false);
 				me.set_clear_education_require(true);
-				return;
+				break;
 			}
 		}
 		dungeon.stopBGM();
 		dungeon.frame.setVisible(false);
+		Main.clearCondition(me, invent);
 		Info.updateInfo();
 	}
 }
