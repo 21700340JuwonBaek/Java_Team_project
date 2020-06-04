@@ -116,7 +116,7 @@ public class Main {
 	
    public Main(String name) {
 	   //Inventory inventory = new Inventory
-	   Me me = new Me(name,10,1,500,1,100,100,100,100);
+	   Me me = new Me(name,1000,1,500,1,100,100,100,100);
 	   setting(me);
    }
    public void setting(Me me) {
@@ -196,6 +196,8 @@ public class Main {
 				str += "MP : "+me.getMp()+"<br/>";
 				//System.out.println(me.get_clear_major_require());
 				str += "Clear Major Require : "+me.get_clear_major_require()+"<br/>";
+
+
 				
 				Info inf = new Info(me,str,invent);
 				inf.run(me,str,invent);

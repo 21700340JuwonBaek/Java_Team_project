@@ -24,10 +24,10 @@ public class EndingAnimation {
 
 	private JFrame frame;
 	private String[] scrArr = {
-		"img/scr1.png",
-		"img/scr2.png",
-		"img/scr3.png",
-		"img/src4.png"
+		"scr1.png",
+		"scr2.png",
+		"scr3.png",
+		"scr4.png"
 	};
 	private Timer tm;
 	private int i = 0;

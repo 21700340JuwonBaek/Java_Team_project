@@ -26,7 +26,7 @@ public class Screenshot {
 	        		new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_ARGB);
 	        cmp.paint(scr.getGraphics());
 
-	        ImageIO.write(scr, "png", new File(System.getProperty("user.dir") + "/" + fileName));
+	        ImageIO.write(scr, "png", new File(fileName));
 	    } catch (Exception ex) {
 	    	JOptionPane.showMessageDialog(null, "스크린샷 오류", "오류", JOptionPane.ERROR_MESSAGE);
 	    }
@@ -34,7 +34,7 @@ public class Screenshot {
 	
 	private static String scrFilenameNumbering(Me me) {
 		int num = 0;
-		String filename = "img/scr" + me.getGrade() + ".png";
+		String filename = "scr" + me.getGrade() + ".png";
 		
 		return filename;
 	}
