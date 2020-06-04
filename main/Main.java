@@ -2,11 +2,15 @@ package main;
 import grade.*;
 import gui.RpgGui;
 import character.*;
+import windowbuilder.EndingAnimation;
 import fgame.GetCharacter;
 import fgame.HandongStart;
 
 import java.io.*;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import inventory.Inventory;
 import shop.shop;
 import windowbuilder.EnterName;
@@ -28,7 +32,7 @@ public class Main {
   Inventory invent = new Inventory(Ipad,Macbook,Note,TA,Hood,hp,mp);
    
 
-	public static void Save(Me me, Inventory inventory, Weapon Ipad, Weapon Macbook, Weapon Note, Weapon TA, Armor Hood) // Save Method.
+  public static void Save(Me me, Inventory inventory, Weapon Ipad, Weapon Macbook, Weapon Note, Weapon TA, Armor Hood) // Save Method.
 	{
 		ObjectOutputStream outputStream = null;
 		String fileName = "My.records";
@@ -62,40 +66,7 @@ public class Main {
 			System.out.println("Error2");
 		}
 		
-		ObjectOutputStream outputStream2 = null;
-		String fileName2 = "Weapon";
-		try {
-			outputStream2 = new ObjectOutputStream(new FileOutputStream(fileName2));
-		} catch (IOException e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		try {
-			outputStream2.writeObject(Ipad);
-			outputStream2.writeObject(Macbook);
-			outputStream2.writeObject(Note);
-			outputStream2.writeObject(TA);
-			outputStream2.close();
-		} catch (IOException e) {
-			System.out.println("Error4");
-		}
 		
-		ObjectOutputStream outputStream3 = null;
-		String fileName3 = "Armor";
-		try {
-			outputStream3 = new ObjectOutputStream(new FileOutputStream(fileName3));
-		} catch (IOException e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		try {
-			outputStream3.writeObject(Hood);
-			outputStream3.close();
-		} catch (IOException e) {
-			System.out.println("Error4");
-		}
 		
 	}
 
@@ -143,49 +114,6 @@ public class Main {
 		return inventory;
 	}
 	
-	public static Weapon LoadWeapon() {
-		ObjectInputStream inputStream = null;
-		Weapon weapon = null;
-		try {
-			inputStream = new ObjectInputStream(new FileInputStream("Weapon"));
-		} catch (IOException e) {
-			System.out.println("No File!!");
-		}
-
-		try {
-			weapon = (Weapon) inputStream.readObject();
-			inputStream.close();
-		}
-
-		catch (Exception e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		return weapon;
-	}
-	
-	public static Armor LoadArmor() {
-		ObjectInputStream inputStream = null;
-		Armor armor = null;
-		try {
-			inputStream = new ObjectInputStream(new FileInputStream("Armor"));
-		} catch (IOException e) {
-			System.out.println("No File!!");
-		}
-
-		try {
-			armor = (Armor) inputStream.readObject();
-			inputStream.close();
-		}
-
-		catch (Exception e) {
-			System.out.println("Error3");
-			System.exit(0);
-		}
-
-		return armor;
-	}
    public Main(String name) {
 	   //Inventory inventory = new Inventory
 	   Me me = new Me(name,10,1,500,1,100,100,100,100);
@@ -215,23 +143,26 @@ public class Main {
    }
    
   public static void selLoad(Me me,Inventory invent) {
-	  	me = Main.LoadMe();
+	  me = Main.LoadMe();
 		invent = Main.LoadInventory();
-		Ipad = Main.LoadWeapon();
-		Macbook = Main.LoadWeapon();
-		Note = Main.LoadWeapon();
-		TA = Main.LoadWeapon();
-		Hood = Main.LoadArmor();
-		invent.getInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
+		Ipad = invent.getWeapon1();
+		Macbook = invent.getWeapon2();
+		Note = invent.getWeapon3();
+		TA = invent.getWeapon4();
+		hp = invent.getHpPotion();
+		mp = invent.getMpPotion();
   }
   public static void selShop(Me me,Inventory invent) {
 	  ShopGui.run(me,invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
+	//shop.buy(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
   }
   public static void clearCondition(Me me, Inventory invent) {
 	  if (me.get_clear_education_require() == true && me.get_clear_education_select() == true
 				&& me.get_clear_major_require() == true && me.get_clear_major_select() == true) {
 		  if(me.getGrade() == 4) {
 			  //졸업
+			  JOptionPane.showMessageDialog(null, "4년 과정을 모두 마치셨습니다. 축하합니다!", "알림", JOptionPane.INFORMATION_MESSAGE);
+			  new EndingAnimation();
 			  return;
 		  }
 			me.setGrade(me.getGrade() + 1);
@@ -246,6 +177,8 @@ public class Main {
 			me.set_clear_education_select(false);
 			me.set_clear_major_require(false);
 			me.set_clear_major_select(false);
+			String nextGradeStr = me.getGrade()+"학년으로 올라갑니다!(Level up)";
+			JOptionPane.showMessageDialog(null, nextGradeStr, "알림", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(me.getGrade()+"학년으로 올라갑니다!(Level up)");
 		
 		}

@@ -115,7 +115,7 @@ public class selectDungeon extends JFrame {
 								break;
 						}
 						frame.setVisible(false);
-					 }
+					}
 				}.start();
 			}
 		});

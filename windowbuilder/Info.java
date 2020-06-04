@@ -17,6 +17,9 @@ import main.Main;
 public class Info extends JFrame {
 
 	private JPanel contentPane;
+	public static JLabel lblNewLabel;
+	private static Me me;
+	private Inventory inv;
 
 	/**
 	 * Launch the application.
@@ -92,8 +95,28 @@ public class Info extends JFrame {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel(str);
+		lblNewLabel = new JLabel(str);
 		lblNewLabel.setBounds(6, 6, 200, 130);
 		panel_1.add(lblNewLabel);
+		
+		this.me = me;
+		inv = invent;
+	}
+	
+	public static void updateInfo() {
+		String str;
+	     // while(true) {
+    	str = "<html>";
+    	str += "Name : "+me.getName()+"<br/>";
+		//System.out.println(me.getHp());
+		str += "HP : "+me.getHp()+"<br/>";
+		//System.out.println(me.getGold());
+		str += "Gold : "+me.getGold()+"<br/>";
+		//System.out.println(me.getMp());
+		str += "MP : "+me.getMp()+"<br/>";
+		//System.out.println(me.get_clear_major_require());
+		str += "Clear Major Require : "+me.get_clear_major_require()+"<br/>";
+		
+		lblNewLabel.setText(str);
 	}
 }
