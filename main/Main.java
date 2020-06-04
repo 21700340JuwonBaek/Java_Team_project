@@ -159,6 +159,7 @@ public class Main {
 				&& me.get_clear_major_require() == true && me.get_clear_major_select() == true) {
 		  if(me.getGrade() == 4) {
 			  //졸업
+			  JOptionPane.showMessageDialog(null, "4년 과정을 모두 마치셨습니다. 축하합니다!", "알림", JOptionPane.INFORMATION_MESSAGE);
 			  new EndingAnimation();
 			  return;
 		  }
