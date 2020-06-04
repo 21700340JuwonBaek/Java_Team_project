@@ -2,11 +2,15 @@ package main;
 import grade.*;
 import gui.RpgGui;
 import character.*;
+import windowbuilder.EndingAnimation;
 import fgame.GetCharacter;
 import fgame.HandongStart;
 
 import java.io.*;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import inventory.Inventory;
 import shop.shop;
 import windowbuilder.EnterName;
@@ -155,6 +159,7 @@ public class Main {
 				&& me.get_clear_major_require() == true && me.get_clear_major_select() == true) {
 		  if(me.getGrade() == 4) {
 			  //졸업
+			  new EndingAnimation();
 			  return;
 		  }
 			me.setGrade(me.getGrade() + 1);
@@ -169,6 +174,8 @@ public class Main {
 			me.set_clear_education_select(false);
 			me.set_clear_major_require(false);
 			me.set_clear_major_select(false);
+			String nextGradeStr = me.getGrade()+"학년으로 올라갑니다!(Level up)";
+			JOptionPane.showMessageDialog(null, nextGradeStr, "알림", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(me.getGrade()+"학년으로 올라갑니다!(Level up)");
 		}
   }

@@ -128,10 +128,8 @@ public class Major_select extends Dungeon {
 				//////////////////////////////////////////////////////
 
 				HandongDungeons.showMessage(clearMsg);
-				dungeon.stopBGM();
-				dungeon.frame.setVisible(false);
 				me.set_clear_major_select(true);
-				return;
+				break;
 			}
 
 			// Be attacked by monsters

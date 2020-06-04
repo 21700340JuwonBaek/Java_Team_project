@@ -129,10 +129,8 @@ public class Education_select extends Dungeon {
 				//////////////////////////////////////////////////////
 
 				HandongDungeons.showMessage(clearMsg);
-				dungeon.stopBGM();
-				dungeon.frame.setVisible(false);
 				me.set_clear_education_select(true);
-				return;
+				break;
 			}
 
 			// Be attacked by monsters
