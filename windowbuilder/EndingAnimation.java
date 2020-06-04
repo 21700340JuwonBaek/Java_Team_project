@@ -36,6 +36,23 @@ public class EndingAnimation {
 	Clip clip;
 
 	/**
+	 * Launch the application.
+	 */
+	/*
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EndingAnimation window = new EndingAnimation();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+*/
+	/**
 	 * Create the application.
 	 */
 	public EndingAnimation() {

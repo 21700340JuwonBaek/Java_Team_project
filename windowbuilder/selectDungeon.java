@@ -79,7 +79,7 @@ public class selectDungeon extends JFrame {
 					default:
 						break;
 				}
-				frame.setVisible(false);
+				//frame.setVisible(false);
 			}
 			}.start();
 			}
@@ -114,7 +114,7 @@ public class selectDungeon extends JFrame {
 							default:
 								break;
 						}
-						frame.setVisible(false);
+						//frame.setVisible(false);
 					}
 				}.start();
 			}
@@ -149,7 +149,7 @@ public class selectDungeon extends JFrame {
 								default:
 									break;
 							}
-							frame.setVisible(false);
+						//	frame.setVisible(false);
 					 }
 				}.start();
 			}
@@ -184,7 +184,7 @@ public class selectDungeon extends JFrame {
 							default:
 								break;
 							}
-						frame.setVisible(false);
+						//frame.setVisible(false);
 					 }
 				}.start();
 			}

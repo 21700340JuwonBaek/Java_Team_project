@@ -44,7 +44,10 @@ public class Education_require extends Dungeon {
 
 		// Battle
 		while (me.getHp() > 0) {
-
+			System.out.println("ER "+me.get_clear_education_require());
+			System.out.println("MR"+me.get_clear_major_require());
+			System.out.println("ES "+me.get_clear_education_select());
+			System.out.println("ER "+me.get_clear_major_select());
 			// Print my status
 			System.out.println();
 			System.out.println("[My status]");
@@ -94,7 +97,7 @@ public class Education_require extends Dungeon {
 			int remember_mana = mySkill[select_skill].getMana();
 			System.out.println("Original mana: " + remember_mana);
 			if (mySkill[select_skill].getRange() > monsters.length) {
-				for (i = 0; i < monsters.length; i++) {
+				for (i = 0; i <=monsters.length-1; i++) {
 					if (mySkill[select_skill].getMana() > me.getMp())
 						break;
 					Me.Attack(mySkill[select_skill], monsters[i], me);
