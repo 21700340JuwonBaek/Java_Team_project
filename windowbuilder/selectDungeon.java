@@ -1,9 +1,11 @@
 package windowbuilder;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -14,15 +16,10 @@ import grade.Senior;
 import grade.Sophomore;
 import inventory.Inventory;
 
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 public class selectDungeon extends JFrame {
 
 	private JPanel contentPane;
-	selectDungeon frame;
+	static selectDungeon frame;
 
 	/**
 	 * Launch the application.
@@ -56,6 +53,7 @@ public class selectDungeon extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Info.quitFrame();
 				int grade = me.getGrade();
 				new Thread(){
 					public void run() {
@@ -91,6 +89,7 @@ public class selectDungeon extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Info.quitFrame();
 				int grade = me.getGrade();
 				new Thread() {
 					 public void run() {
@@ -126,6 +125,7 @@ public class selectDungeon extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Info.quitFrame();
 				int grade = me.getGrade();
 				new Thread() {
 					 public void run() {
@@ -161,6 +161,7 @@ public class selectDungeon extends JFrame {
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Info.quitFrame();
 				int grade = me.getGrade();
 				new Thread() {
 					 public void run() {

@@ -150,12 +150,13 @@ public class Education_require extends Dungeon {
 
 				HandongDungeons.showMessage(clearMsg);
 				me.set_clear_education_require(true);
+				
 				break;
 			}
 		}
 		dungeon.stopBGM();
 		dungeon.frame.setVisible(false);
 		Main.clearCondition(me, invent);
-		Info.updateInfo();
+		Main.getStart(me, invent, 2);
 	}
 }
