@@ -49,7 +49,13 @@ public class selectDungeon extends JFrame {
 		lblNewLabel.setBounds(35, 13, 127, 16);
 		contentPane.add(lblNewLabel);
 		
+		
+	
 		JButton btnNewButton = new JButton("Education Require");
+		if(me.get_clear_education_require()==true) {
+			btnNewButton = new JButton("Education Require(Clear!)");
+
+		}
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -82,10 +88,14 @@ public class selectDungeon extends JFrame {
 			}.start();
 			}
 		});
-		btnNewButton.setBounds(20, 41, 151, 29);
+		btnNewButton.setBounds(20, 41, 200, 29);
 		contentPane.add(btnNewButton);
 		
+		
 		JButton btnNewButton_1 = new JButton("Major Require");
+		if(me.get_clear_major_require()==true) {
+			btnNewButton_1 = new JButton("Major Require(Clear!)");
+		}
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -118,10 +128,13 @@ public class selectDungeon extends JFrame {
 				}.start();
 			}
 		});
-		btnNewButton_1.setBounds(20, 70, 151, 29);
+		btnNewButton_1.setBounds(20, 70, 200, 29);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Education select");
+		if(me.get_clear_education_select()==true) {
+			btnNewButton_2 = new JButton("Education select(Clear!)");
+		}
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -154,10 +167,13 @@ public class selectDungeon extends JFrame {
 				}.start();
 			}
 		});
-		btnNewButton_2.setBounds(20, 102, 151, 29);
+		btnNewButton_2.setBounds(20, 102, 200, 29);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Major select");
+		if(me.get_clear_major_select()==true) {
+			btnNewButton_3 = new JButton("Major select(Clear!)");
+		}
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -190,7 +206,7 @@ public class selectDungeon extends JFrame {
 				}.start();
 			}
 		});
-		btnNewButton_3.setBounds(20, 132, 151, 29);
+		btnNewButton_3.setBounds(20, 132, 200, 29);
 		contentPane.add(btnNewButton_3);
 	}
 	public static void quitFrame() {
