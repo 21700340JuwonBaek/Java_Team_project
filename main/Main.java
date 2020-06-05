@@ -207,7 +207,7 @@ public class Main {
 				//System.out.println(me.getMp());
 				str += "MP : "+me.getMp()+"<br/>";
 				//System.out.println(me.get_clear_major_require());
-				str += "Clear Major Require : "+me.get_clear_major_require()+"<br/>";
+				str += "Grade : "+me.getGrade()+"<br/>";
 
 
 				
