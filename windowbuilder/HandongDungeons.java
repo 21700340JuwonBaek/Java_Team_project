@@ -507,12 +507,12 @@ public class HandongDungeons implements ActionListener {
 		choiceP.setVisible(true);
 		instructionTArea.setVisible(true);
 		showChoiceButtons(list);
-		instructionTArea.setText("스킬을 선택해주세요!");
-		choice1Btn.setText("검색하기");
-		choice2Btn.setText("우주의 기원을 담아 기도하기...");
-		choice3Btn.setText("선배님 도와주세요...!");
-		choice4Btn.setText("논문찾아보기");
-		choice5Btn.setText("교수님께 메일보내보기");
+		instructionTArea.setText("스킬을 선택해주세요!\n(이름/추가공격력/범위/소모마나)");
+		choice1Btn.setText("빡공/0/1/0");
+		choice2Btn.setText("기도하기.../5/4/25");
+		choice3Btn.setText("선배님 도와주세요...!/20/2/30");
+		choice4Btn.setText("논문찾아보기/30/1/30");
+		choice5Btn.setText("교수님께 메일보내보기/40/1/35");
 		
 		synchronized(msgPBtn) {
 			try {
