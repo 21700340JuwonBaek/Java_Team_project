@@ -1,24 +1,23 @@
 package main;
-import grade.*;
-import gui.RpgGui;
-import character.*;
-import windowbuilder.EndingAnimation;
-import fgame.GetCharacter;
-import fgame.HandongStart;
-
-import java.io.*;
-import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JOptionPane;
 
+import character.Me;
 import inventory.Inventory;
-import shop.shop;
+import item.Armor;
+import item.Potion;
+import item.Weapon;
+import windowbuilder.EndingAnimation;
 import windowbuilder.EnterName;
 import windowbuilder.Info;
+import windowbuilder.ItemInventory;
 import windowbuilder.ShopGui;
 import windowbuilder.StartGame;
-import windowbuilder.selectDungeon;
-import item.*;
 public class Main {
    public static Me userMe;
    public static Potion hp;
@@ -34,10 +33,17 @@ public class Main {
 
   public static void Save(Me me, Inventory inventory, Weapon Ipad, Weapon Macbook, Weapon Note, Weapon TA, Armor Hood) // Save Method.
 	{
+	  //System.out.println(me.getGrade()+"\n"+inventory.weapon1+"\n"+Ipad.getAtk());
 		ObjectOutputStream outputStream = null;
+		FileOutputStream f_stream = null;
+		ObjectOutputStream outputStream1 = null;
+		FileOutputStream f1_stream = null;
+		String fileName1 = "Inventory.records";
 		String fileName = "My.records";
+		System.out.println(me);
 		try {
-			outputStream = new ObjectOutputStream(new FileOutputStream(fileName));
+			f_stream = new FileOutputStream(fileName);
+			outputStream = new ObjectOutputStream(f_stream);
 		} catch (IOException e) {
 			System.out.println("Error0");
 			System.exit(0);
@@ -45,22 +51,23 @@ public class Main {
 
 		try {
 			outputStream.writeObject(me);
+			f_stream.close();
 			outputStream.close();
 		} catch (IOException e) {
 			System.out.println("Error1");
 		}
-
-		ObjectOutputStream outputStream1 = null;
-		String fileName1 = "Inventory";
+		System.out.println(inventory);
 		try {
-			outputStream1 = new ObjectOutputStream(new FileOutputStream(fileName1));
+			f1_stream = new FileOutputStream(fileName1);
+			outputStream1 = new ObjectOutputStream(f1_stream);
 		} catch (IOException e) {
-			System.out.println("Error0");
+			System.out.println("Error00");
 			System.exit(0);
 		}
 
 		try {
 			outputStream1.writeObject(inventory);
+			f1_stream.close();
 			outputStream1.close();
 		} catch (IOException e) {
 			System.out.println("Error2");
@@ -96,7 +103,7 @@ public class Main {
 		ObjectInputStream inputStream = null;
 		Inventory inventory = null;
 		try {
-			inputStream = new ObjectInputStream(new FileInputStream("Inventory"));
+			inputStream = new ObjectInputStream(new FileInputStream("Inventory.records"));
 		} catch (IOException e) {
 			System.out.println("No File!!");
 		}
@@ -133,28 +140,33 @@ public class Main {
 
 	  //System.out.print(me.getName());
 	
-	  invent.applyWeapon(me, Ipad);
+	  //invent.applyWeapon(me, Ipad);
 	  
-	  getStart(me,invent);
+	  getStart(me,invent,1);
    }
    public static void selSave(Me me, Inventory invent) {
-	   invent.setInventory(Ipad, Macbook, Note, TA, Hood, hp, mp);
+	   invent.setInventory(invent.getWeapon1(), invent.getWeapon2(), Note, TA, Hood, hp, mp);
 	   Save(me, invent, Ipad, Macbook, Note, TA, Hood);
+	   JOptionPane.showMessageDialog(null, "저장되었습니다.");
    }
    
-  public static void selLoad(Me me,Inventory invent) {
-	  me = Main.LoadMe();
-		invent = Main.LoadInventory();
+  public static void selLoad() {
+	  	Me me = Main.LoadMe();
+		Inventory invent = Main.LoadInventory();
 		Ipad = invent.getWeapon1();
 		Macbook = invent.getWeapon2();
 		Note = invent.getWeapon3();
 		TA = invent.getWeapon4();
 		hp = invent.getHpPotion();
 		mp = invent.getMpPotion();
+		getStart(me,invent,2);
   }
   public static void selShop(Me me,Inventory invent) {
 	  ShopGui.run(me,invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
 	//shop.buy(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
+  }
+  public static void selInventory(Me me,Inventory invent) {
+	  ItemInventory.run(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
   }
   public static void clearCondition(Me me, Inventory invent) {
 	  if (me.get_clear_education_require() == true && me.get_clear_education_select() == true
@@ -183,7 +195,7 @@ public class Main {
 		
 		}
   }
-   public static void getStart(Me me,Inventory invent) {
+   public static void getStart(Me me,Inventory invent,int a) {
 	   		String str;
 		     // while(true) {
 		    	str = "<html>";
@@ -201,9 +213,10 @@ public class Main {
 				
 				Info inf = new Info(me,str,invent);
 				inf.run(me,str,invent);
-				EnterName.quitFrame();
-				StartGame.quitFrame();
-				
+				if(a == 1) {
+					EnterName.quitFrame();
+					StartGame.quitFrame();
+				}
       		//}
       	}
       }

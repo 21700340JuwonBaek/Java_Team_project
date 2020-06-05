@@ -13,8 +13,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import character.Me;
+import inventory.Inventory;
+import item.Potion;
+import main.Main;
+
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class StartGame extends JFrame {
@@ -48,6 +58,7 @@ public class StartGame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
@@ -55,15 +66,16 @@ public class StartGame extends JFrame {
 		
 		BufferedImage backGround = null;
 		try {
-			backGround = ImageIO.read(this.getClass().getResource("/res/img/logo.png"));
+			backGround = ImageIO.read(this.getClass().getResource("/res/img/start.jpeg"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Image img = backGround.getScaledInstance(88, 78, Image.SCALE_SMOOTH);
+		Image img = backGround.getScaledInstance(200, 130, Image.SCALE_SMOOTH);
 		back = new ImageIcon(img);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		contentPane.add(panel, "name_86213402417667");
 		panel.setLayout(null);
 		
@@ -74,19 +86,34 @@ public class StartGame extends JFrame {
 				EnterName.getUserName();
 			}
 		});
-		btnNewButton.setBounds(153, 135, 117, 29);
+		btnNewButton.setBounds(153, 146, 117, 29);
 		panel.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Resume");
-		btnNewButton_1.setBounds(153, 176, 117, 29);
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("End");
-		btnNewButton_2.setBounds(153, 217, 117, 29);
+		JButton btnNewButton_2 = new JButton("Close");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				int result= JOptionPane.showConfirmDialog(null, "종료하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(result == 0){
+						System.exit(0);
+					}
+			}
+		});
+		btnNewButton_2.setBounds(153, 213, 117, 29);
 		panel.add(btnNewButton_2);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(179, 51, 61, 16);
+		JButton btnResume = new JButton("Resume");
+		btnResume.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Main.selLoad();
+			}
+		});
+		btnResume.setBounds(153, 180, 117, 29);
+		panel.add(btnResume);
+		
+		JLabel lblNewLabel = new JLabel(back);
+		lblNewLabel.setBounds(68, 6, 288, 162);
 		panel.add(lblNewLabel);
 		
 		

@@ -153,6 +153,6 @@ public class Education_select extends Dungeon {
 		dungeon.stopBGM();
 		dungeon.frame.setVisible(false);
 		Main.clearCondition(me, invent);
-		Info.updateInfo();
+		Main.getStart(me, invent, 2);
 	}
 }
