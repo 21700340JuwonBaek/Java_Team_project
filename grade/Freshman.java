@@ -12,11 +12,11 @@ public class Freshman {
 	public static Skill[] skill = new Skill[5];
 	{
 		// Skill name, Attack point, Target, ManaSpent, Open
-		skill[0] = new Skill("검색하기", 5, 1, 3, true);
-		skill[1] = new Skill("우주의 기원을 담아 기도하기...", 5, 4, 10, true);
-		skill[2] = new Skill("선배님 도와주세요...!", 10, 1, 10, true);
-		skill[3] = new Skill("논문찾아보기", 20, 1, 15, false);
-		skill[4] = new Skill("교수님께 메일보내보기", 30, 1, 20, false);
+		skill[0] = new Skill("검색하기", 0, 1, 0, true);
+		skill[1] = new Skill("우주의 기원을 담아 기도하기...", 5, 4, 25, true);
+		skill[2] = new Skill("선배님 도와주세요...!", 20, 2, 30, true);
+		skill[3] = new Skill("논문찾아보기", 30, 1, 30, false);
+		skill[4] = new Skill("교수님께 메일보내보기", 40, 1, 35, false);
 	}
 
 	public final static Monster[] MR = new Monster[3];
