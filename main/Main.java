@@ -137,7 +137,7 @@ public class Main {
 	}
 
 	public static void selSave(Me me, Inventory invent) {
-		invent.setInventory(invent.getWeapon1(), invent.getWeapon2(), Note, TA, Hood, hp, mp);
+		invent.setInventory(invent.getWeapon1(), invent.getWeapon2(), Note, TA, invent.getArmor1(), hp, mp);
 		Save(me, invent, Ipad, Macbook, Note, TA, Hood);
 		JOptionPane.showMessageDialog(null, "저장되었습니다.");
 	}
@@ -148,6 +148,7 @@ public class Main {
 		Ipad = invent.getWeapon1();
 		Macbook = invent.getWeapon2();
 		Note = invent.getWeapon3();
+		Hood = invent.getArmor1();
 		TA = invent.getWeapon4();
 		hp = invent.getHpPotion();
 		mp = invent.getMpPotion();
@@ -156,10 +157,12 @@ public class Main {
 
 	public static void selShop(Me me, Inventory invent) {
 		ShopGui.run(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
+		Info.quitFrame();
 	}
 
 	public static void selInventory(Me me, Inventory invent) {
 		ItemInventory.run(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
+		Info.quitFrame();
 	}
 
 	public static void clearCondition(Me me, Inventory invent) {

@@ -53,9 +53,9 @@ public class shop {
 						invent.applyWeapon(me, Ipad);
 					}else {System.out.println("이미 가지고 있는 아이텝입니다.");}
 				}else if(item==2) {
-					if(!invent.armor2.getIs_bought()) {
+					if(!invent.armor1.getIs_bought()) {
 						System.out.println("새내기 후드티를 구매하였습니다. 방어력 +5 ");
-						me.setGold(me.getGold()-invent.armor2.getBuyGold());
+						me.setGold(me.getGold()-invent.armor1.getBuyGold());
 						Hood.setIs_bought(true);
 						invent.setArmor1(Hood);
 						invent.applyArmor(me, Hood);
