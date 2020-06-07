@@ -158,6 +158,7 @@ public class Major_require extends Dungeon {
 		//Info.updateInfo();
 		if((me.getGrade() == 4) && (me.get_clear_education_select()== true) && (me.get_clear_education_require()== true) && (me.get_clear_major_select()==true))
 			return;
-		Main.getStart(me, invent, 2);
+		//Main.getStart(me, invent, 2);
+		Info.updateInfo();
 	}
 }

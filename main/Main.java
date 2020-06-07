@@ -156,6 +156,7 @@ public class Main {
 		Ipad = invent.getWeapon1();
 		Macbook = invent.getWeapon2();
 		Note = invent.getWeapon3();
+		Hood = invent.getArmor1();
 		TA = invent.getWeapon4();
 		hp = invent.getHpPotion();
 		mp = invent.getMpPotion();
@@ -163,9 +164,11 @@ public class Main {
   }
   public static void selShop(Me me,Inventory invent) {
 	  ShopGui.run(me,invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
+	  Info.quitFrame();
 	//shop.buy(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
   }
   public static void selInventory(Me me,Inventory invent) {
+	  Info.quitFrame();
 	  ItemInventory.run(me, invent, hp, mp, Ipad, Macbook, Note, TA, Hood);
   }
   public static void clearCondition(Me me, Inventory invent) {

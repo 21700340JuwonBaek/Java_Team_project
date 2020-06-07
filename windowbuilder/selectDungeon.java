@@ -24,7 +24,7 @@ public class selectDungeon extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-			public void run(Me me,Inventory invent) {
+			public static void run(Me me,Inventory invent) {
 				try {
 					frame = new selectDungeon(me,invent);
 					frame.setVisible(true);
@@ -39,7 +39,7 @@ public class selectDungeon extends JFrame {
 	public selectDungeon(Me me,Inventory invent) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(180, 180, 200, 200);
+		setBounds(180, 180, 230, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -53,13 +53,14 @@ public class selectDungeon extends JFrame {
 	
 		JButton btnNewButton = new JButton("Education Require");
 		if(me.get_clear_education_require()==true) {
-			btnNewButton = new JButton("Education Require(Clear!)");
+			btnNewButton.setText("Education Require(Clear!)");
 
 		}
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Info.quitFrame();
+				Info.frame.setVisible(false);
+				quitFrame();
 				int grade = me.getGrade();
 				new Thread(){
 					public void run() {
@@ -94,12 +95,13 @@ public class selectDungeon extends JFrame {
 		
 		JButton btnNewButton_1 = new JButton("Major Require");
 		if(me.get_clear_major_require()==true) {
-			btnNewButton_1 = new JButton("Major Require(Clear!)");
+			btnNewButton_1.setText("Major Require(Clear!)");
 		}
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Info.quitFrame();
+				Info.frame.setVisible(false);
+				quitFrame();
 				int grade = me.getGrade();
 				new Thread() {
 					 public void run() {
@@ -133,12 +135,13 @@ public class selectDungeon extends JFrame {
 		
 		JButton btnNewButton_2 = new JButton("Education select");
 		if(me.get_clear_education_select()==true) {
-			btnNewButton_2 = new JButton("Education select(Clear!)");
+			btnNewButton_2.setText("Education select(Clear!)");
 		}
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Info.quitFrame();
+				Info.frame.setVisible(false);
+				quitFrame();
 				int grade = me.getGrade();
 				new Thread() {
 					 public void run() {
@@ -172,12 +175,13 @@ public class selectDungeon extends JFrame {
 		
 		JButton btnNewButton_3 = new JButton("Major select");
 		if(me.get_clear_major_select()==true) {
-			btnNewButton_3 = new JButton("Major select(Clear!)");
+			btnNewButton_3.setText("Major select(Clear!)");
 		}
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Info.quitFrame();
+				Info.frame.setVisible(false);
+				quitFrame();
 				int grade = me.getGrade();
 				new Thread() {
 					 public void run() {

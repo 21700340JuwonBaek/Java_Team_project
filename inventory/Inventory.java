@@ -10,8 +10,8 @@ public class Inventory implements Serializable {
 	public	Weapon weapon3;
 	public	Weapon weapon4;
 	public	Armor armor1;
-	public	Armor armor2;
-	public	Armor armor3;
+//	public	Armor armor2;
+//	public	Armor armor3;
 	public	Potion HpPotion;
 	public	Potion MpPotion;
 	
@@ -20,23 +20,23 @@ public class Inventory implements Serializable {
 		this.weapon2 = weapon2;
 		this.weapon3 = weapon3;
 		this.weapon4 = weapon4;
-		this.armor2 = armor1;
-		this.HpPotion = HpPotion;
-		this.MpPotion = MpPotion;
-	}
-	
-	
-	public  Inventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
-		this.weapon1 = weapon1;
-		this.weapon2 = weapon2;
-		this.weapon3 = weapon3;
-		this.weapon4 = weapon4;
 		this.armor1 = armor1;
-		this.armor2 = armor2;
-		this.armor3 = armor3;
 		this.HpPotion = HpPotion;
 		this.MpPotion = MpPotion;
 	}
+	
+	
+//	public  Inventory(Weapon weapon1, Weapon weapon2, Weapon weapon3, Weapon weapon4, Armor armor1, Armor armor2, Armor armor3, Potion HpPotion, Potion MpPotion) {
+//		this.weapon1 = weapon1;
+//		this.weapon2 = weapon2;
+//		this.weapon3 = weapon3;
+//		this.weapon4 = weapon4;
+//		this.armor1 = armor1;
+//		this.armor2 = armor2;
+//		this.armor3 = armor3;
+//		this.HpPotion = HpPotion;
+//		this.MpPotion = MpPotion;
+//	}
 	
 	//저장된 파일을 불러왔을 때에 instatnceVariable에 값이 저장되어 있을테니,
 	//get함수를 통해서 parameter들에게 저장된 값을 할당하려는 의도. 잘 될런지는 모르겠다. 
@@ -46,7 +46,7 @@ public class Inventory implements Serializable {
 		this.weapon2 = weapon2;
 		this.weapon3 = weapon3;
 		this.weapon4 = weapon4;
-		this.armor2 = armor1;
+		this.armor1 = armor1;
 		this.HpPotion = HpPotion;
 		this.MpPotion = MpPotion;
 	}
@@ -74,13 +74,13 @@ public class Inventory implements Serializable {
 		this.armor1 = armor;
 	}
 	
-	public void setArmor2(Armor armor) {
-		this.armor2 = armor;
-	}
-	
-	public void setArmor3(Armor armor) {
-		this.armor3 = armor;
-	}
+//	public void setArmor2(Armor armor) {
+//		this.armor2 = armor;
+//	}
+//	
+//	public void setArmor3(Armor armor) {
+//		this.armor3 = armor;
+//	}
 	
 	public void setHpPotion(Potion HpPotion) {
 		this.HpPotion = HpPotion;

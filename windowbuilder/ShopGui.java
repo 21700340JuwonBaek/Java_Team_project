@@ -316,7 +316,7 @@ public class ShopGui extends JFrame {
 		return 1;
 	}
 	public int shopBye(Me me,Inventory invent) {
-		Main.getStart(me,invent,2);
+		Info.updateInfo();
 		quitFrame();
 		return 0;
 	}
@@ -361,15 +361,17 @@ public class ShopGui extends JFrame {
 	}
 	public int buyHood(Me me,Armor Hood,Inventory invent) {
 				//showMessage(inform);
-		check = goldCheck(me,invent.armor2.getBuyGold());
-		if((check != 1 )&& (!invent.armor2.getIs_bought())) {
-			me.setGold(me.getGold()-invent.armor2.getBuyGold());
+		System.out.println(invent.armor1.getBuyGold());
+		
+		check = goldCheck(me,invent.armor1.getBuyGold());
+		if((check != 1 )&& (!invent.armor1.getIs_bought())) {
+			me.setGold(me.getGold()-invent.armor1.getBuyGold());
 			inform += "새내기 후드티를 구매하였습니다.<br/>방어력 +5.<br/>Gold : "+me.getGold();
-			invent.armor2.setIs_bought(true);
 			invent.setArmor1(Hood);
+			invent.armor1.setIs_bought(true);
 			invent.applyArmor(me, Hood);
 			showMessage(inform);
-			}else if(invent.armor2.getIs_bought() == true) {
+			}else if(invent.armor1.getIs_bought() == true) {
 				showAlert();
 			}
 		return 1;

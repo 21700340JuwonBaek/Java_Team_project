@@ -189,12 +189,12 @@ public class ItemInventory extends JFrame {
 		imghood.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(invent.armor2.getIs_bought() == true) {
+				if(invent.armor1.getIs_bought() == true) {
 					int result= JOptionPane.showConfirmDialog(null, "아이템을 탈착하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					if(result == 0){
 							Inventory.detatchArmor(me,Hood);
 							imghood.setIcon(x);
-							invent.armor2.setIs_bought(false);
+							invent.armor1.setIs_bought(false);
 						}
 					}
 			}
@@ -234,7 +234,8 @@ public class ItemInventory extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				Main.getStart(me, invent, 2);
+				//Main.getStart(me, invent, 2);
+				Info.updateInfo();
 				quitFrame();
 			}
 		});
@@ -243,7 +244,7 @@ public class ItemInventory extends JFrame {
 		
 		if(!invent.weapon1.getIs_bought()) {
 			imgipad.setIcon(x);
-		}if(!invent.armor2.getIs_bought()) {
+		}if(!invent.armor1.getIs_bought()) {
 			imghood.setIcon(x);
 		}if(!invent.weapon2.getIs_bought()) {
 			imgmacbook.setIcon(x);
