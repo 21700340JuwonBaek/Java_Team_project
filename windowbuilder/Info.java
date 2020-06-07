@@ -21,7 +21,7 @@ import inventory.Inventory;
 import main.Main;
 
 public class Info extends JFrame {
-	static Info frame;
+	public static Info frame;
 	private JPanel contentPane;
 	public static JLabel lblNewLabel;
 	private static Me me;
@@ -80,8 +80,7 @@ public class Info extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectDungeon sel = new selectDungeon(me, invent);
-				sel.run(me, invent);
+				selectDungeon.run(me,invent);
 			}
 		});
 		btnNewButton.setBounds(43, 130, 117, 29);
@@ -152,6 +151,7 @@ public class Info extends JFrame {
 		str += "Gold : " + me.getGold() + "<br/>";
 		str += "Grade : " + me.getGrade() + "<br/>";
 		lblNewLabel.setText(str);
+		frame.setVisible(true);
 	}
 
 	public static void quitFrame() {

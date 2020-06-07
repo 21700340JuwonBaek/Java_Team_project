@@ -24,7 +24,6 @@ public class Inventory implements Serializable {
 	}
 	
 	
-
 	
 	//저장된 파일을 불러왔을 때에 instatnceVariable에 값이 저장되어 있을테니,
 	//get함수를 통해서 parameter들에게 저장된 값을 할당하려는 의도. 잘 될런지는 모르겠다. 
@@ -62,7 +61,6 @@ public class Inventory implements Serializable {
 		this.armor1 = armor;
 	}
 	
-
 	public void setHpPotion(Potion HpPotion) {
 		this.HpPotion = HpPotion;
 	}

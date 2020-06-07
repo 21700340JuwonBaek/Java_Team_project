@@ -118,7 +118,7 @@ public class Main {
 	}
 
 	public Main(String name) {
-		Me me = new Me(name, 5, 1, 500, 1, 100, 100, 100, 100);
+		Me me = new Me(name, 5, 1, 250, 1, 100, 100, 100, 100);
 		setting(me);
 	}
 
@@ -152,7 +152,9 @@ public class Main {
 		TA = invent.getWeapon4();
 		hp = invent.getHpPotion();
 		mp = invent.getMpPotion();
+		
 		getStart(me, invent, 2);
+		StartGame.quitFrame();
 	}
 
 	public static void selShop(Me me, Inventory invent) {
@@ -191,6 +193,7 @@ public class Main {
 			System.out.println(me.getGrade() + "학년으로 올라갑니다!(Level up)");
 
 		}
+
 	}
 
 	public static void getStart(Me me, Inventory invent, int a) {
