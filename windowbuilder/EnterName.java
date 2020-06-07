@@ -30,7 +30,7 @@ public class EnterName extends JFrame {
 		setResizable(false);
 		setBackground(new Color(255, 255, 255));
 		setTitle("Name");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(180, 180, 250, 200);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);

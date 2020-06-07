@@ -38,7 +38,7 @@ public class selectDungeon extends JFrame {
 	 */
 	public selectDungeon(Me me,Inventory invent) {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(180, 180, 230, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,8 +49,6 @@ public class selectDungeon extends JFrame {
 		lblNewLabel.setBounds(35, 13, 127, 16);
 		contentPane.add(lblNewLabel);
 		
-		
-	
 		JButton btnNewButton = new JButton("Education Require");
 		if(me.get_clear_education_require()==true) {
 			btnNewButton.setText("Education Require(Clear!)");

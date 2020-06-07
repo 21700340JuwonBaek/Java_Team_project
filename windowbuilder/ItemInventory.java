@@ -121,8 +121,9 @@ public class ItemInventory extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(invent.weapon2.getIs_bought() == true) {
-					int result= JOptionPane.showConfirmDialog(null, "아이템을 탈착하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					int result= JOptionPane.showConfirmDialog(null, "아이템을 판매하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					if(result == 0){
+							me.setGold(me.getGold() + invent.weapon2.getSellGold());
 							Inventory.detatchWeapon(me,Macbook);
 							imgmacbook.setIcon(x);
 							invent.weapon2.setIs_bought(false);
@@ -138,8 +139,9 @@ public class ItemInventory extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(invent.weapon3.getIs_bought() == true) {
-				int result= JOptionPane.showConfirmDialog(null, "아이템을 탈착하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				int result= JOptionPane.showConfirmDialog(null, "아이템을 판매하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				if(result == 0){
+						me.setGold(me.getGold() + invent.weapon3.getSellGold());
 						Inventory.detatchWeapon(me,Note);
 						imgnote.setIcon(x);
 						invent.weapon3.setIs_bought(false);
@@ -155,8 +157,9 @@ public class ItemInventory extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(invent.weapon4.getIs_bought() == true) {
-					int result= JOptionPane.showConfirmDialog(null, "아이템을 탈착하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					int result= JOptionPane.showConfirmDialog(null,"아이템을 판매하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					if(result == 0){
+						me.setGold(me.getGold() + invent.weapon4.getSellGold());
 							Inventory.detatchWeapon(me,TA);
 							imgta.setIcon(x);
 							invent.weapon4.setIs_bought(false);
@@ -172,8 +175,9 @@ public class ItemInventory extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(invent.weapon1.getIs_bought() == true) {
-					int result= JOptionPane.showConfirmDialog(null, "아이템을 탈착하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					int result= JOptionPane.showConfirmDialog(null, "아이템을 판매하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					if(result == 0){
+							me.setGold(me.getGold() + invent.weapon1.getSellGold());
 							Inventory.detatchWeapon(me,Ipad);
 							imgipad.setIcon(x);
 							invent.weapon1.setIs_bought(false);
@@ -190,8 +194,9 @@ public class ItemInventory extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(invent.armor1.getIs_bought() == true) {
-					int result= JOptionPane.showConfirmDialog(null, "아이템을 탈착하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					int result= JOptionPane.showConfirmDialog(null, "아이템을 판매하시겠습니까?","종료", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					if(result == 0){
+							me.setGold(me.getGold() + invent.armor1.getSellGold());
 							Inventory.detatchArmor(me,Hood);
 							imghood.setIcon(x);
 							invent.armor1.setIs_bought(false);
