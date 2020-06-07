@@ -55,6 +55,7 @@ public class EnterName extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 					name = textField.getText();
 					Main main = new Main(name);
+					Intro.run();
 					frame.setVisible(false);
 			}
 		});
